@@ -32,3 +32,4 @@
 ### Verification
 - Local workflow lint not executed.
 - Expected fix for CI failure: `Unsupported class file major version 65`.
+- Follow-up CI fix (2026-03-05): `android-actions/setup-android@v3` pulled cmdline-tools 16.0 (requires JDK17). Workflow now uses JDK17 for SDK setup and switches back to JDK11 for Gradle build.
