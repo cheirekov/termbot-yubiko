@@ -19,6 +19,7 @@
 
 ## Done
 - [x] PACK-INIT: Installed AI operating pack
+- [x] TKT-0248: AI process retro + context-window reliability review — DONE 2026-03-05; added process-only retro with prioritized guardrails (review WIP limit, context checkpoints, handoff capsule, regression sentinel matrix)
 - [x] TKT-0201: Security key timeout guard in auth handoff/sign flow
 - [x] TKT-0202: Lifecycle-safe service/authenticator delivery
 - [x] TKT-0203: Fail-fast auth error + safe log markers

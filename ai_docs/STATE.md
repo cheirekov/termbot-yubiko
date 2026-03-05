@@ -1,6 +1,6 @@
 # STATE (Authoritative "Now") — KEEP SMALL
 
-Last updated: 2026-03-05 (TKT-0247 GitHub Actions Java11 compatibility fix in review)
+Last updated: 2026-03-05 (TKT-0248 AI process retro completed; TKT-0247 CI fix in review)
 Mode: multi-repo
 Workspace root: /home/yc/work/ai-projects-templates/workspace
 Owners: yc
@@ -39,6 +39,7 @@ Owners: yc
 - UX work is phased (audit -> focused tickets), not big-bang redesign
 
 ## Active work (LIMIT=25)
+- DONE 2026-03-05: TKT-0248 AI process retro + context-window reliability review (added process retro doc with prioritized guardrails and follow-up ticket proposals)
 - DONE 2026-03-03: TKT-0231 OpenPGP auth APDU 0x6982 fix
 - DONE 2026-03-03: TKT-0236 security-key waiting prompt redesign (persistent touch/USB UI)
 - DONE 2026-03-04: TKT-0232 PIN policy consistency (OpenPGP/PIV/FIDO2 local validation + non-secret reject markers)
@@ -71,7 +72,8 @@ Owners: yc
 - Menu density in Host List increases discoverability/error risk
 
 ## Next actions (LIMIT=6)
-1) Run user smoke for TKT-0244: FIDO2 USB import + SSH auth/sign (touch/PIN flows)
-2) Run user smoke for TKT-0243 in Android Desktop Mode (Manage Keys -> Add Key full actions)
-3) Confirm root publication set (TKT-0245/TKT-0246): README wording + commit-history strategy + GitHub Actions enablement
-4) Rerun GitHub Actions after TKT-0247 and confirm green `assembleDebug`
+1) Rerun GitHub Actions after TKT-0247 and confirm green `assembleDebug`
+2) Close review queue items in order: TKT-0243 -> TKT-0244 -> TKT-0245 -> TKT-0246
+3) Start process hardening follow-up: TKT-0249 (Review WIP limit policy)
+4) Start handoff quality follow-up: TKT-0250 (session handoff capsule template)
+5) Start QA follow-up: TKT-0251 (security-key regression sentinel matrix)
