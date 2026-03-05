@@ -55,7 +55,7 @@ Owners: yc
 - IN REVIEW 2026-03-04: TKT-0244 FIDO2 USB transport parity (FIDO auth/import now prefer `FidoConnection` with smartcard fallback to keep NFC working)
 - IN REVIEW 2026-03-04: TKT-0245 first public GitHub commit prep (repo README refreshed to YubiKit-era state, workspace `.gitignore` typo fixed)
 - IN REVIEW 2026-03-04: TKT-0246 root publication bootstrap (added workspace root README+LICENSE and GitHub Actions main-push Android debug build workflow)
-- IN REVIEW 2026-03-05: TKT-0247 GitHub Actions Java compatibility fix (run Android SDK setup with JDK17, then switch to JDK11 for Gradle 6.7.1/AGP 4.2.2 build)
+- IN REVIEW 2026-03-05: TKT-0247 GitHub Actions Java/build-tools compatibility fix (run Android SDK setup with JDK17, switch to JDK11 for Gradle 6.7.1/AGP 4.2.2, add build-tools 34 `dx` shim to `d8`)
 - NEXT: TKT-0226 UI/UX improvements epic tail items
 - Backlog (high): TKT-0226 tail items
 

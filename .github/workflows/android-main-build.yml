@@ -36,6 +36,18 @@ jobs:
             "build-tools;34.0.0" \
             "ndk;21.3.6528147"
 
+      - name: Patch build-tools for AGP 4.x compatibility (dx shim)
+        run: |
+          SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          BT="$SDK_ROOT/build-tools/34.0.0"
+          if [ -x "$BT/d8" ] && [ ! -e "$BT/dx" ]; then
+            ln -s "$BT/d8" "$BT/dx"
+          fi
+          if [ -f "$BT/lib/d8.jar" ] && [ ! -e "$BT/lib/dx.jar" ]; then
+            ln -s "$BT/lib/d8.jar" "$BT/lib/dx.jar"
+          fi
+          ls -l "$BT/d8" "$BT/dx" "$BT/lib/d8.jar" "$BT/lib/dx.jar"
+
       - name: Set up Java 11 for Gradle build
         uses: actions/setup-java@v4
         with:
