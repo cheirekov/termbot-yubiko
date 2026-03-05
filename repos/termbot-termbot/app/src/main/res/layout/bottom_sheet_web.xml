@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/shopBottomSheet"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/transparent"
+	android:orientation="vertical"
+	app:behavior_hideable="true"
+	app:behavior_peekHeight="80dp"
+	app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+	<View
+		android:id="@+id/webViewCorners"
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:background="@drawable/web_bottom_sheet_rounded_corners"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/webText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="8dp"
+		android:layout_marginLeft="24dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="8dp"
+		android:text="Get YubiKit for Android"
+		android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+		android:textColor="@android:color/black"
+		app:layout_constraintBottom_toTopOf="@+id/webViewScroll"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/webViewCorners"/>
+
+	<ImageView
+		android:id="@+id/webImageCard"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintBottom_toBottomOf="@+id/webViewCorners"
+		app:layout_constraintEnd_toStartOf="@+id/webMenuButton"
+		app:layout_constraintStart_toEndOf="@+id/webText"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_usb_nfc_security_key" />
+
+	<View
+		android:id="@+id/webViewShade"
+		android:layout_width="match_parent"
+		android:layout_height="2dp"
+		android:background="@drawable/web_shade"
+		app:layout_constraintBottom_toTopOf="@+id/webViewScroll"
+		app:layout_constraintEnd_toEndOf="@+id/webViewCorners"
+		app:layout_constraintStart_toStartOf="parent"/>
+
+	<View
+		android:id="@+id/webViewClick"
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:background="@android:color/transparent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/webViewScroll"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:gravity="center"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/webViewCorners">
+
+		<WebView
+			android:id="@+id/webView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+	</androidx.core.widget.NestedScrollView>
+
+	<ImageButton
+		android:id="@+id/webMenuButton"
+		android:layout_width="32dp"
+		android:layout_height="48dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginTop="16dp"
+		android:background="?android:attr/selectableItemBackground"
+		android:contentDescription="Shop Menu"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/web_ic_more_vert_black_24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ConnectBot: simple, powerful, open-source SSH client for Android
+  ~ Copyright 2026
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  -->
+<resources>
+	<!-- Terminal-friendly dark palette -->
+	<color name="ui_color_brand_primary">#1F5B56</color>
+	<color name="ui_color_brand_primary_dark">#163E3B</color>
+	<color name="ui_color_brand_accent">#4DD0E1</color>
+	<color name="ui_color_surface">#101716</color>
+	<color name="ui_color_surface_elevated">#172220</color>
+	<color name="ui_color_text_primary">#E7F2EF</color>
+	<color name="ui_color_text_secondary">#A7B8B4</color>
+	<color name="ui_color_text_on_brand">#FFFFFF</color>
+	<color name="ui_color_text_on_brand_secondary">#D6ECE8</color>
+	<color name="ui_color_icon_on_surface">#DCE8E5</color>
+	<color name="ui_color_action_primary">#2D7C70</color>
+	<color name="ui_color_action_ripple">#4DD0E1</color>
+
+	<color name="primary">@color/ui_color_brand_primary</color>
+	<color name="dark_primary">@color/ui_color_brand_primary_dark</color>
+	<color name="accent">@color/ui_color_action_primary</color>
+	<color name="dark_accent">@color/ui_color_brand_accent</color>
+</resources>

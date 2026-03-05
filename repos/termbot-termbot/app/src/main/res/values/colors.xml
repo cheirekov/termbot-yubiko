@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ConnectBot: simple, powerful, open-source SSH client for Android
+  ~ Copyright 2015 Kenny Root, Jeffrey Sharkey
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+	<!-- Core visual tokens -->
+	<color name="ui_color_brand_primary">#94C061</color>
+	<color name="ui_color_brand_primary_dark">#7BAD45</color>
+	<color name="ui_color_brand_accent">#00B0FF</color>
+	<color name="ui_color_surface">#FFFFFF</color>
+	<color name="ui_color_surface_elevated">#F2F6ED</color>
+	<color name="ui_color_text_primary">#1F2A1F</color>
+	<color name="ui_color_text_secondary">#4E5B4E</color>
+	<color name="ui_color_text_on_brand">#FFFFFF</color>
+	<color name="ui_color_text_on_brand_secondary">#E9F4E0</color>
+	<color name="ui_color_icon_on_surface">#2D382D</color>
+	<color name="ui_color_action_primary">#94C061</color>
+	<color name="ui_color_action_ripple">#00B0FF</color>
+
+	<color name="key_background_selected">#55f0f0f0</color>
+	<color name="key_background_pressed">#aaa0a0ff</color>
+	<color name="key_background_normal">#55f0f0f0</color>
+	<color name="key_background_layout">#55000000</color>
+	<color name="key_separator">#00000000</color>
+	<color name="keyboard_background">#55b0b0f0</color>
+
+	<color name="primary">@color/ui_color_brand_primary</color>
+	<color name="dark_primary">@color/ui_color_brand_primary_dark</color>
+
+	<color name="accent">@color/ui_color_brand_primary</color>
+	<color name="dark_accent">@color/ui_color_brand_accent</color>
+
+</resources>

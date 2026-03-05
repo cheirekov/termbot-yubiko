@@ -1,0 +1,20 @@
+<!-- Security key + add icon — replaces hwsecurity bundled drawable -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorControlNormal">
+  <!-- Key bow (circle) -->
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M6,6m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+  <!-- Key shaft + notch -->
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M8.5,6 L15,6 L15,8 L13,8 L13,10 L11,10 L11,8 L8.5,8 Z" />
+  <!-- Plus sign (bottom-right) -->
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M18,14 L18,17 L15,17 L15,19 L18,19 L18,22 L20,22 L20,19 L23,19 L23,17 L20,17 L20,14 Z" />
+</vector>

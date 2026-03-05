@@ -1,0 +1,43 @@
+name: Android Debug Build (main)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  assemble-debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build debug APKs (Docker-first)
+        env:
+          ANDROID_DOCKER_IMAGE: ghcr.io/cirruslabs/android-sdk:34
+        run: |
+          chmod +x ai_docs/scripts/android_docker_build.sh
+          ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug
+
+      - name: Upload debug APK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: termbot-debug-apks
+          if-no-files-found: error
+          path: |
+            repos/termbot-termbot/app/build/outputs/apk/oss/debug/app-oss-debug.apk
+            repos/termbot-termbot/app/build/outputs/apk/google/debug/app-google-debug.apk
+
+      - name: Upload build logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-logs
+          if-no-files-found: warn
+          path: |
+            references/logs/android_build_*.log

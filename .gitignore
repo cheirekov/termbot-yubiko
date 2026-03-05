@@ -1,0 +1,11 @@
+
+# --- AI local operating pack (recommended ignored) ---
+references/
+context_pack/
+SNAPSHOT.txt
+*.contextpack.zip
+*.snapshot.txt
+.gradle-cache/
+termbot-report*
+ai-project-template-v7/
+repos/hwsecurity/

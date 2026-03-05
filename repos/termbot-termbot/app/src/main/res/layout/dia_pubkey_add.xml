@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ui_color_surface_elevated"
+    android:paddingBottom="@dimen/token_space_xs">
+
+    <TextView
+        android:id="@+id/bottomsheet_generate_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:layout_marginTop="@dimen/token_space_xs"
+        android:text="@string/pubkey_add_new"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:drawableLeftCompat="@drawable/ic_add_box"
+        app:drawableStartCompat="@drawable/ic_add_box" />
+
+    <TextView
+        android:id="@+id/bottomsheet_import_existing_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:text="@string/pubkey_import_existing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_generate_key"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:drawableLeftCompat="@drawable/ic_folder_open"
+        app:drawableStartCompat="@drawable/ic_folder_open" />
+
+    <TextView
+        android:id="@+id/bottomsheet_add_openpgp_security_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:text="@string/pubkey_add_security_key"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_import_existing_key"
+        app:drawableLeftCompat="@drawable/ic_usb_nfc_security_key_plus"
+        app:drawableStartCompat="@drawable/ic_usb_nfc_security_key_plus" />
+
+    <TextView
+        android:id="@+id/bottomsheet_add_piv_security_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:text="@string/pubkey_add_piv_security_key"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_add_openpgp_security_key"
+        app:drawableLeftCompat="@drawable/ic_usb_nfc_security_key_plus"
+        app:drawableStartCompat="@drawable/ic_usb_nfc_security_key_plus" />
+
+    <TextView
+        android:id="@+id/bottomsheet_add_fido2_security_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:text="@string/pubkey_add_fido2_security_key"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_add_piv_security_key"
+        app:drawableLeftCompat="@drawable/ic_usb_nfc_security_key_plus"
+        app:drawableStartCompat="@drawable/ic_usb_nfc_security_key_plus" />
+
+    <TextView
+        android:id="@+id/bottomsheet_setup_openpgp_security_key"
+        style="@style/SecurityKeySheetActionItem"
+        android:text="@string/pubkey_setup_security_key"
+        app:drawableLeftCompat="@drawable/ic_usb_nfc_security_key"
+        app:drawableStartCompat="@drawable/ic_usb_nfc_security_key"
+        app:drawableTint="@color/ui_color_icon_on_surface"
+        app:layout_constraintEnd_toStartOf="@+id/bottomsheet_setup_openpgp_security_key_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_add_fido2_security_key" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/bottomsheet_setup_openpgp_security_key_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/securitykey_setup_spinner"
+        android:popupBackground="@color/ui_color_surface_elevated"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomsheet_setup_openpgp_security_key"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomsheet_setup_openpgp_security_key"
+        app:tint="@color/ui_color_text_primary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
