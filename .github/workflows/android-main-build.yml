@@ -60,9 +60,10 @@ jobs:
           mkdir -p references/logs
           ts="$(date -Iseconds | tr ':' '-')"
           log_file="$GITHUB_WORKSPACE/references/logs/android_build_${ts}.log"
+          aapt2_bin="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}/build-tools/34.0.0/aapt2"
           cd "$GITHUB_WORKSPACE/repos/termbot-termbot"
           chmod +x ./gradlew
-          ./gradlew --no-daemon assembleDebug 2>&1 | tee "$log_file"
+          ./gradlew --no-daemon -Pandroid.aapt2FromMavenOverride="$aapt2_bin" assembleDebug 2>&1 | tee "$log_file"
 
       - name: Upload debug APK artifacts
         uses: actions/upload-artifact@v4

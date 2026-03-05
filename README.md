@@ -8,6 +8,11 @@ This repository is the delivery workspace for **TermBot** and its AI-assisted en
 - `ai_docs/`: ticket board, state tracking, runbooks, and scripts used to execute work in small verified slices.
 - `references/`: build/test/export logs and supporting artifacts.
 
+## Upstream Origin
+
+- Original public TermBot archive (hwsecurity-based): `https://github.com/hwsecurity-sdk/termbot`
+- This workspace continues from that base and modernizes the app for current Android tooling while migrating runtime key flows to YubiKit.
+
 ## What Has Been Upgraded So Far
 
 - YubiKit-first key flows (OpenPGP, PIV, FIDO2).
@@ -18,6 +23,17 @@ This repository is the delivery workspace for **TermBot** and its AI-assisted en
 - Encrypted backup export/import.
 - Host grouping/folders.
 - Desktop mode and UI/UX hardening (including Day/Night theme fixes).
+
+## Android App Stack (SDKs and Libraries)
+
+- App type: Android SSH client (TermBot, ConnectBot-based) with YubiKey hardware-key auth.
+- Android levels: `minSdkVersion 19`, `compileSdkVersion 34`, `targetSdkVersion 34`.
+- Build toolchain: Android Gradle Plugin `4.2.2`, Gradle Wrapper `6.7.1`, Java 11 for Gradle builds.
+- Security-key SDK: YubiKit `2.4.0` modules: `android`, `core`, `openpgp`, `piv`, `fido`.
+- SSH/auth libs: `com.github.connectbot:sshlib:2.2.15`, `org.connectbot:jbcrypt:1.0.2`.
+- Crypto/provider flavors: `org.conscrypt:conscrypt-android:2.5.1` (oss flavor), `com.google.android.gms:play-services-basement:17.5.0` (google flavor).
+- UI libs: AndroidX `appcompat 1.6.1`, `material 1.6.1`, `constraintlayout 2.1.4`, plus AndroidX support libraries used by ConnectBot screens.
+- Full dependency declarations are in `repos/termbot-termbot/app/build.gradle` (`dependencies` block).
 
 ## AI Process (`ai_docs`)
 
