@@ -1,4 +1,8 @@
-# Ticket: TKT-0243 — Desktop Mode Manage Keys action accessibility
+# TKT-0243 — Desktop Mode Manage Keys action accessibility
+
+## Status: DONE
+## Priority: HIGH
+## Epic: TKT-0226
 
 ## Context capsule (must be complete)
 ### Goal
@@ -31,7 +35,7 @@
 - On narrow/mobile windows, existing bottom-sheet flow remains available.
 - PIN dialogs support desktop keyboard submit/cancel behavior.
 - PIV/FIDO2 auth keeps explicit wait/touch prompt after PIN submission.
-- [ ] Tests (manual):
+- [x] Tests (manual):
 - In Android Desktop Mode, Manage Keys -> Add Key shows all actions and each action launches corresponding flow.
 - [x] Docs:
 - Ticket + board + state + build status updated.
@@ -45,3 +49,9 @@
 ## Notes
 - User report date: 2026-03-04
 - Symptom captured by user: Manage Keys in desktop mode did not expose full key-add options.
+- User confirmation date: 2026-03-05 (desktop mode smoke passed; behavior works as expected).
+
+## Delivered Artifacts
+- `app/src/main/java/org/connectbot/PubkeyListActivity.java`
+- `app/src/main/java/org/connectbot/transport/AuthAgentService.java`
+- `app/src/main/java/org/connectbot/SecurityKeyActivity.java`

@@ -19,6 +19,11 @@ Every change must leave the workspace in a **consistent documented state**.
 ## Execute ritual (per ticket)
 Work only from a ticket file in `ai_docs/tickets/` and keep PR-sized diffs.
 
+## Board movement policy (WIP control)
+- `Review` column WIP limit is 2 tickets.
+- Tie-break rule: close the oldest `Review` ticket first.
+- Transition rule (from 2026-03-05): if `Review` already has more than 2 tickets, do not move new tickets into `Review` until the queue is reduced to 2.
+
 ## Closeout ritual (MANDATORY per ticket)
 After finishing a ticket (or a small ticket slice), the agent must:
 1) Update at least one:

@@ -1,4 +1,8 @@
-# Ticket: TKT-0246 - Root README/LICENSE and GitHub Actions bootstrap
+# TKT-0246 - Root README/LICENSE and GitHub Actions bootstrap
+
+## Status: DONE
+## Priority: HIGH
+## Epic: TKT-0245
 
 ## Context capsule (must be complete)
 ### Goal
@@ -28,10 +32,18 @@
 - Root `README.md` exists and documents app purpose + `ai_docs` process.
 - Root `LICENSE.md` exists with explicit component licensing references.
 - GitHub workflow builds `assembleDebug` on push to `main` and uploads APK artifacts.
-- [ ] Tests (manual):
+- [x] Tests (manual):
 - User validates README wording and repo-publication intent.
 - [x] Docs:
 - Ticket + board + state updated.
 
 ### Verification
 - Not executed locally (workflow definition only).
+- User confirmation (2026-03-05):
+  - Public repo is live with current root README/LICENSE.
+  - GitHub Actions is green on current code.
+
+## Delivered Artifacts
+- `README.md`
+- `LICENSE.md`
+- `.github/workflows/android-main-build.yml`

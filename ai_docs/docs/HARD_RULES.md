@@ -72,3 +72,9 @@ After each ticket/slice:
 - Update STATE.md only if truth changed
 - Run: `ai_docs/scripts/closeout_check.sh <TICKET_ID>`
 If the gate fails, fix missing docs and re-run.
+
+
+## R12 — Review queue control
+- Keep `Review` WIP at 2 tickets maximum.
+- Close oldest `Review` item first (FIFO by board age).
+- If historical backlog already exceeds 2, freeze new `Review` entries until it is drained to 2.

@@ -1,4 +1,8 @@
-# Ticket: TKT-0247 - GitHub Actions Java 11 compatibility fix
+# TKT-0247 - GitHub Actions Java 11 compatibility fix
+
+## Status: DONE
+## Priority: HIGH
+## Epic: TKT-0246
 
 ## Context capsule (must be complete)
 ### Goal
@@ -24,7 +28,7 @@
 - Workflow sets up Temurin Java 11 and Android SDK packages required for compileSdk/targetSdk 34.
 - Workflow runs `assembleDebug` successfully in a Java 11 environment.
 - APK artifacts and logs are still uploaded.
-- [ ] Tests (manual):
+- [x] Tests (manual):
 - User reruns GitHub Actions and confirms green build.
 - [x] Docs:
 - Ticket + board + state + plan updated.
@@ -35,3 +39,7 @@
 - Follow-up CI fix (2026-03-05): `android-actions/setup-android@v3` pulled cmdline-tools 16.0 (requires JDK17). Workflow now uses JDK17 for SDK setup and switches back to JDK11 for Gradle build.
 - Follow-up CI fix (2026-03-05): AGP 4.2.2 expects `dx`; GitHub-installed build-tools 34.0.0 only has `d8`. Added `dx`/`dx.jar` symlink shim to `d8`/`d8.jar` in workflow.
 - Follow-up CI fix (2026-03-05): build failed on missing AAPT2 due hardcoded `/opt/android-sdk-linux/...` override in `gradle.properties`; workflow now passes `-Pandroid.aapt2FromMavenOverride=$ANDROID_SDK_ROOT/build-tools/34.0.0/aapt2` at runtime.
+- User confirmation (2026-03-05): GitHub Actions is green on current code.
+
+## Delivered Artifacts
+- `.github/workflows/android-main-build.yml`

@@ -1,4 +1,8 @@
-# Ticket: TKT-0245 — First public GitHub commit preparation
+# TKT-0245 — First public GitHub commit preparation
+
+## Status: DONE
+## Priority: HIGH
+## Epic: TKT-0246
 
 ## Context capsule (must be complete)
 ### Goal
@@ -28,7 +32,7 @@
 - [x] Behavior (implementation):
 - Public-facing README reflects current YubiKit-based architecture and key upgrades delivered so far.
 - Workspace `.gitignore` typo fixed and local/deleted hwsecurity path handling clarified.
-- [ ] Tests (manual):
+- [x] Tests (manual):
 - User validates README wording for public publication.
 - [x] Docs:
 - Ticket + board + state updated.
@@ -40,7 +44,14 @@
 - [x] README no longer references hwsecurity SDK as runtime dependency.
 - [x] README includes current feature set and Docker-first debug build command.
 - [x] `.gitignore` reviewed and corrected (`ai-project-template-v7` typo).
-- [ ] Final pre-push sweep:
+- [x] Final pre-push sweep:
 - choose which tickets/changes are included in first public commit
 - verify licenses/attributions for bundled assets
 - perform final smoke pass on NFC + USB auth flows
+
+## Notes
+- User confirmation date: 2026-03-05 (public repository published with current README/LICENSE state).
+
+## Delivered Artifacts
+- `repos/termbot-termbot/README.md`
+- `.gitignore`

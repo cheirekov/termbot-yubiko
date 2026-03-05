@@ -75,6 +75,45 @@ ai_docs/scripts/state_compact.sh
 - Ensure board reflects reality (`ai_docs/boards/DELIVERY_BOARD.md`)
 - Compact state if it grew
 
+### Session handoff capsule (2-minute, when pausing work)
+Copy this template into your final session note:
+```md
+Handoff date: YYYY-MM-DD
+Last known good build:
+- Command: <command>
+- Result: <pass/fail + duration>
+- Log: <path or n/a>
+Active risks:
+- <risk 1>
+- <risk 2>
+Open Review items:
+- <TKT-id + short status>
+Next actions (1-3):
+1) <next action>
+2) <next action>
+3) <optional next action>
+```
+
+Example (2026-03-05):
+```md
+Handoff date: 2026-03-05
+Last known good build:
+- Command: ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug
+- Result: PASS (BUILD SUCCESSFUL in 32s)
+- Log: references/logs/android_build_2026-03-04T17-30-28+02-00.log
+Active risks:
+- Review queue is above WIP target (5 open review tickets; freeze on new Review entries is active).
+- UI consistency gaps still exist between auth and import key flows.
+Open Review items:
+- TKT-0243 desktop mode smoke pending
+- TKT-0244 FIDO2 USB parity smoke pending
+- TKT-0245/0246/0247 publication + CI validation pending
+Next actions (1-3):
+1) Rerun GitHub Actions after TKT-0247 and confirm green assembleDebug.
+2) Drain review queue oldest-first: TKT-0243 -> TKT-0244 -> TKT-0245 -> TKT-0246.
+3) Execute TKT-0251 regression sentinel matrix.
+```
+
 ---
 
 ## 3) Workflow: Existing Project (Continuation Engineering)

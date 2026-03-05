@@ -1,4 +1,8 @@
-# Ticket: TKT-0244 — FIDO2 USB transport parity (import + auth)
+# TKT-0244 — FIDO2 USB transport parity (import + auth)
+
+## Status: DONE
+## Priority: HIGH
+## Epic: TKT-0220
 
 ## Context capsule (must be complete)
 ### Goal
@@ -27,7 +31,7 @@
 - FIDO2 auth on USB no longer depends only on smartcard transport.
 - FIDO2 import on USB no longer depends only on smartcard transport.
 - NFC still works via fallback path.
-- [ ] Tests (manual):
+- [x] Tests (manual):
 - Import FIDO2 key via USB succeeds.
 - SSH auth with imported FIDO2 key via USB succeeds (with touch/PIN as required by key policy).
 - [x] Docs:
@@ -42,3 +46,8 @@
 ## Notes
 - User report date: 2026-03-04
 - Evidence: `termbot-report-20260304-172400.txt` shows `SK_ACTIVITY_FIDO2_DISCOVERED: source=usb` followed by `SK_SIGN_RETRY: IOException(FIDO2 application is not available on this YubiKey)` while NFC path succeeds.
+- User confirmation date: 2026-03-05 (USB import/auth smoke passed and working).
+
+## Delivered Artifacts
+- `app/src/main/java/org/connectbot/securitykey/Fido2SecurityKeyAuthenticatorBridge.java`
+- `app/src/main/java/org/connectbot/PubkeyListActivity.java`

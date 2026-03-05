@@ -1,5 +1,10 @@
 # Delivery Board (Kanban)
 
+## Policy
+- Review WIP limit: max 2 tickets.
+- Tie-break: oldest review ticket must close first.
+- Transition rule (2026-03-05): if Review already has >2 tickets, do not move any new ticket to Review until it is reduced to 2.
+
 ## Backlog
 - [ ] TKT-0226: UI/UX improvements epic (post-modernization focus)
 - [ ] TKT-000: Create repo inventory (example)
@@ -11,14 +16,18 @@
 - [ ] (none)
 
 ## Review
-- [ ] TKT-0243: Desktop Mode Manage Keys action accessibility (implemented; awaiting Desktop Mode smoke)
-- [ ] TKT-0244: FIDO2 USB transport parity (implemented; awaiting USB import/auth smoke)
-- [ ] TKT-0245: First public GitHub commit preparation (README/.gitignore updated; awaiting wording validation)
-- [ ] TKT-0246: Root README/LICENSE and GitHub Actions bootstrap (implemented; awaiting publication validation)
-- [ ] TKT-0247: GitHub Actions Java11 compatibility fix (implemented; awaiting CI rerun)
+- [ ] (none)
 
 ## Done
 - [x] PACK-INIT: Installed AI operating pack
+- [x] TKT-0246: Root README/LICENSE and GitHub Actions bootstrap — DONE 2026-03-05; user confirmed public repo publication state and green GitHub Actions on current code
+- [x] TKT-0247: GitHub Actions Java11 compatibility fix — DONE 2026-03-05; user confirmed GitHub Actions green on current code after JDK17 SDK setup + JDK11 Gradle + dx/aapt2 workflow hardening
+- [x] TKT-0245: First public GitHub commit preparation — DONE 2026-03-05; user confirmed public repo state with current README/LICENSE and publication wording
+- [x] TKT-0244: FIDO2 USB transport parity — DONE 2026-03-05; user confirmed USB import/auth smoke passing
+- [x] TKT-0243: Desktop Mode Manage Keys action accessibility — DONE 2026-03-05; user confirmed desktop mode smoke passing
+- [x] TKT-0251: Security-key regression sentinel smoke matrix — DONE 2026-03-05; added provider/transport smoke matrix (SK-01..SK-08), failure debug-report capture rule, and baseline dry run record linked to latest debug build
+- [x] TKT-0250: Session handoff capsule template and adoption — DONE 2026-03-05; added 2-minute handoff template + filled example in handbook (build, risks, review queue, next actions)
+- [x] TKT-0249: Review WIP limit and board policy hardening — DONE 2026-03-05; added explicit Review WIP policy (max 2), oldest-first tie-break, and transition guard for already-over-limit queues
 - [x] TKT-0248: AI process retro + context-window reliability review — DONE 2026-03-05; added process-only retro with prioritized guardrails (review WIP limit, context checkpoints, handoff capsule, regression sentinel matrix)
 - [x] TKT-0201: Security key timeout guard in auth handoff/sign flow
 - [x] TKT-0202: Lifecycle-safe service/authenticator delivery

@@ -1,6 +1,6 @@
 # STATE (Authoritative "Now") — KEEP SMALL
 
-Last updated: 2026-03-05 (TKT-0248 AI process retro completed; TKT-0247 CI fix in review)
+Last updated: 2026-03-05 (TKT-0246 closed from user publication + CI confirmations)
 Mode: multi-repo
 Workspace root: /home/yc/work/ai-projects-templates/workspace
 Owners: yc
@@ -18,9 +18,9 @@ Owners: yc
 ## Current objectives (LIMIT=10)
 - Keep key auth stable while improving UX in small slices
 - Execute board priorities in order:
-  1) TKT-0244 FIDO2 USB transport parity (smoke + closeout)
-  2) TKT-0243 Desktop Mode Manage Keys action accessibility (smoke + closeout)
-  3) TKT-0226 UI/UX improvements epic tail items
+  1) TKT-0226 UI/UX improvements epic tail items
+  2) Keep release smoke matrix cadence for each RC
+  3) Keep CI green on public repo
 - Keep Docker-first build/test flow green after each slice
 - Maintain strict docs closeout discipline (board/build/questions/state + closeout_check)
 
@@ -39,6 +39,14 @@ Owners: yc
 - UX work is phased (audit -> focused tickets), not big-bang redesign
 
 ## Active work (LIMIT=25)
+- DONE 2026-03-05: TKT-0246 root publication bootstrap (user confirmed public repo state with root README/LICENSE and green GitHub Actions)
+- DONE 2026-03-05: TKT-0247 GitHub Actions Java/build-tools compatibility fix (user confirmed CI green on current code)
+- DONE 2026-03-05: TKT-0245 first public GitHub commit preparation (user confirmed public repo state with current README/LICENSE)
+- DONE 2026-03-05: TKT-0244 FIDO2 USB transport parity (user confirmed USB import/auth smoke passing)
+- DONE 2026-03-05: TKT-0243 Desktop Mode Manage Keys accessibility (user confirmed Desktop Mode smoke passing)
+- DONE 2026-03-05: TKT-0251 security-key regression sentinel matrix (added SK-01..SK-08 manual smoke matrix, failure debug-report capture rule, and baseline dry run record)
+- DONE 2026-03-05: TKT-0250 session handoff capsule template/adoption (added 2-minute handoff template + filled example in HANDBOOK)
+- DONE 2026-03-05: TKT-0249 review-WIP policy hardening (max Review WIP=2, oldest-first tie-break, transition freeze while Review >2)
 - DONE 2026-03-05: TKT-0248 AI process retro + context-window reliability review (added process retro doc with prioritized guardrails and follow-up ticket proposals)
 - DONE 2026-03-03: TKT-0231 OpenPGP auth APDU 0x6982 fix
 - DONE 2026-03-03: TKT-0236 security-key waiting prompt redesign (persistent touch/USB UI)
@@ -52,11 +60,6 @@ Owners: yc
 - DONE 2026-03-04: TKT-0225 host grouping/folders with backup compatibility (device-confirmed grouping visibility + expandable headers + All/Ungrouped sections)
 - DONE 2026-03-04: TKT-0241 P0 jump-host auth state leak fix (device-confirmed jump-host target publickey flow)
 - DONE 2026-03-04: TKT-0242 P0 USB YubiKey discovery lifecycle/permission resilience (user confirmed USB flow working on device)
-- IN REVIEW 2026-03-04: TKT-0243 Desktop Mode Manage Keys action accessibility (desktop-safe add-key dialog with full action parity, mobile bottom-sheet retained, keyboard Enter/Escape PIN dialog handling, and post-PIN wait/touch prompt for PIV/FIDO2)
-- IN REVIEW 2026-03-04: TKT-0244 FIDO2 USB transport parity (FIDO auth/import now prefer `FidoConnection` with smartcard fallback to keep NFC working)
-- IN REVIEW 2026-03-04: TKT-0245 first public GitHub commit prep (repo README refreshed to YubiKit-era state, workspace `.gitignore` typo fixed)
-- IN REVIEW 2026-03-04: TKT-0246 root publication bootstrap (added workspace root README+LICENSE and GitHub Actions main-push Android debug build workflow)
-- IN REVIEW 2026-03-05: TKT-0247 GitHub Actions Java/build-tools compatibility fix (JDK17 for SDK setup, JDK11 for Gradle 6.7.1/AGP 4.2.2, build-tools 34 `dx` shim, runtime AAPT2 override path for GitHub runner)
 - NEXT: TKT-0226 UI/UX improvements epic tail items
 - Backlog (high): TKT-0226 tail items
 
@@ -64,7 +67,7 @@ Owners: yc
 - Latest build: 2026-03-04 `assembleDebug` successful in 32s
 - Command: `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug`
 - Log: `references/logs/android_build_2026-03-04T17-30-28+02-00.log`
-- Latest closeout gates passed: `TKT-0232`, `TKT-0233`, `TKT-0237`, `TKT-0239`, `TKT-0238`, `TKT-0234`, `TKT-0240`, `TKT-0225`, `TKT-0241`, `TKT-0242`
+- Latest closeout gates passed: `TKT-0243`, `TKT-0244`, `TKT-0245`, `TKT-0247` (2026-03-05), plus earlier `TKT-0232`, `TKT-0233`, `TKT-0237`, `TKT-0239`, `TKT-0238`, `TKT-0234`, `TKT-0240`, `TKT-0225`, `TKT-0241`, `TKT-0242`
 
 ## Known risks (LIMIT=15)
 - UI consistency gaps remain between auth and import key flows
@@ -72,8 +75,8 @@ Owners: yc
 - Menu density in Host List increases discoverability/error risk
 
 ## Next actions (LIMIT=6)
-1) Rerun GitHub Actions after TKT-0247 and confirm green `assembleDebug`
-2) Close review queue items in order: TKT-0243 -> TKT-0244 -> TKT-0245 -> TKT-0246
-3) Start process hardening follow-up: TKT-0249 (Review WIP limit policy)
-4) Start handoff quality follow-up: TKT-0250 (session handoff capsule template)
-5) Start QA follow-up: TKT-0251 (security-key regression sentinel matrix)
+1) Continue TKT-0226 UI/UX epic tail items
+2) Keep Review WIP policy active (review queue currently empty)
+3) Use HANDBOOK handoff capsule at each pause/end-of-session
+4) Run sentinel matrix (`SK-01..SK-08`) for each release candidate before sign-off
+5) Keep GitHub Actions green after each public push
