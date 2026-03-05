@@ -1,6 +1,6 @@
 # STATE (Authoritative "Now") — KEEP SMALL
 
-Last updated: 2026-03-04 (TKT-0246 root README/LICENSE + GitHub Actions bootstrap in review)
+Last updated: 2026-03-05 (TKT-0247 GitHub Actions Java11 compatibility fix in review)
 Mode: multi-repo
 Workspace root: /home/yc/work/ai-projects-templates/workspace
 Owners: yc
@@ -55,6 +55,7 @@ Owners: yc
 - IN REVIEW 2026-03-04: TKT-0244 FIDO2 USB transport parity (FIDO auth/import now prefer `FidoConnection` with smartcard fallback to keep NFC working)
 - IN REVIEW 2026-03-04: TKT-0245 first public GitHub commit prep (repo README refreshed to YubiKit-era state, workspace `.gitignore` typo fixed)
 - IN REVIEW 2026-03-04: TKT-0246 root publication bootstrap (added workspace root README+LICENSE and GitHub Actions main-push Android debug build workflow)
+- IN REVIEW 2026-03-05: TKT-0247 GitHub Actions Java11 compatibility fix (replace Docker image build step with Java11 + Android SDK setup on runner to avoid Gradle 6.7.1/JDK21 failure)
 - NEXT: TKT-0226 UI/UX improvements epic tail items
 - Backlog (high): TKT-0226 tail items
 
@@ -73,3 +74,4 @@ Owners: yc
 1) Run user smoke for TKT-0244: FIDO2 USB import + SSH auth/sign (touch/PIN flows)
 2) Run user smoke for TKT-0243 in Android Desktop Mode (Manage Keys -> Add Key full actions)
 3) Confirm root publication set (TKT-0245/TKT-0246): README wording + commit-history strategy + GitHub Actions enablement
+4) Rerun GitHub Actions after TKT-0247 and confirm green `assembleDebug`

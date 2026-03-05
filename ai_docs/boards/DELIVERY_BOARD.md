@@ -15,6 +15,7 @@
 - [ ] TKT-0244: FIDO2 USB transport parity (implemented; awaiting USB import/auth smoke)
 - [ ] TKT-0245: First public GitHub commit preparation (README/.gitignore updated; awaiting wording validation)
 - [ ] TKT-0246: Root README/LICENSE and GitHub Actions bootstrap (implemented; awaiting publication validation)
+- [ ] TKT-0247: GitHub Actions Java11 compatibility fix (implemented; awaiting CI rerun)
 
 ## Done
 - [x] PACK-INIT: Installed AI operating pack

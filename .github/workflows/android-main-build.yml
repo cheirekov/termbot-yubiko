@@ -18,12 +18,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build debug APKs (Docker-first)
-        env:
-          ANDROID_DOCKER_IMAGE: ghcr.io/cirruslabs/android-sdk:34
+      - name: Set up Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install required Android SDK components
         run: |
-          chmod +x ai_docs/scripts/android_docker_build.sh
-          ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug
+          yes | sdkmanager --licenses >/dev/null
+          sdkmanager \
+            "platform-tools" \
+            "platforms;android-34" \
+            "build-tools;34.0.0" \
+            "ndk;21.3.6528147"
+
+      - name: Build debug APKs
+        run: |
+          mkdir -p references/logs
+          ts="$(date -Iseconds | tr ':' '-')"
+          log_file="$GITHUB_WORKSPACE/references/logs/android_build_${ts}.log"
+          cd "$GITHUB_WORKSPACE/repos/termbot-termbot"
+          chmod +x ./gradlew
+          ./gradlew --no-daemon assembleDebug 2>&1 | tee "$log_file"
 
       - name: Upload debug APK artifacts
         uses: actions/upload-artifact@v4

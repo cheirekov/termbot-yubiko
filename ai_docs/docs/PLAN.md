@@ -29,4 +29,5 @@
 - In review (2026-03-04): TKT-0244 FIDO2 USB transport parity (import + auth).
 - In review (2026-03-04): TKT-0245 first public GitHub commit preparation (README/.gitignore refresh).
 - In review (2026-03-04): TKT-0246 root README/LICENSE and GitHub Actions bootstrap.
+- In review (2026-03-05): TKT-0247 GitHub Actions Java11 compatibility fix.
 - P2: TKT-0226 UI/UX improvements epic tail items.
