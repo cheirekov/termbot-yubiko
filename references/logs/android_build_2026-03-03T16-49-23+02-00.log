@@ -1,0 +1,158 @@
+
+
+[1A[1m> Connecting to Daemon[m[22D[1B[2AStarting a Gradle Daemon, 2 incompatible and 3 stopped Daemons could not be reused, use --status for details
+[1B[0K
+[2A[0K[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [13ms][m[38D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [113ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [213ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [313ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [413ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [513ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [613ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [713ms][m[0K[38D[1B[1m> Loading projects[m[0K[18D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [813ms][m[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [913ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app[m[0K[6D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[47D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[2A[0K
+[1m> Configure project :app[m[0K
+WARNING:: The option setting 'android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2' is experimental.
+No git repository reachable from /work/app
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2AWARNING:: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+WARNING:: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2AWARNING:: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+WARNING:: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2AWarning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [5s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [5s][m[37D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 4% EXECUTING [5s][m[0K[33D[1B[1m> :app:generateGoogleDebugBuildConfig[m[37D[1B[2A[1m<[0;1m-------------> 5% EXECUTING [5s][m[33D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B
+
+
+[5A[1m<[0;1m-------------> 7% EXECUTING [5s][m[33D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;1m-------------> 7% EXECUTING [6s][m[33D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [6s][m[34D[1B> IDLE[0K[6D[2B> IDLE[0K[6D[1B[1m> :app:mergeGoogleDebugResources[m[0K[32D[1B[5A[1m<[0;32;1m==[0;39;1m-----------> 17% EXECUTING [6s][m[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[2B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[4A[1m> :app:processGoogleDebugResources > Resolve dependencies of :app:googleDebugCo[m[79D[2B> IDLE[0K[6D[2B[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [6s][m[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[2B[1m> :app:compileGoogleDebugJavaWithJavac > Resolve files of :app:googleDebugCompi[m[79D[2B[2A[1m> :app:compileGoogleDebugJavaWithJavac[m[0K[38D[2B[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [7s][m[34D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [8s][m[34D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/SecurityKeyActivity.java:254: warning: [UnusedMethod] Private method 'handleDiscoveryError' is never used.[0K
+    private void handleDiscoveryError(Exception e) {[0K
+                 ^[0K
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/SecurityKeyActivity.java:142: warning: [UnusedVariable] The local variable 'pubkeyNickname' is never read.
+        String pubkeyNickname = getIntent().getStringExtra(EXTRA_PUBKEY_NICKNAME);
+               ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'getIntent().getStringExtra(EXTRA_PUBKEY_NICKNAME);'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [8s][m[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:compileGoogleDebugJavaWithJavac[m[38D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/securitykey/YubiKitOpenPgpAuthenticatorBridge.java:113: warning: [UnusedVariable] The parameter 'session' is never read.[0K
+    private boolean isRsaAuthKey(OpenPgpSession session) {[0K
+                                                ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean 'boolean isRsa = isRsaAuthKey();'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [8s][m[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:compileGoogleDebugJavaWithJavac[m[38D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A3 warnings[0K
+[4B[0K
+[5A[1m<[0;32;1m==[0;39;1m-----------> 19% EXECUTING [8s][m[0K[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:compileGoogleDebugJavaWithJavac > Packing build cache entry[m[0K[66D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[0K
+[1m> Task :app:externalNativeBuildGoogleDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m===[0;39;1m----------> 23% EXECUTING [8s][m[34D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m====[0;39;1m---------> 30% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 33% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 39% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 40% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 41% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 41% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 42% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 54% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m========[0;39;1m-----> 63% EXECUTING [12s][m[35D[5B[5A[0K
+[1m> Task :app:compileOssDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/SecurityKeyActivity.java:254: warning: [UnusedMethod] Private method 'handleDiscoveryError' is never used.[0K
+    private void handleDiscoveryError(Exception e) {[0K
+                 ^[0K
+    (see https://errorprone.info/bugpattern/UnusedMethod)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/SecurityKeyActivity.java:142: warning: [UnusedVariable] The local variable 'pubkeyNickname' is never read.
+        String pubkeyNickname = getIntent().getStringExtra(EXTRA_PUBKEY_NICKNAME);
+               ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line or 'getIntent().getStringExtra(EXTRA_PUBKEY_NICKNAME);'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m========[0;39;1m-----> 64% EXECUTING [12s][m[35D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/securitykey/YubiKitOpenPgpAuthenticatorBridge.java:113: warning: [UnusedVariable] The parameter 'session' is never read.[0K
+    private boolean isRsaAuthKey(OpenPgpSession session) {[0K
+                                                ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean 'boolean isRsa = isRsaAuthKey();'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m========[0;39;1m-----> 64% EXECUTING [12s][m[35D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m========[0;39;1m-----> 64% EXECUTING [13s][m[35D[5B[5A3 warnings[0K
+[4B[0K
+[5A[1m<[0;32;1m========[0;39;1m-----> 64% EXECUTING [13s][m[0K[35D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m========[0;39;1m-----> 65% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m========[0;39;1m-----> 66% EXECUTING [13s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildOssDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 78% EXECUTING [13s][m[35D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 79% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 79% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 89% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 89% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [16s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [17s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [18s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [19s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 92% EXECUTING [19s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 92% EXECUTING [20s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 95% EXECUTING [20s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 96% EXECUTING [20s][m[35D[5B[5A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.[0K
+Use '--warning-mode all' to show the individual deprecation warnings.[0K
+See https://docs.gradle.org/6.7.1/userguide/command_line_interface.html#sec:command_line_warnings[0K
+[0K
+[32;1mBUILD SUCCESSFUL[0;39m in 22s
+62 actionable tasks: 17 executed, 45 up-to-date
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugResources > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h

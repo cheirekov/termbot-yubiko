@@ -17,3 +17,7 @@
 ## 2026-03-05 — Security-key sentinel smoke matrix adopted
 - Treat `SK-01..SK-08` matrix as mandatory release smoke gate for OpenPGP/PIV/FIDO2 and ProxyJump key-auth paths.
 - Require immediate in-app debug report export on first smoke failure.
+
+## 2026-03-06 — SSM epic phased rollout path proposed
+- Start SSM work with feasibility spike (`TKT-0261`) and explicit sub-ticket decomposition (`TKT-0262..TKT-0265`).
+- Prefer thin in-app SSM client approach over immediate full AWS SDK bundling, pending open scope decisions.

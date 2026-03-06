@@ -52,6 +52,8 @@ public class TransportFactory {
 			return new Telnet();
 		} else if (Local.getProtocolName().equals(protocol)) {
 			return new Local();
+		} else if (SSM.getProtocolName().equals(protocol)) {
+			return new SSM();
 		} else {
 			return null;
 		}
@@ -68,6 +70,8 @@ public class TransportFactory {
 		else if (Local.getProtocolName().equals(scheme)) {
 			Log.d("TransportFactory", "Got to the local parsing area");
 			return Local.getUri(input);
+		} else if (SSM.getProtocolName().equals(scheme)) {
+			return SSM.getUri(input);
 		} else
 			return null;
 	}
@@ -100,6 +104,8 @@ public class TransportFactory {
 			return Telnet.getFormatHint(context);
 		} else if (Local.getProtocolName().equals(protocol)) {
 			return Local.getFormatHint(context);
+		} else if (SSM.getProtocolName().equals(protocol)) {
+			return SSM.getFormatHint(context);
 		} else {
 			return AbsTransport.getFormatHint(context);
 		}

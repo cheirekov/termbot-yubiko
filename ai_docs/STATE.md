@@ -1,6 +1,6 @@
 # STATE (Authoritative "Now") — KEEP SMALL
 
-Last updated: 2026-03-05 (TKT-0246 closed from user publication + CI confirmations)
+Last updated: 2026-03-06 (SSM epic kickoff + TKT-0261 in progress)
 Mode: multi-repo
 Workspace root: /home/yc/work/ai-projects-templates/workspace
 Owners: yc
@@ -9,7 +9,7 @@ Owners: yc
 
 ## Project identity (LIMIT=8)
 - Product/system: TermBot Android SSH client with YubiKey auth (OpenPGP, PIV, FIDO2)
-- Current phase: post-stabilization UX hardening + modernization follow-through
+- Current phase: post-stabilization UX hardening + SSM epic kickoff
 - Primary users: Android SSH users authenticating with YubiKey
 - Success definition (2-6 weeks): stable key auth/import UX + incremental visual modernization + backup reliability
 - Runtime: Android app on device (Honor Magic V3 / MagicOS class devices validated by user)
@@ -17,10 +17,12 @@ Owners: yc
 
 ## Current objectives (LIMIT=10)
 - Keep key auth stable while improving UX in small slices
+- Start AWS SSM epic with phased delivery (TKT-0261..0265), beginning with feasibility spike
 - Execute board priorities in order:
-  1) TKT-0226 UI/UX improvements epic tail items
-  2) Keep release smoke matrix cadence for each RC
-  3) Keep CI green on public repo
+  1) TKT-0261 SSM feasibility spike (current user-priority)
+  2) TKT-0226 UI/UX improvements epic tail items
+  3) Keep release smoke matrix cadence for each RC
+  4) Keep CI green on public repo
 - Keep Docker-first build/test flow green after each slice
 - Maintain strict docs closeout discipline (board/build/questions/state + closeout_check)
 
@@ -60,23 +62,27 @@ Owners: yc
 - DONE 2026-03-04: TKT-0225 host grouping/folders with backup compatibility (device-confirmed grouping visibility + expandable headers + All/Ungrouped sections)
 - DONE 2026-03-04: TKT-0241 P0 jump-host auth state leak fix (device-confirmed jump-host target publickey flow)
 - DONE 2026-03-04: TKT-0242 P0 USB YubiKey discovery lifecycle/permission resilience (user confirmed USB flow working on device)
+- IN PROGRESS 2026-03-06: TKT-0261 SSM transport feasibility spike (created TKT-0262..0265, drafted feasibility doc + ADR, captured open scope questions, and added compile-safe `SSM` transport skeleton + factory handling)
+- NEW EPIC 2026-03-06: TKT-0260 AWS SSM Session Manager support
 - NEXT: TKT-0226 UI/UX improvements epic tail items
-- Backlog (high): TKT-0226 tail items
+- Backlog (high): TKT-0226 tail items + TKT-0262..0265 SSM implementation sequence
 
 ## Latest verification (LIMIT=10)
-- Latest build: 2026-03-04 `assembleDebug` successful in 32s
-- Command: `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug`
-- Log: `references/logs/android_build_2026-03-04T17-30-28+02-00.log`
+- Latest build: 2026-03-06 `assembleDebug` BUILD SUCCESSFUL in 26s (isolated Gradle cache, --no-daemon)
+- Command: `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=…/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T16-03-17+02-00.log`
+- APKs: `app-oss-debug.apk` (12.4 MB), `app-google-debug.apk` (8.8 MB)
 - Latest closeout gates passed: `TKT-0243`, `TKT-0244`, `TKT-0245`, `TKT-0247` (2026-03-05), plus earlier `TKT-0232`, `TKT-0233`, `TKT-0237`, `TKT-0239`, `TKT-0238`, `TKT-0234`, `TKT-0240`, `TKT-0225`, `TKT-0241`, `TKT-0242`
 
 ## Known risks (LIMIT=15)
 - UI consistency gaps remain between auth and import key flows
 - Legacy layout/style system slows modernization velocity
 - Menu density in Host List increases discoverability/error risk
+- SSM protocol/auth details are external-interface unknowns pending user scope decisions (captured in QUESTIONS.md)
 
 ## Next actions (LIMIT=6)
-1) Continue TKT-0226 UI/UX epic tail items
-2) Keep Review WIP policy active (review queue currently empty)
-3) Use HANDBOOK handoff capsule at each pause/end-of-session
-4) Run sentinel matrix (`SK-01..SK-08`) for each release candidate before sign-off
-5) Keep GitHub Actions green after each public push
+1) Resolve open SSM scope questions (credential mode + initial session type + MFA boundary)
+2) Execute TKT-0262 minimal SSM transport backbone after question resolution
+3) Continue TKT-0226 UI/UX epic tail items in parallel only when SSM slice is blocked
+4) Keep Review WIP policy active (review queue currently empty)
+5) Run sentinel matrix (`SK-01..SK-08`) for each release candidate before sign-off

@@ -7,13 +7,25 @@
 
 ## Backlog
 - [ ] TKT-0226: UI/UX improvements epic (post-modernization focus)
-- [ ] TKT-000: Create repo inventory (example)
+- [ ] TKT-0252: Security-key lifecycle state machine hardening
+- [ ] TKT-0253: Jump-host auth regression guardrails
+- [ ] TKT-0254: Auth failure taxonomy and user surfacing
+- [ ] TKT-0255: CI canonical gate declaration and cleanup
+- [ ] TKT-0256: Release-candidate smoke gate automation script
+- [ ] TKT-0257: UI/UX epic tail closure (batch A)
+- [ ] TKT-0258: Accessibility and input-modality regression sweep
+- [ ] TKT-0259: Repo map and state truth reconciliation
+- [ ] TKT-0260: AWS SSM Session Manager support (EPIC)
+- [ ] TKT-0262: SSM WebSocket transport implementation
+- [ ] TKT-0263: AWS credential management + optional YubiKey MFA
+- [ ] TKT-0264: SSM host editor UX + session UI integration
+- [ ] TKT-0265: SSM backup/export compatibility + schema migration
 
 ## Ready
 - [ ] (none)
 
 ## In Progress
-- [ ] (none)
+- [ ] TKT-0261: SSM transport feasibility spike (protocol, deps, credential flow)
 
 ## Review
 - [ ] (none)

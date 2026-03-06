@@ -1,0 +1,43 @@
+Starting a Gradle Daemon, 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [19ms][m[38D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [119ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [219ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [319ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [419ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [519ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [619ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [719ms][m[0K[38D[1B[1m> Loading projects[m[0K[18D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [819ms][m[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [919ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project > Resolve files of :classpath[m[0K[44D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app[m[0K[6D[1B[1A[1m> :app > Compiling /work/app/build.gradle into local compilation cache > Compil[m[79D[1B[1A[1m> :app > Resolve dependencies of detachedConfiguration9[m[0K[55D[1B[1A[1m> :app > Resolve files of :app:classpath[m[0K[40D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app > Compiling /work/app/build.gradle into local compilation cache > Compil[m[79D[1B[1A[1m> :app[m[0K[6D[1B[2A[0K
+[1m> Configure project :app[m[0K
+No git repository reachable from /work/app
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [5s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [5s][m[37D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath[m[55D[1B[1A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > sshlib-2.2.15.pom[m[75D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[2B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [7s][m[37D[2B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [8s][m[37D[2B[1A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath[m[0K[55D[1B
+
+
+[4A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > jzlib-1.1.3.pom[m[73D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > jbcrypt-1.0.0.pom[m[75D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > simplesocks-1.0.1.pom[m[79D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > tink-1.4.0.pom[m[72D[1B[4A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > oss-parent-6.pom[m[74D[4B[3A> IDLE[0K[6D[3B[3A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > jbcrypt-1.0.0.pom[m[75D[3B[4A> IDLE[0K[6D[4B[2A> IDLE[0K[6D[1B> IDLE[0K[6D[1B[5A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [9s][m[37D[5B[3A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > protobuf-java-3.11.1.[m[79D[3B[3A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > protobuf-parent-3.11.[m[79D[3B[3A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > protobuf-bom-3.11.1.p[m[79D[3B[3A> IDLE[0K[6D[3B[5A[0K
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m[0K
+[0K
+* What went wrong:[0K
+Could not determine the dependencies of task ':app:externalNativeBuildOssDebug'.[0K
+[33m> [39mCould not resolve all task dependencies for configuration ':app:ossDebugRuntimeClasspath'.
+   [33m> [39mCould not find org.connectbot.jbcrypt:jbcrypt:1.0.0.
+     Searched in the following locations:
+       - https://dl.google.com/dl/android/maven2/org/connectbot/jbcrypt/jbcrypt/1.0.0/jbcrypt-1.0.0.pom
+       - https://repo.maven.apache.org/maven2/org/connectbot/jbcrypt/jbcrypt/1.0.0/jbcrypt-1.0.0.pom
+       - https://jcenter.bintray.com/org/connectbot/jbcrypt/jbcrypt/1.0.0/jbcrypt-1.0.0.pom
+       - https://oss.jfrog.org/artifactory/oss-snapshot-local/org/connectbot/jbcrypt/jbcrypt/1.0.0/jbcrypt-1.0.0.pom
+       - https://jitpack.io/org/connectbot/jbcrypt/jbcrypt/1.0.0/jbcrypt-1.0.0.pom
+     Required by:
+         project :app > com.github.connectbot:sshlib:2.2.15
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+[31;1mBUILD FAILED[0;39m in 11s
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B> IDLE[6D[1B> IDLE[6D[1B> IDLE[6D[1B> IDLE[6D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h

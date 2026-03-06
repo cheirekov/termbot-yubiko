@@ -1,0 +1,51 @@
+Unable to find image 'ghcr.io/cirruslabs/android-sdk:34' locally
+34: Pulling from cirruslabs/android-sdk
+de44b265507a: Pulling fs layer
+0e57d074af50: Pulling fs layer
+c55c985e5959: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Already exists
+5729648b0268: Download complete
+de44b265507a: Download complete
+de44b265507a: Pull complete
+0e57d074af50: Download complete
+c55c985e5959: Download complete
+c55c985e5959: Pull complete
+4f4fb700ef54: Pull complete
+0e57d074af50: Pull complete
+Digest: sha256:1c2e7e9c4490dbc1f85364556aa08e550945e6dffb29baab86d5fe2c7be0773a
+Status: Downloaded newer image for ghcr.io/cirruslabs/android-sdk:34
+
+Welcome to Gradle 6.1.1!
+
+Here are the highlights of this release:
+ - Reusable dependency cache
+ - Configurable compilation order between Groovy/Kotlin/Java/Scala
+ - New sample projects in Gradle's documentation
+
+For more details see https://docs.gradle.org/6.1.1/release-notes.html
+
+Starting a Gradle Daemon, 2 incompatible Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m[0K
+
+* What went wrong:
+Could not create service of type FileAccessTimeJournal using GradleUserHomeScopeServices.createFileAccessTimeJournal().
+[33m> [39mTimeout waiting to lock journal cache (/home/gradle/.gradle/caches/journal-1). It is currently in use by another Gradle instance.
+  Owner PID: 129224
+  Our PID: 46
+  Owner Operation: 
+  Our operation: 
+  Lock file: /home/gradle/.gradle/caches/journal-1/journal-1.lock
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+[31;1mBUILD FAILED[0;39m in 1m 1s
+
+[0K
+[2A[1B> IDLE[6D[1B[1A[2K[1A[0m[?12l[?25h

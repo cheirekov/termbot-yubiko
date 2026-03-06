@@ -2,6 +2,27 @@
 
 Keep this file short. Link to full logs in references/logs/.
 
+## Latest build (TKT-0261/TKT-0262 kickoff — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 26s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T16-03-17+02-00.log`
+- Changes under verification:
+  - Added SSM transport kickoff scaffolding (`transport/SSM.java`) with safe placeholder lifecycle and no UI exposure yet.
+  - Added `TransportFactory` handling for `ssm` scheme without adding it to user-selectable protocol list.
+- Notes:
+  - First attempt from sandbox failed due Docker socket permission; rerun with elevated permissions succeeded.
+
+## Latest build (2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 3m 47s` (62 actionable tasks: 11 executed, 51 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T15-27-16+02-00.log`
+- APK artifacts:
+  - `repos/termbot-termbot/app/build/outputs/apk/oss/debug/app-oss-debug.apk` (12,441,825 bytes)
+  - `repos/termbot-termbot/app/build/outputs/apk/google/debug/app-google-debug.apk` (8,817,974 bytes)
+- Notes: a prior attempt at `references/logs/android_build_2026-03-06T15-24-21+02-00.log` failed due to Gradle cache lock contention (`fileHashes.lock`), then rerun succeeded using isolated Gradle cache path.
+
 ## Latest build (TKT-0244 — 2026-03-04)
 - Task: assembleDebug
 - Result: BUILD SUCCESSFUL in 32s (62 actionable tasks: 17 executed, 45 up-to-date)

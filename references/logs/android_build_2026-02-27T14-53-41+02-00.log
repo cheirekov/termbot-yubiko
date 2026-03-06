@@ -1,0 +1,235 @@
+Starting a Gradle Daemon, 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [9ms][m[37D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [109ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [209ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [309ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [409ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [509ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [609ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [709ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [809ms][m[0K[38D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [909ms][m[38D[1B[1m> root project[m[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app > Resolve dependencies of detachedConfiguration4[m[55D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[0K[47D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[2A[0K
+[1m> Configure project :app[m[0K
+No git repository reachable from /work/app
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [5s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [5s][m[37D[1B> IDLE[0K[6D[1B[2AWarning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [5s][m[37D[1B> IDLE[6D[1B[1A[1m> Resolve dependencies of :app:ossDebugCompileClasspath > Resolve dependencies [m[79D[1B[1A> IDLE[0K[6D[1B[2AMapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+[0K
+[0K
+[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[1B> IDLE[6D[1B[2AMapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[1B[1m> Resolve dependencies of :app:androidJacocoAnt[m[47D[1B[1A[1m> Resolve dependencies of :app:androidJacocoAnt > org.jacoco.ant-0.8.2.pom[m[74D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [7s][m[37D[1B[1m> Resolve dependencies of :app:androidJacocoAnt[m[0K[47D[1B[1A[1m> Resolve dependencies of :app:androidJacocoAnt > org.jacoco.report-0.8.2.pom[m[77D[1B[1A[1m> Resolve dependencies of :app:androidJacocoAnt > asm-analysis-6.2.1.pom[m[0K[72D[1B[1A[1m> Resolve dependencies of :app:googleDebugCompileClasspath > Resolve dependenci[m[79D[1B
+
+
+[5A[1m<[0;1m-------------> 0% EXECUTING [8s][m[0K[33D[1B[1m> Transforming artifact recyclerview-1.1.0.aar (androidx.recyclerview:recyclerv[m[79D[1B[1m> Transforming artifact hwsecurity-4.4.0.aar (com.github.cotechde.hwsecurity:hw[m[79D[1B[1m> Transforming artifact preference-1.1.0.aar (androidx.preference:preference:1.[m[79D[1B[1m> Transforming artifact appcompat-1.2.0.aar (androidx.appcompat:appcompat:1.2.0[m[79D[1B[5A[1m<[0;1m-------------> 2% EXECUTING [8s][m[33D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[2B[1m> Transforming artifact material-1.3.0.aar (com.google.android.material:materia[m[79D[2B[5A[1m<[0;1m-------------> 4% EXECUTING [8s][m[33D[3B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A[1m<[0;1m-------------> 5% EXECUTING [8s][m[33D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 8% EXECUTING [8s][m[33D[2B[1m> Transforming artifact localbroadcastmanager-1.0.0.aar (androidx.localbroadcas[m[79D[3B[5A[1m<[0;32;1m=[0;39;1m------------> 11% EXECUTING [9s][m[34D[2B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[3B[5A[1m<[0;32;1m=[0;39;1m------------> 12% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 13% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 15% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 18% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 20% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m===[0;39;1m----------> 24% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m===[0;39;1m----------> 30% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 31% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 36% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 37% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 39% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 50% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 54% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 55% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 55% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 55% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 56% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 56% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [16s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [17s][m[35D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/SecurityKeySignatureProxy.java:168: error: encodeRSASHA512Signature(byte[]) has private access in RSASHA512Verify[0K
+                                return RSASHA512Verify.encodeRSASHA512Signature(ds);[0K
+                                                      ^[0K
+/work/app/src/main/java/org/connectbot/SecurityKeySignatureProxy.java:171: error: encodeRSASHA256Signature(byte[]) has private access in RSASHA256Verify
+                                return RSASHA256Verify.encodeRSASHA256Signature(ds);
+                                                      ^
+/work/app/src/main/java/org/connectbot/SecurityKeySignatureProxy.java:174: error: cannot find symbol
+                                return RSASHA1Verify.encodeSSHRSASignature(ds);
+                                                    ^
+  symbol:   method encodeSSHRSASignature(byte[])
+  location: class RSASHA1Verify
+/work/app/src/main/java/org/connectbot/SecurityKeySignatureProxy.java:181: error: method encodeSSHECDSASignature in class ECDSASHA2Verify cannot be applied to given types;
+                        return ECDSASHA2Verify.encodeSSHECDSASignature(ds, ecPublicKey.getParams());
+                                              ^
+  required: byte[]
+  found: byte[],ECParameterSpec
+  reason: actual and formal argument lists differ in length
+/work/app/src/main/java/org/connectbot/SecurityKeySignatureProxy.java:183: error: encodeSSHEd25519Signature(byte[]) has private access in Ed25519Verify
+                        return Ed25519Verify.encodeSSHEd25519Signature(ds);
+                                            ^
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [17s][m[35D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[1B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A/work/app/src/main/java/org/connectbot/GeneratePubkeyActivity.java:69: error: cannot find symbol[0K
+        private final static int[] ECDSA_SIZES = ECDSASHA2Verify.getCurveSizes();[0K
+                                                                ^[0K
+  symbol:   method getCurveSizes()[0K
+  location: class ECDSASHA2Verify[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [17s][m[35D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[1B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:309: error: cannot find symbol[0K
+                        data += String.valueOf(Base64.encode(RSASHA1Verify.encodeSSHRSAPublicKey((RSAPublicKey) pk)));[0K
+                                                                          ^[0K
+  symbol:   method encodeSSHRSAPublicKey(RSAPublicKey)[0K
+  location: class RSASHA1Verify[0K
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:313: error: cannot find symbol
+                        data += String.valueOf(Base64.encode(DSASHA1Verify.encodeSSHDSAPublicKey((DSAPublicKey) pk)));
+                                                                          ^
+  symbol:   method encodeSSHDSAPublicKey(DSAPublicKey)
+  location: class DSASHA1Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:317: error: method getCurveName in class ECDSASHA2Verify cannot be applied to given types;
+                        String keyType = ECDSASHA2Verify.getCurveName(ecPub.getParams().getCurve().getField().getFieldSize());
+                                                        ^
+  required: no arguments
+  found: int
+  reason: actual and formal argument lists differ in length
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:318: error: cannot find symbol
+                        String keyData = String.valueOf(Base64.encode(ECDSASHA2Verify.encodeSSHECDSAPublicKey(ecPub)));
+                                                                                     ^
+  symbol:   method encodeSSHECDSAPublicKey(ECPublicKey)
+  location: class ECDSASHA2Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:323: error: cannot find symbol
+                                        String.valueOf(Base64.encode(Ed25519Verify.encodeSSHEd25519PublicKey(edPub))) +
+                                                                                  ^
+  symbol:   method encodeSSHEd25519PublicKey(Ed25519PublicKey)
+  location: class Ed25519Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:342: error: cannot find symbol
+                                return RSASHA1Verify.encodeSSHRSAPublicKey((RSAPublicKey) pubKey);
+                                                    ^
+  symbol:   method encodeSSHRSAPublicKey(RSAPublicKey)
+  location: class RSASHA1Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:344: error: cannot find symbol
+                                return DSASHA1Verify.encodeSSHDSAPublicKey((DSAPublicKey) pubKey);
+                                                    ^
+  symbol:   method encodeSSHDSAPublicKey(DSAPublicKey)
+  location: class DSASHA1Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:346: error: cannot find symbol
+                                return ECDSASHA2Verify.encodeSSHECDSAPublicKey((ECPublicKey) pubKey);
+                                                      ^
+  symbol:   method encodeSSHECDSAPublicKey(ECPublicKey)
+  location: class ECDSASHA2Verify
+/work/app/src/main/java/org/connectbot/util/PubkeyUtils.java:348: error: cannot find symbol
+                                return Ed25519Verify.encodeSSHEd25519PublicKey((Ed25519PublicKey) pubKey);
+                                                    ^
+  symbol:   method encodeSSHEd25519PublicKey(Ed25519PublicKey)
+  location: class Ed25519Verify
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 57% EXECUTING [17s][m[35D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[1B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A/work/app/src/main/java/org/connectbot/transport/SSH.java:930: error: cannot find symbol[0K
+                                        pubKeys.put(entry.getKey(), RSASHA1Verify.encodeSSHRSAPublicKey(pubkey));[0K
+                                                                                 ^[0K
+  symbol:   method encodeSSHRSAPublicKey(RSAPublicKey)[0K
+  location: class RSASHA1Verify[0K
+/work/app/src/main/java/org/connectbot/transport/SSH.java:933: error: cannot find symbol
+                                        pubKeys.put(entry.getKey(), DSASHA1Verify.encodeSSHDSAPublicKey(pubkey));
+                                                                                 ^
+  symbol:   method encodeSSHDSAPublicKey(DSAPublicKey)
+  location: class DSASHA1Verify
+/work/app/src/main/java/org/connectbot/transport/SSH.java:936: error: cannot find symbol
+                                        pubKeys.put(entry.getKey(), ECDSASHA2Verify.encodeSSHECDSAPublicKey(pubkey));
+                                                                                   ^
+  symbol:   method encodeSSHECDSAPublicKey(ECPublicKey)
+  location: class ECDSASHA2Verify
+/work/app/src/main/java/org/connectbot/transport/SSH.java:939: error: cannot find symbol
+                                        pubKeys.put(entry.getKey(), Ed25519Verify.encodeSSHEd25519PublicKey(pubkey));
+                                                                                 ^
+  symbol:   method encodeSSHEd25519PublicKey(Ed25519PublicKey)
+  location: class Ed25519Verify
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+19 errors
+
+[31;1m> Task :app:compileGoogleDebugJavaWithJavac[0;39m[31m FAILED[39m
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;31;1m=======[0;39;1m------> 57% EXECUTING [17s][m[35D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[1B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A[0K
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m[0K
+[0K
+* What went wrong:[0K
+Execution failed for task ':app:compileGoogleDebugJavaWithJavac'.[0K
+[33m> [39mCompilation failed; see the compiler error output for details.
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+[31;1mBUILD FAILED[0;39m in 19s
+9 actionable tasks: 9 executed
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> Transforming artifact legacy-support-core-ui-1.0.0.aar (androidx.legacy:legac[m[79D[1B[1m> Transforming artifact drawerlayout-1.0.0.aar (androidx.drawerlayout:drawerlay[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact viewpager2-1.0.0.aar (androidx.viewpager2:viewpager2:1.[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h

@@ -1,0 +1,4 @@
+Unable to find image 'ghcr.io/cirruslabs/android-sdk:31' locally
+docker: Error response from daemon: failed to resolve reference "ghcr.io/cirruslabs/android-sdk:31": failed to do request: Head "https://ghcr.io/v2/cirruslabs/android-sdk/manifests/31": dial tcp: lookup ghcr.io: no such host
+
+Run 'docker run --help' for more information

@@ -1,0 +1,24 @@
+Starting a Gradle Daemon, 3 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m[0K
+
+* What went wrong:
+Could not create service of type FileAccessTimeJournal using GradleUserHomeScopeServices.createFileAccessTimeJournal().
+[33m> [39mTimeout waiting to lock journal cache (/home/gradle/.gradle/caches/journal-1). It is currently in use by another Gradle instance.
+  Owner PID: 129224
+  Our PID: 46
+  Owner Operation: 
+  Our operation: 
+  Lock file: /home/gradle/.gradle/caches/journal-1/journal-1.lock
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+[31;1mBUILD FAILED[0;39m in 1m 1s
+
+[0K
+[2A[1B> IDLE[6D[1B[1A[2K[1A[0m[?12l[?25h
