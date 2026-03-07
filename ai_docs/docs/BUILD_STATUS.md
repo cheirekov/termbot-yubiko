@@ -2,6 +2,125 @@
 
 Keep this file short. Link to full logs in references/logs/.
 
+## Latest build (TKT-0266 assume-role baseline — 2026-03-07)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 44s` (62 actionable tasks: 21 executed, 41 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-07T16-40-42+02-00.log`
+- Changes under verification:
+  - Added optional SSM-only per-host `Assume role ARN` field with host DB migration (`DB_VERSION=30`) and encrypted backup import/export support.
+  - Added STS `AssumeRole` client and SigV4 form-post signing for runtime credential elevation before SSM `StartSession`.
+  - Resolver now keeps base credentials for persistence while using assumed-role credentials only for the live SSM session.
+  - Added non-secret markers for `assume_role_configured` and `credential_enhanced`.
+
+## Latest build (TKT-0263 Slice B temporary session credentials — 2026-03-07)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 43s` (62 actionable tasks: 21 executed, 41 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-07T15-48-07+02-00.log`
+- Changes under verification:
+  - Added temporary session-credential support for SSM hosts by prompting for an AWS session token when the access key ID indicates session credentials (`ASIA...`) and no saved token exists.
+  - Reused scoped secret storage so saved SSM credentials can now include session tokens.
+  - Added non-secret `session_token_source` marker alongside existing credential mode/source markers.
+
+## Latest build (TKT-0265 backup/export compatibility — 2026-03-07)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 28s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-07T15-27-09+02-00.log`
+- Changes under verification:
+  - Added additive backup JSON support for persisted SSM scoped secrets.
+  - Added SSM target-aware host matching during import to avoid restore collisions between different SSM targets in the same region.
+  - Added non-secret backup markers for `ssm_hosts` and `scoped_secrets`.
+  - No DB schema version bump required for current SSM host shape.
+- Manual device smoke (operator, 2026-03-07):
+  - Encrypted backup export/import restored the SSM host target and saved secret without re-entry.
+
+## Latest build (TKT-0263 Slice A credential foundation — 2026-03-07)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 38s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-07T15-13-08+02-00.log`
+- Changes under verification:
+  - Added `SsmCredentialResolver` contract for SSM credential resolution and persistence.
+  - Added scoped secret storage in `SavedPasswordStore` for SSM secret/session-token slots with legacy-read compatibility.
+  - Updated `SSM` transport to log credential mode/source markers only (no secret values).
+  - Updated `EditHostActivity` forget/clear paths to remove SSM scoped secrets.
+
+## Latest build (TKT-0264 strict SSM-only target visibility — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 37s` (62 actionable tasks: 21 executed, 41 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T19-33-08+02-00.log`
+- Changes under verification:
+  - Added `postlogin_section_container` and made SSM target block visible only for SSM protocol.
+  - Hidden target block for non-SSM protocols as requested by operator.
+
+## Latest build (TKT-0264 SSM target placement UX — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 32s` (62 actionable tasks: 21 executed, 41 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T17-58-42+02-00.log`
+- Changes under verification:
+  - Moved `SSM target` editor into expanded URI section near AWS access key/region/port.
+  - Kept same underlying `postLogin` model field to preserve existing save/connect behavior.
+
+## Latest build (TKT-0264 quick-connect typing fix — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 24s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T17-48-48+02-00.log`
+- Changes under verification:
+  - Fixed SSM quick-connect top-field overwrite while typing full compact address (`AKIA...@region/i-target`).
+  - Wrapped quick-connect parse/sync in one guarded edit transaction to prevent recursive `setText` feedback from SSM target watcher.
+  - Invalid SSM quick-connect input now also clears stale target field state.
+
+## Latest build (TKT-0264 prompt lifecycle fix — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 26s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T17-30-56+02-00.log`
+- Changes under verification:
+  - Fixed SSM first-connect secret-key prompt race by surfacing already-pending prompts when UI handler attaches (`PromptHelper.setHandler`).
+  - Expected UX: first host open now prompts immediately for secret key instead of requiring back-navigation/re-entry.
+
+## Latest build (TKT-0264 host-editor parse/validation fix — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 23s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T17-26-52+02-00.log`
+- Changes under verification:
+  - TKT-0264 first host-editor bug fix: SSM quick-connect now maps access-key-only input (`AKI...`) to AWS Access Key ID field instead of Region.
+  - Added SSM save-enable gate in host editor requiring access key ID + region + target.
+  - No transport regressions observed in compile/build checks.
+
+## Latest build (TKT-0262 websocket stream bridge — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 22s` (62 actionable tasks: 17 executed, 45 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T17-08-52+02-00.log`
+- Changes under verification:
+  - Added SSM websocket stream bridge (`org.connectbot.aws.SsmStreamClient`) with SigV4-authenticated `ssmmessages` handshake.
+  - Added minimal SSM binary frame handling for output/input/ack/channel-close and handshake request/response.
+  - Reworked `transport/SSM.java` into real `AbsTransport` flow (`bridge.onConnected()`, terminal `read/write`, resize payload, clean disconnect).
+  - Added OkHttp dependency (`com.squareup.okhttp3:okhttp:3.14.9`) for Android-compatible websocket support.
+- Manual device smoke (operator, 2026-03-06):
+  - SSM connect successful.
+  - `uname -a` output received.
+  - `whoami` returned `ssm-user`.
+  - `exit` disconnected cleanly.
+
+## Latest build (TKT-0262 StartSession bootstrap — 2026-03-06)
+- Task: `assembleDebug`
+- Result: `BUILD SUCCESSFUL in 40s` (62 actionable tasks: 23 executed, 39 up-to-date)
+- Command (canonical Docker-first path used): `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=/home/yc/work/ai-projects-templates/termbot-yubiko/references/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
+- Log: `references/logs/android_build_2026-03-06T16-27-55+02-00.log`
+- Changes under verification:
+  - Added AWS SigV4 + SSM StartSession API client (`org.connectbot.aws` package).
+  - Wired `SSM` transport to use access key ID (username), region (host), target (post-login field), and secret key (prompt/saved password store).
+  - Added HostEditor SSM protocol support and SSM-specific field labels/hints.
+  - Added user-facing SSM status/error strings and kept stream bridge explicitly pending.
+
 ## Latest build (TKT-0261/TKT-0262 kickoff — 2026-03-06)
 - Task: `assembleDebug`
 - Result: `BUILD SUCCESSFUL in 26s` (62 actionable tasks: 17 executed, 45 up-to-date)

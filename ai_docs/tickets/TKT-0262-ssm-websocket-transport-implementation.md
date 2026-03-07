@@ -32,14 +32,14 @@
   - `AbsTransport.connect/read/write/close/isConnected/isSessionOpen` contract.
 
 ### Acceptance criteria
-- [ ] Behavior:
+- [x] Behavior:
   - Transport can connect/disconnect and exchange terminal stream data for at least one SSM target.
-- [ ] Tests (or explicit manual verification):
-  - Docker build is green.
-  - Device/manual smoke proves connect + command I/O + disconnect path.
-- [ ] Docs:
+- [x] Tests (or explicit manual verification):
+  - [x] Docker build is green.
+  - [x] Device/manual smoke proves connect + command I/O + disconnect path.
+- [x] Docs:
   - Build status and board updated.
-- [ ] Observability (if relevant):
+- [x] Observability (if relevant):
   - SSM non-secret markers exist for start/open/close/error.
 
 ### Verification (token-efficient)
@@ -61,3 +61,9 @@
   - `ai_docs/tickets/TKT-0261-ssm-transport-feasibility-spike.md`
 - Related tickets:
   - `TKT-0263`, `TKT-0264`
+- Slice progress (2026-03-06):
+  - Added StartSession bootstrap with SigV4 signing and safe error surfacing.
+  - Current temporary field mapping in host editor: `Username -> access key ID`, `Host -> AWS region`, `Post-login field -> SSM target`, `Remember password -> encrypted secret access key storage`.
+  - Added stream URL/token websocket bridge using SigV4-authenticated `ssmmessages` channel, SSM binary frame handling (input/output/ack/channel closed), handshake request/response support, and terminal read/write integration through `AbsTransport`.
+  - Operator smoke (2026-03-06) confirmed: interactive connect works, `uname -a` output received, `whoami` returns `ssm-user`, and `exit` cleanly disconnects.
+  - Marking `TKT-0262` done; host-editor UX papercuts roll into `TKT-0264`.

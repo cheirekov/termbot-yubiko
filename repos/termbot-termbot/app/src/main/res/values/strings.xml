@@ -157,6 +157,8 @@
 	<string name="prompt_old_password">"Old password:"</string>
 	<!-- Prompt for user to enter their password to log into the host when using 'password' authentication. -->
 	<string name="prompt_password">"Password:"</string>
+	<string name="prompt_aws_secret_access_key">"AWS secret access key:"</string>
+	<string name="prompt_aws_session_token">"AWS session token (temporary credentials):"</string>
 	<!-- Added after a "Password:" prompt to indicate user needs to confirm entry. -->
 	<string name="prompt_again">"(again)"</string>
 	<!-- Label for the user to select port forward type. -->
@@ -368,6 +370,14 @@
 	<string name="hostpref_postlogin_title">"Post-login automation"</string>
 	<!-- Host post-login automation preference summary -->
 	<string name="hostpref_postlogin_summary">"Commands to run on remote server once authenticated"</string>
+	<string name="aws_access_key_id_title">"AWS access key ID"</string>
+	<string name="aws_region_title">"AWS region"</string>
+	<string name="aws_https_port_title">"HTTPS port"</string>
+	<string name="ssm_target_title">"SSM target"</string>
+	<string name="ssm_target_summary">"Managed node target (for example i-0123456789abcdef0)"</string>
+	<string name="ssm_target_hint">"i-0123456789abcdef0"</string>
+	<string name="aws_access_key_id_hint">"AKIA..."</string>
+	<string name="aws_region_hint">"eu-central-1"</string>
 
 	<!-- Host compression preference title -->
 	<string name="hostpref_compression_title">"Compression"</string>
@@ -774,6 +784,17 @@
 	<string name="pubkey_add_fido2_success_count">Imported %1$d FIDO2 key(s) for %2$s.</string>
 	<string name="pubkey_add_fido2_failed">Could not import FIDO2 key. Check the OpenSSH key line.</string>
 	<string name="pubkey_add_fido2_failed_with_app">Could not import FIDO2 key(s) for %1$s.</string>
+	<string name="ssm_missing_configuration">SSM requires AWS access key ID (Username), AWS region (Host), and target in Post-login field.</string>
+	<string name="ssm_credential_resolution_failed">SSM credential setup failed: %1$s</string>
+	<string name="ssm_secret_key_required">AWS secret access key is required.</string>
+	<string name="ssm_session_token_required">AWS session token is required for temporary credentials.</string>
+	<string name="ssm_connecting">Starting SSM session for %1$s in %2$s...</string>
+	<string name="ssm_start_session_ok_stub">SSM StartSession succeeded (%1$s). Opening interactive stream...</string>
+	<string name="ssm_start_session_failed">SSM StartSession failed: %1$s</string>
+	<string name="ssm_stream_not_implemented">Interactive SSM stream transport is not implemented yet in this build.</string>
+	<string name="ssm_role_arn_title">Assume role ARN</string>
+	<string name="ssm_role_arn_summary">Optional STS role ARN to assume before starting the SSM session.</string>
+	<string name="ssm_role_arn_hint">arn:aws:iam::123456789012:role/ExampleRole</string>
 	<!-- Text for button which, when clicked, brings up dialog to setup a security key. -->
 	<string name="pubkey_setup_security_key">Setup key with</string>
 	<!-- Text for dialog which explains that the host URI is invalid and asks to discard. -->

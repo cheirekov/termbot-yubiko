@@ -1,0 +1,1152 @@
+To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: https://docs.gradle.org/6.7.1/userguide/gradle_daemon.html.
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2ADaemon will be stopped at the end of the build stopping after processing
+[1B[0K
+[2A[0K[1B> IDLE[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [6ms][m[37D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [106ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [206ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [306ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [406ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [506ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [606ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [706ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [806ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [906ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> Loading projects[m[0K[18D[1B[1A[1m> root project[m[0K[14D[1B[1A[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project > Resolve dependencies of :classpath[m[0K[51D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app[m[0K[6D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[47D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[2A[0K
+[1m> Configure project :app[m[0K
+WARNING:: The option setting 'android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2' is experimental.
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2ANo git repository reachable from /work/app[0K
+[1B[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2AWARNING:: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+WARNING:: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+WARNING:: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [6s][m[36D[2B[2AWarning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [6s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [7s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [7s][m[37D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% EXECUTING [7s][m[0K[33D[2B[2A[1m<[0;1m-------------> 4% EXECUTING [7s][m[33D[1B[1m> :app:generateGoogleDebugBuildConfig[m[37D[1B
+
+
+[5A[1m<[0;1m-------------> 5% EXECUTING [7s][m[33D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[5A[1m<[0;1m-------------> 7% EXECUTING [7s][m[33D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve dependencies of :app:googleDebugRu[m[79D[1B> IDLE[0K[6D[1B> IDLE[0K[6D[1B> IDLE[0K[6D[1B[4A[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;1m-------------> 7% EXECUTING [8s][m[33D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [8s][m[34D[2B[1m> :app:mergeGoogleDebugResources[m[0K[32D[1B> IDLE[0K[6D[1B> IDLE[0K[6D[1B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 13% EXECUTING [9s][m[34D[3B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[2B[5A[1m<[0;32;1m==[0;39;1m-----------> 16% EXECUTING [9s][m[34D[3B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:generateJsonModelGoogleDebug[m[35D[1B[5A[0K
+[1m> Task :app:externalNativeBuildGoogleDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==[0;39;1m-----------> 22% EXECUTING [9s][m[34D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:mergeGoogleDebugResources[m[32D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m===[0;39;1m----------> 23% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m===[0;39;1m----------> 26% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 30% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 33% EXECUTING [10s][m[35D[5B[3A[1m> :app:mergeGoogleDebugResources > Packing build cache entry[m[60D[3B[5A[1m<[0;32;1m====[0;39;1m---------> 34% EXECUTING [10s][m[35D[2B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[3B[5A[1m<[0;32;1m====[0;39;1m---------> 34% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 35% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 44% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 47% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 53% EXECUTING [12s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildOssDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m========[0;39;1m-----> 67% EXECUTING [12s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m=========[0;39;1m----> 73% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 76% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [16s][m[35D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/com/google/ase/Exec.java:26: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+   * @param cmd[0K
+     ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the file descriptor of the started process.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [17s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/com/google/ase/Exec.java:40: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+   * @param cmd[0K
+     ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns the file descriptor of the started process.'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [17s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:875: warning: [UnusedMethod] Private method 'normalizeSecurityKeyName' is never used.[0K
+        private String normalizeSecurityKeyName(String securityKeyName) {[0K
+                       ^[0K
+    (see https://errorprone.info/bugpattern/UnusedMethod)[0K
+  Did you mean to remove this line?[0K
+/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:129: warning: [UnusedVariable] The field 'MARKER_UNSUPPORTED_DEVICE' is never read.
+        private static final String MARKER_UNSUPPORTED_DEVICE = "PUBKEY_UNSUPPORTED_SECURITY_KEY_DEVICE";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [17s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:849: warning: [UnusedVariable] The parameter 'algorithmConfig' is never read.[0K
+            @Nullable OpenPgpKeyAlgorithmConfig algorithmConfig) throws Exception {[0K
+                                                ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean 'importOpenPgpFromConnection(conn);'?[0K
+/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:819: warning: [UnusedVariable] The parameter 'intent' is never read.
+        private void dispatchSecurityKeyIntent(@Nullable Intent intent) {
+                                                                ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean 'dispatchSecurityKeyIntent();'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [17s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:100: warning: [UnusedVariable] The field 'inflater' is never read.[0K
+                private final LayoutInflater inflater;[0K
+                                             ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean to remove this line or to remove this line?[0K
+/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:91: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+                public ItemViewHolder(View v) {
+                       ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected ItemViewHolder(View v) {'?
+/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:103: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+                public ItemAdapter(Context context/*, List<AbstractBean> items*/) {
+                       ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected ItemAdapter(Context context/*, List<AbstractBean> items*/) {'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalManager.java:402: warning: [BadImport] Importing nested classes/static methods/static fields with commonly-used names can make code harder to read, because it may not be clear from the context exactly which type is being referred to. Qualifying the name with that of the containing class can make the code clearer.[0K
+                for (Entry<String, KeyHolder> entry : loadedKeypairs.entrySet()) {[0K
+                     ^[0K
+    (see https://errorprone.info/bugpattern/BadImport)[0K
+  Did you mean 'for (Map.Entry<String, KeyHolder> entry : loadedKeypairs.entrySet()) {'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalManager.java:260: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                } catch (Exception e) {[0K
+                  ^[0K
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)[0K
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:304: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.[0K
+         * @param nickname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalManager.java:604: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.[0K
+         * @param host[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)[0K
+  Did you mean '*'?[0K
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:649: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param resizeAllowed
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:43: warning: [UnusedVariable] The field 'KEY_TYPE_EC' is never read.[0K
+        private static final String KEY_TYPE_EC = "EC";[0K
+                                    ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean to remove this line?[0K
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:41: warning: [UnusedVariable] The field 'KEY_TYPE_DSA' is never read.
+        private static final String KEY_TYPE_DSA = "DSA";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:39: warning: [UnusedVariable] The field 'KEY_TYPE_RSA' is never read.
+        private static final String KEY_TYPE_RSA = "RSA";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:33: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:179: warning: [EmptyCatch] Caught exceptions should not be ignored
+                        } catch (NoSuchAlgorithmException | InvalidKeySpecException ignored) {
+                          ^
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+/work/app/src/main/java/org/connectbot/bean/AbstractBean.java:40: warning: [BadImport] Importing nested classes/static methods/static fields with commonly-used names can make code harder to read, because it may not be clear from the context exactly which type is being referred to. Qualifying the name with that of the containing class can make the code clearer.
+                for (Entry<String, Object> entry : values.valueSet()) {
+                     ^
+    (see https://errorprone.info/bugpattern/BadImport)
+  Did you mean 'for (Map.Entry<String, Object> entry : values.valueSet()) {'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:300: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return charset in use by bridge[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns charset in use by bridge.'?[0K
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:433: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether a session is open or not
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether a session is open or not.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:579: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param listener
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:914: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return whether underlying transport can forward ports[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns whether underlying transport can forward ports.'?[0K
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:939: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the list of port forwards
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the list of port forwards.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:976: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether the TerminalBridge should close
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether the TerminalBridge should close.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:983: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether this connection had started and subsequently disconnected
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether this connection had started and subsequently disconnected.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1043: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1043: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1061: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1061: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1068: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1068: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/HostBean.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/HostBean.java:361: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return URI identifying this HostBean[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns uRI identifying this HostBean.'?[0K
+/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:208: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param pubkeyId database ID for a desired pubkey
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns object representing the pubkey.'?
+/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:285: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param pubkey
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:285: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param pubkey
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/util/RobustSQLiteOpenHelper.java:31: warning: [MissingSummary] A summary line is required on public/protected Javadocs.[0K
+ * @author Kenny Root[0K
+   ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+/work/app/src/main/java/org/connectbot/util/RobustSQLiteOpenHelper.java:38: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public[0K
+        public RobustSQLiteOpenHelper(Context context, String name,
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected RobustSQLiteOpenHelper(Context context, String name,'?
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:31: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author kroot
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:136: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param lockingWifi
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:136: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param lockingWifi
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:163: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether we're connected to a network
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether we're connected to a network.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:27: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:84: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param id the id to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:91: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the id
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the id.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:98: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param nickname the nickname to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:105: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the nickname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the nickname.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:112: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param type the type to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:119: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the type
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the type.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:126: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param sourcePort the sourcePort to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:133: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the sourcePort
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the sourcePort.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:140: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param dest The destination in "host:port" format
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:151: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param destAddr the destAddr to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:158: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the destAddr
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the destAddr.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:165: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param destPort the destPort to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:172: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the destPort
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the destPort.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:179: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param enabled the enabled to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:186: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the enabled
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the enabled.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:193: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param identifier the identifier of this particular type to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:200: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the identifier used by this particular type
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the identifier used by this particular type.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:207: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return human readable description of the port forward
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns human readable description of the port forward.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:225: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:33: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:43: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+        public AbsTransport() {
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected AbsTransport() {'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:46: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+        public AbsTransport(HostBean host, TerminalBridge bridge, TerminalManager manager) {
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected AbsTransport(HostBean host, TerminalBridge bridge, TerminalManager manager) {'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:53: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return protocol part of the URI
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns protocol part of the URI.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:218: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return int default port for protocol[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns int default port for protocol.'?[0K
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:223: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param username
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:224: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param hostname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:225: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param port
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:226: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:223: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param username
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:231: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:232: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param selection
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:231: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:237: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:238: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:237: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:243: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param context context containing the correct resources
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns string that hints at the format for connection.'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:251: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:251: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/Relay.java:36: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [18s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/TerminalView.java:579: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.[0K
+                                mAccessibilityBuffer.append(rawText, 0, length);[0K
+                                                           ^[0K
+    (see https://errorprone.info/bugpattern/JdkObsolete)[0K
+/work/app/src/main/java/org/connectbot/TerminalView.java:608: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.[0K
+                                        mCodeMatcher = mControlCodes.matcher(mAccessibilityBuffer.toString());
+                                                                                                          ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:610: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mCodeMatcher.reset(mAccessibilityBuffer.toString());
+                                                                                        ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:614: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                mAccessibilityBuffer.setLength(0);
+                                                              ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:620: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                int i = mAccessibilityBuffer.indexOf(BACKSPACE_CODE);
+                                                                    ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:622: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.replace(i == 0 ? 0 : i - 1,
+                                                                    ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:624: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        i = mAccessibilityBuffer.indexOf(BACKSPACE_CODE);
+                                                                        ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:627: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                if (mAccessibilityBuffer.length() > 0) {
+                                                               ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:631: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        event.setAddedCount(mAccessibilityBuffer.length());
+                                                                                       ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:635: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.setLength(0);
+                                                                      ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:718: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.setLength(0);
+                                                                      ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:719: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.trimToSize();
+                                                                       ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/service/FontSizeChangedListener.java:21: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/FontSizeChangedListener.java:27: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param sizeDp
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [19s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [20s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [21s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [22s][m[35D[5B[5ANote: Some input files use or override a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+100 warnings[0K
+[2B[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [22s][m[0K[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 79% EXECUTING [22s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 80% EXECUTING [22s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [22s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [23s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [24s][m[35D[5B[5A[0K
+[1m> Task :app:compileOssDebugJavaWithJavac[m[0K
+/work/app/src/main/java/com/google/ase/Exec.java:26: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+   * @param cmd[0K
+     ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the file descriptor of the started process.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [24s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/com/google/ase/Exec.java:40: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+   * @param cmd[0K
+     ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns the file descriptor of the started process.'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [24s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:875: warning: [UnusedMethod] Private method 'normalizeSecurityKeyName' is never used.[0K
+        private String normalizeSecurityKeyName(String securityKeyName) {[0K
+                       ^[0K
+    (see https://errorprone.info/bugpattern/UnusedMethod)[0K
+  Did you mean to remove this line?[0K
+/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:849: warning: [UnusedVariable] The parameter 'algorithmConfig' is never read.
+            @Nullable OpenPgpKeyAlgorithmConfig algorithmConfig) throws Exception {
+                                                ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean 'importOpenPgpFromConnection(conn);'?
+/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:819: warning: [UnusedVariable] The parameter 'intent' is never read.
+        private void dispatchSecurityKeyIntent(@Nullable Intent intent) {
+                                                                ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean 'dispatchSecurityKeyIntent();'?
+/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:129: warning: [UnusedVariable] The field 'MARKER_UNSUPPORTED_DEVICE' is never read.
+        private static final String MARKER_UNSUPPORTED_DEVICE = "PUBKEY_UNSUPPORTED_SECURITY_KEY_DEVICE";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [24s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[5B[5A/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:100: warning: [UnusedVariable] The field 'inflater' is never read.[0K
+                private final LayoutInflater inflater;[0K
+                                             ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean to remove this line or to remove this line?[0K
+/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:91: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+                public ItemViewHolder(View v) {
+                       ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected ItemViewHolder(View v) {'?
+/work/app/src/main/java/org/connectbot/AppCompatListActivity.java:103: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+                public ItemAdapter(Context context/*, List<AbstractBean> items*/) {
+                       ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected ItemAdapter(Context context/*, List<AbstractBean> items*/) {'?
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:402: warning: [BadImport] Importing nested classes/static methods/static fields with commonly-used names can make code harder to read, because it may not be clear from the context exactly which type is being referred to. Qualifying the name with that of the containing class can make the code clearer.
+                for (Entry<String, KeyHolder> entry : loadedKeypairs.entrySet()) {
+                     ^
+    (see https://errorprone.info/bugpattern/BadImport)
+  Did you mean 'for (Map.Entry<String, KeyHolder> entry : loadedKeypairs.entrySet()) {'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalManager.java:260: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                } catch (Exception e) {[0K
+                  ^[0K
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)[0K
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:304: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.[0K
+         * @param nickname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:604: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param host
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalManager.java:649: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param resizeAllowed
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:43: warning: [UnusedVariable] The field 'KEY_TYPE_EC' is never read.[0K
+        private static final String KEY_TYPE_EC = "EC";[0K
+                                    ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)[0K
+  Did you mean to remove this line?[0K
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:39: warning: [UnusedVariable] The field 'KEY_TYPE_RSA' is never read.
+        private static final String KEY_TYPE_RSA = "RSA";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:41: warning: [UnusedVariable] The field 'KEY_TYPE_DSA' is never read.
+        private static final String KEY_TYPE_DSA = "DSA";
+                                    ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:33: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PubkeyBean.java:179: warning: [EmptyCatch] Caught exceptions should not be ignored
+                        } catch (NoSuchAlgorithmException | InvalidKeySpecException ignored) {
+                          ^
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+/work/app/src/main/java/org/connectbot/bean/AbstractBean.java:40: warning: [BadImport] Importing nested classes/static methods/static fields with commonly-used names can make code harder to read, because it may not be clear from the context exactly which type is being referred to. Qualifying the name with that of the containing class can make the code clearer.
+                for (Entry<String, Object> entry : values.valueSet()) {
+                     ^
+    (see https://errorprone.info/bugpattern/BadImport)
+  Did you mean 'for (Map.Entry<String, Object> entry : values.valueSet()) {'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:300: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return charset in use by bridge
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns charset in use by bridge.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:433: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return whether a session is open or not[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns whether a session is open or not.'?[0K
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:579: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param listener
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:914: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether underlying transport can forward ports
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether underlying transport can forward ports.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:939: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the list of port forwards
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the list of port forwards.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:976: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether the TerminalBridge should close
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether the TerminalBridge should close.'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:983: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether this connection had started and subsequently disconnected
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether this connection had started and subsequently disconnected.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1043: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.[0K
+         * @return[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)[0K
+  Did you mean '*'?[0K
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1043: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1061: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1061: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1068: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/TerminalBridge.java:1068: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/HostBean.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/HostBean.java:361: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return URI identifying this HostBean
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns uRI identifying this HostBean.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:208: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @param pubkeyId database ID for a desired pubkey[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns object representing the pubkey.'?[0K
+/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:285: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param pubkey
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/util/PubkeyDatabase.java:285: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param pubkey
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/util/RobustSQLiteOpenHelper.java:31: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/util/RobustSQLiteOpenHelper.java:38: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+        public RobustSQLiteOpenHelper(Context context, String name,
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected RobustSQLiteOpenHelper(Context context, String name,'?
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:31: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author kroot
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:136: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param lockingWifi
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:136: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param lockingWifi
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/ConnectivityReceiver.java:163: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return whether we're connected to a network
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns whether we're connected to a network.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:27: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:84: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param id the id to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:91: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the id
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the id.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [25s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:98: warning: [MissingSummary] A summary line is required on public/protected Javadocs.[0K
+         * @param nickname the nickname to set[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:105: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return the nickname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the nickname.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:112: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param type the type to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:119: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the type
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the type.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:126: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param sourcePort the sourcePort to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:133: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the sourcePort
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the sourcePort.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:140: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param dest The destination in "host:port" format
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:151: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param destAddr the destAddr to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:158: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the destAddr
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the destAddr.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:165: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param destPort the destPort to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:172: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the destPort
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the destPort.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:179: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param enabled the enabled to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:186: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the enabled
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the enabled.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:193: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param identifier the identifier of this particular type to set
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:200: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return the identifier used by this particular type
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the identifier used by this particular type.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:207: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return human readable description of the port forward
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns human readable description of the port forward.'?
+/work/app/src/main/java/org/connectbot/bean/PortForwardBean.java:225: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:33: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:43: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+        public AbsTransport() {
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected AbsTransport() {'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:46: warning: [PublicConstructorForAbstractClass] Constructors of on an abstract class can be declared protected as there is never a need for them to be public
+        public AbsTransport(HostBean host, TerminalBridge bridge, TerminalManager manager) {
+               ^
+    (see https://errorprone.info/bugpattern/PublicConstructorForAbstractClass)
+  Did you mean 'protected AbsTransport(HostBean host, TerminalBridge bridge, TerminalManager manager) {'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:53: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return protocol part of the URI
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns protocol part of the URI.'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:218: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @return int default port for protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns int default port for protocol.'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:223: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param username
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:224: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param hostname
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:225: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param port
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:226: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:223: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param username
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:231: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:232: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param selection
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:231: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:237: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:238: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:237: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param uri
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:243: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param context context containing the correct resources
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns string that hints at the format for connection.'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:251: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/AbsTransport.java:251: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/Relay.java:36: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [26s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/TerminalView.java:579: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.[0K
+                                mAccessibilityBuffer.append(rawText, 0, length);[0K
+                                                           ^[0K
+    (see https://errorprone.info/bugpattern/JdkObsolete)[0K
+/work/app/src/main/java/org/connectbot/TerminalView.java:608: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.[0K
+                                        mCodeMatcher = mControlCodes.matcher(mAccessibilityBuffer.toString());
+                                                                                                          ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:610: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mCodeMatcher.reset(mAccessibilityBuffer.toString());
+                                                                                        ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:614: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                mAccessibilityBuffer.setLength(0);
+                                                              ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:620: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                int i = mAccessibilityBuffer.indexOf(BACKSPACE_CODE);
+                                                                    ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:622: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.replace(i == 0 ? 0 : i - 1,
+                                                                    ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:624: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        i = mAccessibilityBuffer.indexOf(BACKSPACE_CODE);
+                                                                        ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:627: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                if (mAccessibilityBuffer.length() > 0) {
+                                                               ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:631: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        event.setAddedCount(mAccessibilityBuffer.length());
+                                                                                       ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:635: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.setLength(0);
+                                                                      ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:718: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.setLength(0);
+                                                                      ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/TerminalView.java:719: warning: [JdkObsolete] StringBuffer performs synchronization that is usually unnecessary; prefer StringBuilder.
+                                        mAccessibilityBuffer.trimToSize();
+                                                                       ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+/work/app/src/main/java/org/connectbot/service/FontSizeChangedListener.java:21: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/service/FontSizeChangedListener.java:27: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param sizeDp
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [26s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [27s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [28s][m[35D[5B[5ANote: Some input files use or override a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+100 warnings[0K
+[2B[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [28s][m[0K[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [29s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [30s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [31s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [32s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 85% EXECUTING [32s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 86% EXECUTING [32s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 86% EXECUTING [33s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [33s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [34s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [35s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 89% EXECUTING [35s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [35s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [36s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [37s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [37s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [38s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [39s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [40s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 92% EXECUTING [41s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 95% EXECUTING [41s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 95% EXECUTING [42s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 96% EXECUTING [42s][m[35D[5B[5A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.[0K
+Use '--warning-mode all' to show the individual deprecation warnings.[0K
+See https://docs.gradle.org/6.7.1/userguide/command_line_interface.html#sec:command_line_warnings[0K
+[0K
+[32;1mBUILD SUCCESSFUL[0;39m in 44s
+62 actionable tasks: 21 executed, 41 up-to-date
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h
