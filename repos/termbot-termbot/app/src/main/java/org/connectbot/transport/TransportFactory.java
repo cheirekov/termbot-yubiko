@@ -39,6 +39,7 @@ public class TransportFactory {
 		SSH.getProtocolName(),
 		Telnet.getProtocolName(),
 		Local.getProtocolName(),
+		SSM.getProtocolName(),
 	};
 
 	/**

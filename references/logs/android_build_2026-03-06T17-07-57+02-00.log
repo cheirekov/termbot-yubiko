@@ -1,0 +1,314 @@
+To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: https://docs.gradle.org/6.7.1/userguide/gradle_daemon.html.
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[2ADaemon will be stopped at the end of the build stopping after processing
+[1B[0K
+[2A[0K[1B> IDLE[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [42ms][m[38D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [142ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [242ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [342ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [442ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [542ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [642ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [742ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [842ms][m[0K[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [942ms][m[38D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project > Resolve dependencies of :classpath[m[0K[51D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app[m[0K[6D[1B[1A[1m> :app > Compiling build file 'app/build.gradle'[m[48D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[0K[47D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[1A[1m> :app > Compiling build file 'app/build.gradle'[m[48D[1B[2A[0K
+[1m> Configure project :app[m[0K
+WARNING:: The option setting 'android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2' is experimental.
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2ANo git repository reachable from /work/app[0K
+[1B[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2AWARNING:: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+WARNING:: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+WARNING:: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2AWarning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [6s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [6s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 4% EXECUTING [6s][m[0K[33D[1B[1m> :app:generateGoogleDebugBuildConfig[m[37D[1B
+
+
+[5A[1m<[0;1m-------------> 5% EXECUTING [6s][m[33D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[5A[1m<[0;1m-------------> 7% EXECUTING [7s][m[33D[2B> IDLE[0K[6D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve dependencies of :app:googleDebugRu[m[79D[1B> IDLE[0K[6D[1B[5A[1m<[0;1m-------------> 7% EXECUTING [8s][m[33D[5B[2A[1m> :app:checkGoogleDebugAarMetadata[m[0K[34D[2B[5A[1m<[0;1m-------------> 7% EXECUTING [9s][m[33D[2B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m=[0;39;1m------------> 8% EXECUTING [9s][m[33D[2B[1m> :app:generateGoogleDebugResValues[m[0K[35D[1B> IDLE[0K[6D[2B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [9s][m[34D[2B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:mergeGoogleDebugResources[m[32D[2B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 13% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 16% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m==[0;39;1m-----------> 17% EXECUTING [10s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildGoogleDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m===[0;39;1m----------> 26% EXECUTING [10s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:mergeGoogleDebugResources[m[32D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m===[0;39;1m----------> 26% EXECUTING [11s][m[35D[5B[2A[1m> :app:mergeGoogleDebugResources > Packing build cache entry[m[60D[2B[5A[1m<[0;32;1m===[0;39;1m----------> 28% EXECUTING [11s][m[35D[3B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[2B[5A[1m<[0;32;1m===[0;39;1m----------> 29% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 32% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 38% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=====[0;39;1m--------> 45% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 46% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 52% EXECUTING [13s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildOssDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 60% EXECUTING [13s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m=========[0;39;1m----> 71% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 71% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 72% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 73% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 73% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[35D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:506: warning: [UnusedVariable] The field 'OFFSET_CREATED_DATE' is never read.[0K
+                private static final int OFFSET_CREATED_DATE = 40;[0K
+                                         ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:508: warning: [UnusedVariable] The field 'OFFSET_FLAGS' is never read.
+                private static final int OFFSET_FLAGS = 56;
+                                         ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:505: warning: [UnusedVariable] The field 'OFFSET_SCHEMA_VERSION' is never read.
+                private static final int OFFSET_SCHEMA_VERSION = 36;
+                                         ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/aws/AwsV4Signer.java:48: warning: [JdkObsolete] Date has a bad API that leads to bugs; prefer java.time.Instant or LocalDate.[0K
+                Date date = now == null ? new Date() : now;[0K
+                                          ^[0K
+    (see https://errorprone.info/bugpattern/JdkObsolete)[0K
+/work/app/src/main/java/org/connectbot/aws/AwsV4Signer.java:85: warning: [JdkObsolete] Date has a bad API that leads to bugs; prefer java.time.Instant or LocalDate.[0K
+                Date date = now == null ? new Date() : now;
+                                          ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/HostBean.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.[0K
+ * @author Kenny Root[0K
+   ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+[1B[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[0K[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/HostBean.java:350: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return URI identifying this HostBean[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns uRI identifying this HostBean.'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/HostEditorFragment.java:735: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                } catch (NumberFormatException ignored) {[0K
+                  ^[0K
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)[0K
+[1B[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [16s][m[0K[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/HostEditorFragment.java:940: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                                } catch (NumberFormatException e) {[0K
+                                  ^[0K
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)[0K
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.[0K
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:46: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:47: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:46: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:98: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param context
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:97: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param protocol text name of protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns expanded format hint.'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:116: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param hostdb Handle to HostDatabase
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns true when host was found.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [17s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5ANote: /work/app/src/main/java/org/connectbot/HostEditorFragment.java uses or overrides a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+16 warnings[0K
+[2B[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [17s][m[0K[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [17s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 78% EXECUTING [17s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 78% EXECUTING [18s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 79% EXECUTING [18s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 80% EXECUTING [18s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 80% EXECUTING [19s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [19s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [20s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 82% EXECUTING [21s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [22s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [23s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [24s][m[35D[5B[5A[0K
+[1m> Task :app:compileOssDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:508: warning: [UnusedVariable] The field 'OFFSET_FLAGS' is never read.[0K
+                private static final int OFFSET_FLAGS = 56;[0K
+                                         ^[0K
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:506: warning: [UnusedVariable] The field 'OFFSET_CREATED_DATE' is never read.
+                private static final int OFFSET_CREATED_DATE = 40;
+                                         ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+/work/app/src/main/java/org/connectbot/aws/SsmStreamClient.java:505: warning: [UnusedVariable] The field 'OFFSET_SCHEMA_VERSION' is never read.
+                private static final int OFFSET_SCHEMA_VERSION = 36;
+                                         ^
+    (see https://errorprone.info/bugpattern/UnusedVariable)
+  Did you mean to remove this line?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 83% EXECUTING [24s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [24s][m[35D[5B[5A/work/app/src/main/java/org/connectbot/aws/AwsV4Signer.java:48: warning: [JdkObsolete] Date has a bad API that leads to bugs; prefer java.time.Instant or LocalDate.[0K
+                Date date = now == null ? new Date() : now;[0K
+                                          ^[0K
+    (see https://errorprone.info/bugpattern/JdkObsolete)[0K
+/work/app/src/main/java/org/connectbot/aws/AwsV4Signer.java:85: warning: [JdkObsolete] Date has a bad API that leads to bugs; prefer java.time.Instant or LocalDate.[0K
+                Date date = now == null ? new Date() : now;
+                                          ^
+    (see https://errorprone.info/bugpattern/JdkObsolete)
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [24s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/HostBean.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.[0K
+ * @author Kenny Root[0K
+   ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+[1B[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [24s][m[0K[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/bean/HostBean.java:350: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+         * @return URI identifying this HostBean[0K
+           ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)[0K
+  Did you mean '*Returns uRI identifying this HostBean.'?[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [24s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [25s][m[35D[5B[5A/work/app/src/main/java/org/connectbot/HostEditorFragment.java:735: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                } catch (NumberFormatException ignored) {[0K
+                  ^[0K
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)[0K
+/work/app/src/main/java/org/connectbot/HostEditorFragment.java:940: warning: [EmptyCatch] Caught exceptions should not be ignored[0K
+                                } catch (NumberFormatException e) {
+                                  ^
+    (see https://google.github.io/styleguide/javaguide.html#s6.2-caught-exceptions)
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:32: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+ * @author Kenny Root
+   ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:46: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:47: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @return
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:46: warning: [MissingSummary] A summary line is required on public/protected Javadocs.
+         * @param protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:98: warning: [EmptyBlockTag] A block tag (@param, @return, @throws, @deprecated) has an empty description. Block tags without descriptions don't add much value for future readers of the code; consider removing the tag entirely or adding a description.
+         * @param context
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.1.3-javadoc-block-tags)
+  Did you mean '*'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:97: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param protocol text name of protocol
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns expanded format hint.'?
+/work/app/src/main/java/org/connectbot/transport/TransportFactory.java:116: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+         * @param hostdb Handle to HostDatabase
+           ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns true when host was found.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [25s][m[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5ANote: /work/app/src/main/java/org/connectbot/HostEditorFragment.java uses or overrides a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+16 warnings[0K
+[2B[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 84% EXECUTING [25s][m[0K[35D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m===========[0;39;1m--> 85% EXECUTING [25s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 85% EXECUTING [26s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 85% EXECUTING [27s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 86% EXECUTING [27s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 86% EXECUTING [28s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [28s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 88% EXECUTING [29s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 89% EXECUTING [29s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 89% EXECUTING [30s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [30s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [31s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 90% EXECUTING [32s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [32s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [33s][m[35D[5B[5A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [34s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 92% EXECUTING [34s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 95% EXECUTING [34s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 95% EXECUTING [35s][m[35D[5B[5A[1m<[0;32;1m============[0;39;1m-> 96% EXECUTING [36s][m[35D[5B[5A[0K
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.[0K
+Use '--warning-mode all' to show the individual deprecation warnings.[0K
+See https://docs.gradle.org/6.7.1/userguide/command_line_interface.html#sec:command_line_warnings[0K
+[0K
+[32;1mBUILD SUCCESSFUL[0;39m in 38s
+62 actionable tasks: 29 executed, 33 up-to-date
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h

@@ -280,6 +280,7 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 		mExistingHostId = mHost.getId();
 		if (!mHost.getRememberPassword()) {
 			mSavedPasswordStore.clearPassword(mHost.getId());
+			clearSavedSsmSecrets(mHost.getId());
 		}
 
 		if (mBridge != null) {
@@ -321,6 +322,7 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 			return;
 		}
 		mSavedPasswordStore.clearPassword(hostId);
+		clearSavedSsmSecrets(hostId);
 		Toast.makeText(this, R.string.hostpref_forget_saved_password_done, Toast.LENGTH_SHORT).show();
 		updateForgetSavedPasswordButton();
 	}
@@ -338,9 +340,21 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 		}
 		long hostId = getPersistedHostId();
 		boolean hostAvailable = hostId > 0;
-		boolean hasSavedPassword = hostAvailable && mSavedPasswordStore.hasSavedPassword(hostId);
+		boolean hasSavedPassword = hostAvailable && (mSavedPasswordStore.hasSavedPassword(hostId)
+				|| mSavedPasswordStore.hasScopedSecret(
+						SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY, hostId)
+				|| mSavedPasswordStore.hasScopedSecret(
+						SavedPasswordStore.SCOPE_SSM_SESSION_TOKEN, hostId));
 		mForgetSavedPasswordButton.setVisible(hostAvailable);
 		mForgetSavedPasswordButton.setEnabled(hasSavedPassword);
+	}
+
+	private void clearSavedSsmSecrets(long hostId) {
+		if (hostId <= 0) {
+			return;
+		}
+		mSavedPasswordStore.clearScopedSecret(SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY, hostId);
+		mSavedPasswordStore.clearScopedSecret(SavedPasswordStore.SCOPE_SSM_SESSION_TOKEN, hostId);
 	}
 
 	// Private static class used to generate a list of available Charsets. Note that this class

@@ -82,11 +82,12 @@ Type: EPIC
 ## Sub-tickets (to be created as work proceeds)
 | Phase | Ticket | Title | Status |
 |---|---|---|---|
-| 1 | TKT-0261 | SSM transport feasibility spike (protocol, deps, credential flow) | In Progress |
-| 2 | TKT-0262 | SSM WebSocket transport implementation | Backlog |
-| 3 | TKT-0263 | AWS credential management + optional YubiKey MFA | Backlog |
-| 4 | TKT-0264 | SSM host editor UX + session UI integration | Backlog |
-| 5 | TKT-0265 | SSM backup/export compatibility + schema migration | Backlog |
+| 1 | TKT-0261 | SSM transport feasibility spike (protocol, deps, credential flow) | Done (2026-03-06) |
+| 2 | TKT-0262 | SSM WebSocket transport implementation | Done (2026-03-06) |
+| 3 | TKT-0263 | AWS credential management + optional YubiKey MFA | In Progress (Slice A operator-smoked; Slice B build-verified; broader MFA/jump follow-up scope remains) |
+| 3b | TKT-0266 | SSM assume-role baseline | Review (build-verified 2026-03-07; operator smoke pending) |
+| 4 | TKT-0264 | SSM host editor UX + session UI integration | Done (2026-03-07) |
+| 5 | TKT-0265 | SSM backup/export compatibility + schema migration | Done (2026-03-07) |
 
 ## Notes
 - Links:

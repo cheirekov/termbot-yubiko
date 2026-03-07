@@ -42,6 +42,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.connectbot.bean.HostBean;
+import org.connectbot.transport.SSM;
 import org.connectbot.transport.SSH;
 import org.connectbot.transport.Telnet;
 import org.connectbot.transport.TransportFactory;
@@ -138,7 +139,12 @@ public class HostEditorFragment extends Fragment {
 	private CheckableMenuItem mStayConnectedSwitch;
 	private CheckableMenuItem mCloseOnDisconnectSwitch;
 	private CheckableMenuItem mRememberPasswordSwitch;
+	private View mPostLoginContainer;
+	private TextView mPostLoginTitle;
+	private TextView mPostLoginSummary;
 	private EditText mPostLoginAutomationField;
+	private View mSsmRoleArnContainer;
+	private EditText mSsmRoleArnField;
 	private HostTextFieldWatcher mFontSizeTextChangeListener;
 
 	public static HostEditorFragment newInstance(
@@ -252,13 +258,15 @@ public class HostEditorFragment extends Fragment {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (!mUriFieldEditInProgress) {
-					applyQuickConnectString(s.toString(), mHost.getProtocol());
-
 					mUriFieldEditInProgress = true;
-					mUsernameField.setText(mHost.getUsername());
-					mHostnameField.setText(mHost.getHostname());
-					mPortField.setText(Integer.toString(mHost.getPort()));
-					mUriFieldEditInProgress = false;
+					try {
+						applyQuickConnectString(s.toString(), mHost.getProtocol());
+						mUsernameField.setText(mHost.getUsername());
+						mHostnameField.setText(mHost.getHostname());
+						mPortField.setText(Integer.toString(mHost.getPort()));
+					} finally {
+						mUriFieldEditInProgress = false;
+					}
 				}
 			}
 		});
@@ -605,10 +613,19 @@ public class HostEditorFragment extends Fragment {
 		});
 		setTransportType(mHost.getProtocol(), /* setDefaultPortInModel */ false);
 
+		mPostLoginContainer = view.findViewById(R.id.postlogin_section_container);
+		mPostLoginTitle = view.findViewById(R.id.postlogin_title);
+		mPostLoginSummary = view.findViewById(R.id.postlogin_summary);
 		mPostLoginAutomationField = view.findViewById(R.id.post_login_automation_field);
 		mPostLoginAutomationField.setText(mHost.getPostLogin());
 		mPostLoginAutomationField.addTextChangedListener(
 				new HostTextFieldWatcher(HostDatabase.FIELD_HOST_POSTLOGIN));
+		mSsmRoleArnContainer = view.findViewById(R.id.ssm_role_arn_section_container);
+		mSsmRoleArnField = view.findViewById(R.id.ssm_role_arn_field);
+		mSsmRoleArnField.setText(mHost.getSsmRoleArn());
+		mSsmRoleArnField.addTextChangedListener(
+				new HostTextFieldWatcher(HostDatabase.FIELD_HOST_SSM_ROLE_ARN));
+		updatePostLoginLabels(mHost.getProtocol());
 
 		setUriPartsContainerExpanded(mIsUriEditorExpanded);
 
@@ -630,6 +647,11 @@ public class HostEditorFragment extends Fragment {
 
 		mQuickConnectContainer.setHint(
 				TransportFactory.getFormatHint(protocol, getActivity()));
+		updatePostLoginLabels(protocol);
+
+		((TextInputLayout) mUsernameContainer).setHint(getString(R.string.hostpref_username_title));
+		((TextInputLayout) mHostnameContainer).setHint(getString(R.string.hostpref_hostname_title));
+		((TextInputLayout) mPortContainer).setHint(getString(R.string.hostpref_port_title));
 
 		// Different protocols have different field types, so show only the fields needed.
 		if (SSH.getProtocolName().equals(protocol)) {
@@ -656,17 +678,66 @@ public class HostEditorFragment extends Fragment {
 			if (mRememberPasswordSwitch != null) {
 				mRememberPasswordSwitch.setVisibility(View.GONE);
 			}
+		} else if (SSM.getProtocolName().equals(protocol)) {
+			mUsernameContainer.setVisibility(View.VISIBLE);
+			mHostnameContainer.setVisibility(View.VISIBLE);
+			mPortContainer.setVisibility(View.VISIBLE);
+			mExpandCollapseButton.setVisibility(View.VISIBLE);
+			mNicknameItem.setVisibility(View.VISIBLE);
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.VISIBLE);
+			}
+			if (mJumpHostItem != null) {
+				mJumpHostItem.setVisibility(View.GONE);
+			}
+			if (mRememberPasswordSwitch != null) {
+				mRememberPasswordSwitch.setVisibility(View.VISIBLE);
+			}
+			((TextInputLayout) mUsernameContainer).setHint(getString(R.string.aws_access_key_id_title));
+			((TextInputLayout) mHostnameContainer).setHint(getString(R.string.aws_region_title));
+			((TextInputLayout) mPortContainer).setHint(getString(R.string.aws_https_port_title));
 		} else {
 			// Local protocol has only one field, so no need to show the URI parts
 			// container.
 			setUriPartsContainerExpanded(false);
 			mExpandCollapseButton.setVisibility(View.GONE);
 			mNicknameItem.setVisibility(View.GONE);
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.GONE);
+			}
 			if (mJumpHostItem != null) {
 				mJumpHostItem.setVisibility(View.GONE);
 			}
 			if (mRememberPasswordSwitch != null) {
 				mRememberPasswordSwitch.setVisibility(View.GONE);
+			}
+		}
+	}
+
+	private void updatePostLoginLabels(String protocol) {
+		if (mPostLoginContainer == null || mPostLoginTitle == null
+				|| mPostLoginSummary == null || mPostLoginAutomationField == null) {
+			return;
+		}
+		if (SSM.getProtocolName().equals(protocol)) {
+			mPostLoginContainer.setVisibility(View.VISIBLE);
+			mPostLoginTitle.setText(R.string.ssm_target_title);
+			mPostLoginSummary.setText(R.string.ssm_target_summary);
+			mPostLoginAutomationField.setHint(R.string.ssm_target_hint);
+			mPostLoginAutomationField.setMinLines(1);
+			mPostLoginAutomationField.setMaxLines(1);
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.VISIBLE);
+			}
+		} else {
+			mPostLoginContainer.setVisibility(View.GONE);
+			mPostLoginTitle.setText(R.string.hostpref_postlogin_title);
+			mPostLoginSummary.setText(R.string.hostpref_postlogin_summary);
+			mPostLoginAutomationField.setHint(null);
+			mPostLoginAutomationField.setMinLines(2);
+			mPostLoginAutomationField.setMaxLines(Integer.MAX_VALUE);
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -806,8 +877,12 @@ public class HostEditorFragment extends Fragment {
 			mHost.setProtocol(protocol);
 			mHost.setUsername(null);
 			mHost.setHostname(null);
+			mHost.setPostLogin(null);
 			mHost.setNickname(null);
 			mHost.setPort(TransportFactory.getTransport(protocol).getDefaultPort());
+			if (SSM.getProtocolName().equals(protocol) && mPostLoginAutomationField != null) {
+				mPostLoginAutomationField.setText(null);
+			}
 			return;
 		}
 
@@ -817,6 +892,12 @@ public class HostEditorFragment extends Fragment {
 		mHost.setHostname(host.getHostname());
 		mHost.setNickname(host.getNickname());
 		mHost.setPort(host.getPort());
+		if (SSM.getProtocolName().equals(protocol)) {
+			mHost.setPostLogin(host.getPostLogin());
+			if (mPostLoginAutomationField != null) {
+				mPostLoginAutomationField.setText(host.getPostLogin());
+			}
+		}
 		handleHostChange();
 	}
 
@@ -841,8 +922,22 @@ public class HostEditorFragment extends Fragment {
 			return;
 		}
 
+		if (SSM.getProtocolName().equals(mHost.getProtocol()) && !isSsmHostComplete(mHost)) {
+			// SSM requires access key ID, region, and target before save/connect is valid.
+			mListener.onHostInvalidated();
+			return;
+		}
+
 		// Now, the host is confirmed to have a valid URI.
 		mListener.onValidHostConfigured(mHost);
+	}
+
+	private boolean isSsmHostComplete(HostBean host) {
+		return hasText(host.getUsername()) && hasText(host.getHostname()) && hasText(host.getPostLogin());
+	}
+
+	private boolean hasText(String value) {
+		return value != null && !value.trim().isEmpty();
 	}
 
 	public interface Listener {
@@ -882,6 +977,8 @@ public class HostEditorFragment extends Fragment {
 				mHost.setNickname(text);
 			} else if (HostDatabase.FIELD_HOST_POSTLOGIN.equals(mFieldType)) {
 				mHost.setPostLogin(text);
+			} else if (HostDatabase.FIELD_HOST_SSM_ROLE_ARN.equals(mFieldType)) {
+				mHost.setSsmRoleArn(text);
 			} else if (HostDatabase.FIELD_HOST_FONTSIZE.equals(mFieldType)) {
 				int fontSize = HostBean.DEFAULT_FONT_SIZE;
 				try {
@@ -910,7 +1007,9 @@ public class HostEditorFragment extends Fragment {
 		private boolean isUriRelatedField(String fieldType) {
 			return HostDatabase.FIELD_HOST_USERNAME.equals(fieldType) ||
 					HostDatabase.FIELD_HOST_HOSTNAME.equals(fieldType) ||
-					HostDatabase.FIELD_HOST_PORT.equals(fieldType);
+					HostDatabase.FIELD_HOST_PORT.equals(fieldType) ||
+					(SSM.getProtocolName().equals(mHost.getProtocol())
+							&& HostDatabase.FIELD_HOST_POSTLOGIN.equals(fieldType));
 		}
 	}
 }

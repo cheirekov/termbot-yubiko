@@ -16,22 +16,22 @@
 - [ ] TKT-0258: Accessibility and input-modality regression sweep
 - [ ] TKT-0259: Repo map and state truth reconciliation
 - [ ] TKT-0260: AWS SSM Session Manager support (EPIC)
-- [ ] TKT-0262: SSM WebSocket transport implementation
-- [ ] TKT-0263: AWS credential management + optional YubiKey MFA
-- [ ] TKT-0264: SSM host editor UX + session UI integration
-- [ ] TKT-0265: SSM backup/export compatibility + schema migration
 
 ## Ready
 - [ ] (none)
 
 ## In Progress
-- [ ] TKT-0261: SSM transport feasibility spike (protocol, deps, credential flow)
+- [ ] TKT-0263: AWS credential management + MFA + role/jump readiness (Slice A operator-smoked; Slice B build-verified with session-token prompt path confirmed in debug report; assume-role baseline extracted to TKT-0266)
 
 ## Review
-- [ ] (none)
+- [ ] TKT-0266: SSM assume-role baseline — build-verified 2026-03-07; per-host role ARN storage/editor + STS AssumeRole runtime chaining implemented, operator smoke pending
 
 ## Done
+- [x] TKT-0265: SSM backup/export compatibility + schema migration — DONE 2026-03-07; operator confirmed encrypted backup export/import restores SSM host target and saved secret, with same-key/region multi-target smoke deferred to later validation matrix
 - [x] PACK-INIT: Installed AI operating pack
+- [x] TKT-0264: SSM host editor UX + session UI integration — DONE 2026-03-07; operator confirmed host-add UX fixes (access-key parse, immediate first-connect prompt, stable full quick-connect typing, target placement near key/region, strict SSM-only target visibility)
+- [x] TKT-0262: SSM WebSocket transport implementation — DONE 2026-03-06; operator smoke passed (`connect`, `uname -a`, `whoami=ssm-user`, `exit`), interactive SSM stream bridge is functional in debug build
+- [x] TKT-0261: SSM transport feasibility spike (protocol, deps, credential flow) — DONE 2026-03-06; created TKT-0262..0265, captured phased feasibility + ADR, recorded scope decisions, and verified compile-safe SSM kickoff path
 - [x] TKT-0246: Root README/LICENSE and GitHub Actions bootstrap — DONE 2026-03-05; user confirmed public repo publication state and green GitHub Actions on current code
 - [x] TKT-0247: GitHub Actions Java11 compatibility fix — DONE 2026-03-05; user confirmed GitHub Actions green on current code after JDK17 SDK setup + JDK11 Gradle + dx/aapt2 workflow hardening
 - [x] TKT-0245: First public GitHub commit preparation — DONE 2026-03-05; user confirmed public repo state with current README/LICENSE and publication wording

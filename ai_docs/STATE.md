@@ -1,6 +1,6 @@
 # STATE (Authoritative "Now") — KEEP SMALL
 
-Last updated: 2026-03-06 (SSM epic kickoff + TKT-0261 in progress)
+Last updated: 2026-03-07 (TKT-0266 assume-role baseline implemented and build-verified; operator smoke pending)
 Mode: multi-repo
 Workspace root: /home/yc/work/ai-projects-templates/workspace
 Owners: yc
@@ -17,12 +17,14 @@ Owners: yc
 
 ## Current objectives (LIMIT=10)
 - Keep key auth stable while improving UX in small slices
-- Start AWS SSM epic with phased delivery (TKT-0261..0265), beginning with feasibility spike
+- Continue AWS SSM epic with credential foundations in place (`TKT-0263`), backup compatibility closed (`TKT-0265`), and app-driven assume-role baseline now in operator review (`TKT-0266`)
 - Execute board priorities in order:
-  1) TKT-0261 SSM feasibility spike (current user-priority)
-  2) TKT-0226 UI/UX improvements epic tail items
-  3) Keep release smoke matrix cadence for each RC
-  4) Keep CI green on public repo
+  1) Operator smoke for TKT-0266 with base AWS credentials + role ARN
+  2) Close TKT-0266 if assume-role smoke passes
+  3) Reconcile whether residual MFA/jump planning stays in `TKT-0263` or is split into later follow-up tickets
+  4) TKT-0226 UI/UX improvements epic tail items
+  5) Keep release smoke matrix cadence for each RC
+  6) Keep CI green on public repo
 - Keep Docker-first build/test flow green after each slice
 - Maintain strict docs closeout discipline (board/build/questions/state + closeout_check)
 
@@ -62,27 +64,39 @@ Owners: yc
 - DONE 2026-03-04: TKT-0225 host grouping/folders with backup compatibility (device-confirmed grouping visibility + expandable headers + All/Ungrouped sections)
 - DONE 2026-03-04: TKT-0241 P0 jump-host auth state leak fix (device-confirmed jump-host target publickey flow)
 - DONE 2026-03-04: TKT-0242 P0 USB YubiKey discovery lifecycle/permission resilience (user confirmed USB flow working on device)
-- IN PROGRESS 2026-03-06: TKT-0261 SSM transport feasibility spike (created TKT-0262..0265, drafted feasibility doc + ADR, captured open scope questions, and added compile-safe `SSM` transport skeleton + factory handling)
+- DONE 2026-03-06: TKT-0261 SSM transport feasibility spike (created TKT-0262..0265, drafted feasibility doc + ADR, captured and resolved initial scope decisions)
+- DONE 2026-03-06: TKT-0262 SSM websocket transport (operator smoke confirmed interactive connect, command I/O, and clean exit)
 - NEW EPIC 2026-03-06: TKT-0260 AWS SSM Session Manager support
-- NEXT: TKT-0226 UI/UX improvements epic tail items
-- Backlog (high): TKT-0226 tail items + TKT-0262..0265 SSM implementation sequence
+- DONE 2026-03-07: TKT-0264 SSM host editor UX + session UI integration (operator smoke confirmed host-add UX fixes incl. parse, prompt, quick-connect stability, target placement, strict SSM-only visibility)
+- IN PROGRESS 2026-03-07: TKT-0263 AWS credential management + MFA + role/jump readiness (Slice A operator-smoked; Slice B build-verified with session-token prompt path confirmed in debug report; broader role/jump work is being split into focused follow-ups)
+- DONE 2026-03-07: TKT-0265 SSM backup/export compatibility + schema migration (operator confirmed encrypted backup export/import restores SSM host target and saved secret; same-key/region multi-target smoke deferred to later matrix)
+- IN REVIEW 2026-03-07: TKT-0266 SSM assume-role baseline (optional per-host role ARN, STS AssumeRole runtime chaining, runtime-only assumed creds, build-verified; operator smoke pending)
+- Backlog (high): TKT-0226 tail items + later SSM MFA/jump/profile follow-ups
 
 ## Latest verification (LIMIT=10)
-- Latest build: 2026-03-06 `assembleDebug` BUILD SUCCESSFUL in 26s (isolated Gradle cache, --no-daemon)
+- Latest build: 2026-03-07 `assembleDebug` BUILD SUCCESSFUL in 44s (TKT-0266 assume-role baseline: per-host role ARN persistence + STS AssumeRole runtime chaining + runtime-only assumed creds)
+- Log: `references/logs/android_build_2026-03-07T16-40-42+02-00.log`
+- Prior build: 2026-03-07 `assembleDebug` BUILD SUCCESSFUL in 43s (TKT-0263 Slice B temporary session credentials: `ASIA...` session-token prompt + scoped persistence + marker-only session token source logging)
 - Command: `ANDROID_DOCKER_IMAGE=termbot-android-sdk34-jdk11-agp422:local GRADLE_USER_HOME=…/.gradle_cache_isolated ai_docs/scripts/android_docker_build.sh ./repos/termbot-termbot assembleDebug -- --no-daemon`
-- Log: `references/logs/android_build_2026-03-06T16-03-17+02-00.log`
-- APKs: `app-oss-debug.apk` (12.4 MB), `app-google-debug.apk` (8.8 MB)
+- Prior build log: `references/logs/android_build_2026-03-07T15-48-07+02-00.log`
+- Prior build (TKT-0265): 2026-03-07 `assembleDebug` BUILD SUCCESSFUL in 28s — log `references/logs/android_build_2026-03-07T15-27-09+02-00.log`
+- Manual smoke (operator, 2026-03-06): SSM connect successful; `uname -a` returned output; `whoami` returned `ssm-user`; `exit` cleanly disconnected.
+- Manual smoke (operator, 2026-03-07): SSM host editor fixes confirmed (target movement + strict SSM-only target visibility behavior).
+- Manual smoke (operator, 2026-03-07): TKT-0263 Slice A confirmed for valid credentials, invalid secret surfacing, and remember-password OFF re-prompt behavior.
+- Manual smoke (operator, 2026-03-07): TKT-0265 encrypted backup export/import restored SSM host target and saved secret without re-entry.
+- APKs: `references/builds/termbot-oss-debug-2026-03-07T16-40-42+02-00.apk`, `references/builds/termbot-google-debug-2026-03-07T16-40-42+02-00.apk`
 - Latest closeout gates passed: `TKT-0243`, `TKT-0244`, `TKT-0245`, `TKT-0247` (2026-03-05), plus earlier `TKT-0232`, `TKT-0233`, `TKT-0237`, `TKT-0239`, `TKT-0238`, `TKT-0234`, `TKT-0240`, `TKT-0225`, `TKT-0241`, `TKT-0242`
 
 ## Known risks (LIMIT=15)
 - UI consistency gaps remain between auth and import key flows
 - Legacy layout/style system slows modernization velocity
 - Menu density in Host List increases discoverability/error risk
-- SSM protocol/auth details are external-interface unknowns pending user scope decisions (captured in QUESTIONS.md)
+- SSM stream bridge baseline works; remaining risk is edge-case protocol handling + host-editor UX roughness and later role/jump flows
 
 ## Next actions (LIMIT=6)
-1) Resolve open SSM scope questions (credential mode + initial session type + MFA boundary)
-2) Execute TKT-0262 minimal SSM transport backbone after question resolution
-3) Continue TKT-0226 UI/UX epic tail items in parallel only when SSM slice is blocked
-4) Keep Review WIP policy active (review queue currently empty)
-5) Run sentinel matrix (`SK-01..SK-08`) for each release candidate before sign-off
+1) Run operator smoke for TKT-0266 with base AWS credentials + role ARN
+2) Close TKT-0266 if assume-role smoke passes and no credential leakage/regression is observed
+3) Decide whether residual MFA/jump planning closes `TKT-0263` or becomes new follow-up tickets after the assume-role baseline lands
+4) Continue TKT-0226 UI/UX epic tail items in parallel only when SSM slice is blocked
+5) Keep Review WIP policy active (review queue currently contains `TKT-0266`)
+6) Run sentinel matrix (`SK-01..SK-08`) for each release candidate before sign-off

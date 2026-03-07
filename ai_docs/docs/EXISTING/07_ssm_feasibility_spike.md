@@ -20,6 +20,14 @@ Scope: AWS SSM Session Manager integration feasibility on current TermBot archit
 ## Feasibility outcome
 SSM support is feasible without rewriting terminal internals, but requires a phased path because the current architecture assumes protocol-specific transport + host DB fields and does not yet contain an SSM protocol/client stack.
 
+## Scope decisions (2026-03-06)
+- confirmed by user:
+  - Start with AWS access key ID + secret access key.
+  - IAM Identity Center is out of scope for initial delivery.
+  - Initial release can ship without YubiKey MFA.
+- execution choice for current slice:
+  - Begin with shell-oriented StartSession bootstrap first; role-chain/jump and advanced session variants are follow-up scope.
+
 ## Recommended implementation path
 1) Add a dedicated `SSM` transport that conforms to `AbsTransport` and is created by `TransportFactory`.
 2) Add a minimal `org.connectbot.aws` client layer for:
@@ -92,5 +100,14 @@ SSM support is feasible without rewriting terminal internals, but requires a pha
 ## Kickoff code artifact (started)
 - Added non-UI-exposed SSM transport scaffold:
   - `repos/termbot-termbot/app/src/main/java/org/connectbot/transport/SSM.java`
-  - `repos/termbot-termbot/app/src/main/java/org/connectbot/transport/TransportFactory.java` (`ssm` handling only; transport not yet listed in `transportNames`)
-- Verified compile via Docker `assembleDebug` (log: `references/logs/android_build_2026-03-06T16-03-17+02-00.log`).
+  - `repos/termbot-termbot/app/src/main/java/org/connectbot/aws/*` (`AwsV4Signer`, `SsmApiClient`, credentials/result classes)
+  - `repos/termbot-termbot/app/src/main/java/org/connectbot/transport/TransportFactory.java` (SSM listed and wired)
+  - `repos/termbot-termbot/app/src/main/java/org/connectbot/HostEditorFragment.java` (SSM field mapping using existing model)
+- Current behavior (initial bootstrap milestone):
+  - Prompts/loads AWS secret key, signs and sends StartSession request, surfaces success/error safely.
+  - Operator smoke validated bootstrap milestone on device (StartSession success + intentional pending-stream disconnect notice).
+- Follow-up status:
+  - `TKT-0262` now moved beyond bootstrap to first websocket stream bridge implementation (`SsmStreamClient` + `SSM` transport read/write integration), pending new device smoke for real command I/O.
+- Verified compile via Docker:
+  - `references/logs/android_build_2026-03-06T16-27-55+02-00.log` (bootstrap)
+  - `references/logs/android_build_2026-03-06T17-08-52+02-00.log` (stream bridge build)
