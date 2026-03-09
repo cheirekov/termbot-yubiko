@@ -41,6 +41,7 @@ import org.connectbot.util.ProviderLoader;
 import org.connectbot.util.ProviderLoaderListener;
 import org.connectbot.util.PubkeyDatabase;
 import org.connectbot.util.PubkeyUtils;
+import org.connectbot.util.SecurityKeyDebugLog;
 
 import android.app.Service;
 import android.content.Context;
@@ -68,6 +69,7 @@ import android.util.Log;
  */
 public class TerminalManager extends Service implements BridgeDisconnectedListener, OnSharedPreferenceChangeListener, ProviderLoaderListener {
 	public final static String TAG = "CB.TerminalManager";
+	private static final String FLOW_MARKER = "MANAGER_FLOW";
 
 	private ArrayList<TerminalBridge> bridges = new ArrayList<>();
 	public Map<HostBean, WeakReference<TerminalBridge>> mHostBridgeMap = new HashMap<>();
@@ -119,6 +121,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	@Override
 	public void onCreate() {
 		Log.i(TAG, "Starting service");
+		traceManager("service_create");
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		prefs.registerOnSharedPreferenceChangeListener(this);
@@ -167,6 +170,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	@Override
 	public void onDestroy() {
 		Log.i(TAG, "Destroying service");
+		traceManager("service_destroy");
 
 		disconnectAll(true, false);
 
@@ -185,6 +189,24 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 		ConnectionNotifier.getInstance().hideRunningNotification(this);
 
 		disableMediaPlayer();
+	}
+
+	@Override
+	public void onTaskRemoved(Intent rootIntent) {
+		traceManager("task_removed");
+		super.onTaskRemoved(rootIntent);
+	}
+
+	@Override
+	public void onTrimMemory(int level) {
+		traceManager("trim_memory level=" + level);
+		super.onTrimMemory(level);
+	}
+
+	@Override
+	public void onLowMemory() {
+		traceManager("low_memory");
+		super.onLowMemory();
 	}
 
 	/**
@@ -240,11 +262,13 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 		if (prefs.getBoolean(PreferenceConstants.CONNECTION_PERSIST, true)) {
 			ConnectionNotifier.getInstance().showRunningNotification(this);
 		}
+		refreshRunningNotificationState("open_connection");
 
 		// also update database with new connected time
 		touchHost(host);
 
 		notifyHostStatusChanged();
+		traceManager("open_connection " + summarizeHost(host));
 
 		return bridge;
 	}
@@ -321,7 +345,6 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	 */
 	@Override
 	public void onDisconnected(TerminalBridge bridge) {
-		boolean shouldHideRunningNotification = false;
 		Log.d(TAG, "Bridge Disconnected. Removing it.");
 
 		synchronized (bridges) {
@@ -335,10 +358,6 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 				connectivityManager.decRef();
 			}
 
-			if (bridges.isEmpty() && mPendingReconnect.isEmpty()) {
-				shouldHideRunningNotification = true;
-			}
-
 			// pass notification back up to gui
 			if (disconnectListener != null)
 				disconnectListener.onDisconnected(bridge);
@@ -349,10 +368,9 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 		}
 
 		notifyHostStatusChanged();
-
-		if (shouldHideRunningNotification) {
-			ConnectionNotifier.getInstance().hideRunningNotification(this);
-		}
+		traceManager("bridge_disconnected " + summarizeHost(bridge == null ? null : bridge.host)
+				+ " awaiting_close=" + (bridge != null && bridge.isAwaitingClose()));
+		refreshRunningNotificationState("bridge_disconnected");
 	}
 
 	public boolean isKeyLoaded(String nickname) {
@@ -491,6 +509,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	public IBinder onBind(Intent intent) {
 		Log.i(TAG, "Someone bound to TerminalManager with " + bridges.size() + " bridges active");
 		keepServiceAlive();
+		refreshRunningNotificationState("bind");
 		setResizeAllowed(true);
 		return binder;
 	}
@@ -506,6 +525,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		refreshRunningNotificationState("start_command");
 		/*
 		 * We want this service to continue running until it is explicitly
 		 * stopped, so return sticky.
@@ -518,12 +538,14 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 		super.onRebind(intent);
 		Log.i(TAG, "Someone rebound to TerminalManager with " + bridges.size() + " bridges active");
 		keepServiceAlive();
+		refreshRunningNotificationState("rebind");
 		setResizeAllowed(true);
 	}
 
 	@Override
 	public boolean onUnbind(Intent intent) {
 		Log.i(TAG, "Someone unbound from TerminalManager with " + bridges.size() + " bridges active");
+		refreshRunningNotificationState("unbind");
 
 		setResizeAllowed(true);
 
@@ -639,6 +661,8 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 		} else if (PreferenceConstants.WIFI_LOCK.equals(key)) {
 			final boolean lockingWifi = prefs.getBoolean(PreferenceConstants.WIFI_LOCK, true);
 			connectivityManager.setWantWifiLock(lockingWifi);
+		} else if (PreferenceConstants.CONNECTION_PERSIST.equals(key)) {
+			refreshRunningNotificationState("pref_conn_persist_changed");
 		} else if (PreferenceConstants.MEMKEYS.equals(key)) {
 			updateSavingKeys();
 		}
@@ -667,6 +691,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	 * we'll be getting a different connection any time soon.
 	 */
 	public void onConnectivityLost() {
+		traceManager("connectivity_lost");
 		final Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -681,6 +706,7 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	 * Called when connectivity to the network is restored.
 	 */
 	public void onConnectivityRestored() {
+		traceManager("connectivity_restored");
 		final Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -701,6 +727,8 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	public void requestReconnect(TerminalBridge bridge) {
 		synchronized (mPendingReconnect) {
 			mPendingReconnect.add(new WeakReference<>(bridge));
+			traceManager("request_reconnect " + summarizeHost(bridge == null ? null : bridge.host)
+					+ " using_network=" + (bridge != null && bridge.isUsingNetwork()));
 			if (!bridge.isUsingNetwork() ||
 					connectivityManager.isConnected()) {
 				reconnectPending();
@@ -714,15 +742,65 @@ public class TerminalManager extends Service implements BridgeDisconnectedListen
 	 */
 	private void reconnectPending() {
 		synchronized (mPendingReconnect) {
+			traceManager("reconnect_pending_start");
 			for (WeakReference<TerminalBridge> ref : mPendingReconnect) {
 				TerminalBridge bridge = ref.get();
 				if (bridge == null) {
 					continue;
 				}
+				traceManager("reconnect_pending_item " + summarizeHost(bridge.host));
 				bridge.startConnection();
 			}
 			mPendingReconnect.clear();
 		}
+	}
+
+	private void traceManager(String details) {
+		int bridgeCount;
+		synchronized (bridges) {
+			bridgeCount = bridges.size();
+		}
+		int pendingReconnectCount;
+		synchronized (mPendingReconnect) {
+			pendingReconnectCount = mPendingReconnect.size();
+		}
+		SecurityKeyDebugLog.logFlow(getApplicationContext(), TAG, FLOW_MARKER,
+				details + " bridges=" + bridgeCount + " pending_reconnect=" + pendingReconnectCount);
+	}
+
+	private void refreshRunningNotificationState(String reason) {
+		boolean persist = shouldPersistConnectionsInBackground();
+		boolean activeNetworkBridges = hasActiveNetworkBridges();
+		traceManager("running_notification_state reason=" + reason
+				+ " persist=" + persist
+				+ " active_network=" + activeNetworkBridges);
+		if (persist && activeNetworkBridges) {
+			ConnectionNotifier.getInstance().showRunningNotification(this);
+		} else {
+			ConnectionNotifier.getInstance().hideRunningNotification(this);
+		}
+	}
+
+	private boolean shouldPersistConnectionsInBackground() {
+		return prefs != null && prefs.getBoolean(PreferenceConstants.CONNECTION_PERSIST, true);
+	}
+
+	private boolean hasActiveNetworkBridges() {
+		synchronized (bridges) {
+			for (TerminalBridge bridge : bridges) {
+				if (bridge != null && bridge.isUsingNetwork()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private String summarizeHost(HostBean host) {
+		if (host == null) {
+			return "host_id=-1 protocol=unknown";
+		}
+		return "host_id=" + host.getId() + " protocol=" + host.getProtocol();
 	}
 
 	/**

@@ -106,6 +106,8 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 		ArrayList<String> pubkeyValues = new ArrayList<>();
 		ArrayList<String> jumpHostNames = new ArrayList<>();
 		ArrayList<String> jumpHostValues = new ArrayList<>();
+		ArrayList<String> ssmRouteHostNames = new ArrayList<>();
+		ArrayList<String> ssmRouteHostValues = new ArrayList<>();
 		ArrayList<String> groupNames = new ArrayList<>();
 		ArrayList<String> groupValues = new ArrayList<>();
 
@@ -129,18 +131,22 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 
 		jumpHostNames.add(getString(R.string.hostpref_jump_host_none));
 		jumpHostValues.add("-1");
+		ssmRouteHostNames.add(getString(R.string.hostpref_ssm_route_host_none));
+		ssmRouteHostValues.add("-1");
 		for (HostBean candidateHost : mHostDb.getHosts(false)) {
 			if (candidateHost == null) {
-				continue;
-			}
-			if (!"ssh".equals(candidateHost.getProtocol())) {
 				continue;
 			}
 			if (candidateHost.getId() > 0 && mHost != null && candidateHost.getId() == mHost.getId()) {
 				continue;
 			}
-			jumpHostNames.add(candidateHost.getNickname());
-			jumpHostValues.add(String.valueOf(candidateHost.getId()));
+			if ("ssh".equals(candidateHost.getProtocol())) {
+				jumpHostNames.add(candidateHost.getNickname());
+				jumpHostValues.add(String.valueOf(candidateHost.getId()));
+			} else if ("ssm".equals(candidateHost.getProtocol())) {
+				ssmRouteHostNames.add(candidateHost.getNickname());
+				ssmRouteHostValues.add(String.valueOf(candidateHost.getId()));
+			}
 		}
 
 		groupNames.add(getString(R.string.hostpref_group_none));
@@ -165,6 +171,8 @@ public class EditHostActivity extends AppCompatActivity implements HostEditorFra
 					pubkeyValues,
 					jumpHostNames,
 					jumpHostValues,
+					ssmRouteHostNames,
+					ssmRouteHostValues,
 					groupNames,
 					groupValues);
 			getSupportFragmentManager().beginTransaction()

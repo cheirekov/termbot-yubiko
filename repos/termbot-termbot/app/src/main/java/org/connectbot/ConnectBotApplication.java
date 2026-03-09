@@ -12,6 +12,7 @@
 package org.connectbot;
 
 import android.app.Application;
+import android.util.Log;
 import org.connectbot.util.AppThemeManager;
 import org.connectbot.util.SecurityKeyDebugLog;
 
@@ -23,12 +24,22 @@ import org.connectbot.util.SecurityKeyDebugLog;
  * and no global singleton setup.
  */
 public class ConnectBotApplication extends Application {
+    private static final String TAG = "CB.ConnectBotApp";
 
     @Override
     public void onCreate() {
         super.onCreate();
-        AppThemeManager.applyFromPreferences(this);
-        SecurityKeyDebugLog.initialize(this);
-        SecurityKeyDebugLog.logFlow(this, "ConnectBotApplication", "APP_CREATED");
+        try {
+            AppThemeManager.applyFromPreferences(this);
+        } catch (RuntimeException e) {
+            Log.e(TAG, "Unable to apply app theme during startup", e);
+        }
+
+        try {
+            SecurityKeyDebugLog.initialize(this);
+            SecurityKeyDebugLog.logFlow(this, "ConnectBotApplication", "APP_CREATED");
+        } catch (RuntimeException e) {
+            Log.e(TAG, "Unable to initialize debug log during startup", e);
+        }
     }
 }

@@ -24,12 +24,23 @@ import org.connectbot.util.SavedPasswordStore;
 public final class SsmCredentialResolver {
 	public static final String CREDENTIAL_MODE_LONG_LIVED_KEY = "long_lived_key";
 	public static final String CREDENTIAL_MODE_SESSION_TOKEN = "session_token";
+	public static final String CREDENTIAL_ENHANCEMENT_NONE = "none";
+	public static final String CREDENTIAL_ENHANCEMENT_GET_SESSION_TOKEN = "get_session_token";
+	public static final String CREDENTIAL_ENHANCEMENT_ASSUME_ROLE = "assume_role";
 
 	public static final class MissingSessionTokenException extends IOException {
 		private static final long serialVersionUID = 1L;
 
 		public MissingSessionTokenException() {
 			super("session_token_required");
+		}
+	}
+
+	public static final class MissingMfaCodeException extends IOException {
+		private static final long serialVersionUID = 1L;
+
+		public MissingMfaCodeException() {
+			super("mfa_code_required");
 		}
 	}
 
@@ -45,10 +56,13 @@ public final class SsmCredentialResolver {
 	}
 
 	public interface SessionCredentialEnhancer {
-		boolean requiresMfaCode();
+		@NonNull
+		String getEnhancementMode(@NonNull AwsCredentials baseCredentials);
 
 		@Nullable
-		String getMfaPromptHint();
+		String getMfaPromptHint(@NonNull AwsCredentials baseCredentials);
+
+		boolean requiresMfaCode(@NonNull AwsCredentials baseCredentials);
 
 		@Nullable
 		AwsCredentials enhance(@NonNull AwsCredentials baseCredentials,
@@ -61,6 +75,7 @@ public final class SsmCredentialResolver {
 		private final String credentialMode;
 		private final String secretSource;
 		private final String sessionTokenSource;
+		private final String enhancementMode;
 		private final boolean mfaPrompted;
 		private final boolean credentialEnhanced;
 
@@ -69,6 +84,7 @@ public final class SsmCredentialResolver {
 				@NonNull String credentialMode,
 				@NonNull String secretSource,
 				@NonNull String sessionTokenSource,
+				@NonNull String enhancementMode,
 				boolean mfaPrompted,
 				boolean credentialEnhanced) {
 			this.runtimeCredentials = runtimeCredentials;
@@ -76,6 +92,7 @@ public final class SsmCredentialResolver {
 			this.credentialMode = credentialMode;
 			this.secretSource = secretSource;
 			this.sessionTokenSource = sessionTokenSource;
+			this.enhancementMode = enhancementMode;
 			this.mfaPrompted = mfaPrompted;
 			this.credentialEnhanced = credentialEnhanced;
 		}
@@ -103,6 +120,11 @@ public final class SsmCredentialResolver {
 		@NonNull
 		public String getSessionTokenSource() {
 			return sessionTokenSource;
+		}
+
+		@NonNull
+		public String getEnhancementMode() {
+			return enhancementMode;
 		}
 
 		public boolean isMfaPrompted() {
@@ -181,16 +203,28 @@ public final class SsmCredentialResolver {
 		AwsCredentials persistedCredentials = new AwsCredentials(accessKeyId, secretAccessKey,
 				sessionToken);
 		AwsCredentials runtimeCredentials = persistedCredentials;
+		String enhancementMode = CREDENTIAL_ENHANCEMENT_NONE;
 		boolean mfaPrompted = false;
 		boolean credentialEnhanced = false;
 		SessionCredentialEnhancer enhancer = sessionCredentialEnhancer;
 		if (enhancer != null) {
-			String mfaCode = null;
-			if (enhancer.requiresMfaCode()) {
-				mfaPrompted = true;
-				mfaCode = safeTrim(promptDelegate.requestMfaCode(enhancer.getMfaPromptHint()));
+			enhancementMode = safeTrim(enhancer.getEnhancementMode(persistedCredentials));
+			if (enhancementMode == null) {
+				enhancementMode = CREDENTIAL_ENHANCEMENT_NONE;
 			}
-			AwsCredentials enhanced = enhancer.enhance(persistedCredentials, mfaCode);
+			String mfaCode = null;
+			if (!CREDENTIAL_ENHANCEMENT_NONE.equals(enhancementMode)
+					&& enhancer.requiresMfaCode(persistedCredentials)) {
+				mfaPrompted = true;
+				mfaCode = safeTrim(promptDelegate.requestMfaCode(
+						enhancer.getMfaPromptHint(persistedCredentials)));
+				if (mfaCode == null) {
+					throw new MissingMfaCodeException();
+				}
+			}
+			AwsCredentials enhanced = CREDENTIAL_ENHANCEMENT_NONE.equals(enhancementMode)
+					? null
+					: enhancer.enhance(persistedCredentials, mfaCode);
 			if (enhanced != null) {
 				runtimeCredentials = enhanced;
 				credentialEnhanced = true;
@@ -202,7 +236,7 @@ public final class SsmCredentialResolver {
 				: CREDENTIAL_MODE_LONG_LIVED_KEY;
 
 		return new Resolution(runtimeCredentials, persistedCredentials, credentialMode, secretSource,
-				sessionTokenSource, mfaPrompted, credentialEnhanced);
+				sessionTokenSource, enhancementMode, mfaPrompted, credentialEnhanced);
 	}
 
 	public void persistIfEnabled(@NonNull HostBean host, @NonNull AwsCredentials credentials) {

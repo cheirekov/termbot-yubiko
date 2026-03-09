@@ -32,6 +32,7 @@ import org.connectbot.bean.SelectionArea;
 import org.connectbot.transport.AbsTransport;
 import org.connectbot.transport.TransportFactory;
 import org.connectbot.util.HostDatabase;
+import org.connectbot.util.SecurityKeyDebugLog;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -63,6 +64,7 @@ import de.mud.terminal.vt320;
 @SuppressWarnings("deprecation") // for ClipboardManager
 public class TerminalBridge implements VDUDisplay {
 	public final static String TAG = "CB.TerminalBridge";
+	private static final String FLOW_MARKER = "BRIDGE_FLOW";
 
 	private final static int DEFAULT_FONT_SIZE_DP = 10;
 	private final static int FONT_SIZE_STEP = 2;
@@ -263,9 +265,11 @@ public class TerminalBridge implements VDUDisplay {
 	 * Spawn thread to open connection and start login process.
 	 */
 	protected void startConnection() {
+		traceBridge("start_connection", null);
 		transport = TransportFactory.getTransport(host.getProtocol());
 		if (transport == null) {
 			Log.i(TAG, "No transport found for " + host.getProtocol());
+			traceBridge("start_connection_failed", "reason=no_transport");
 			return;
 		}
 
@@ -398,6 +402,7 @@ public class TerminalBridge implements VDUDisplay {
 	 */
 	public void onConnected() {
 		disconnected = false;
+		traceBridge("connected", null);
 
 		((vt320) buffer).reset();
 
@@ -453,6 +458,7 @@ public class TerminalBridge implements VDUDisplay {
 
 			disconnected = true;
 		}
+		traceBridge("dispatch_disconnect", "immediate=" + immediate);
 
 		// Cancel any pending prompts.
 		promptHelper.cancelPrompt();
@@ -503,6 +509,7 @@ public class TerminalBridge implements VDUDisplay {
 	 */
 	private void triggerDisconnectListener() {
 		if (disconnectListener != null) {
+			traceBridge("disconnect_listener", "posted=true");
 			// The disconnect listener should be run on the main thread if possible.
 			new Handler(Looper.getMainLooper()).post(new Runnable() {
 				@Override
@@ -511,6 +518,30 @@ public class TerminalBridge implements VDUDisplay {
 				}
 			});
 		}
+	}
+
+	private void traceBridge(String stage, String extraDetails) {
+		if (manager == null) {
+			return;
+		}
+		StringBuilder details = new StringBuilder();
+		details.append("stage=").append(stage);
+		if (host != null) {
+			details.append(" host_id=").append(host.getId());
+			details.append(" protocol=").append(host.getProtocol());
+			details.append(" stay_connected=").append(host.getStayConnected());
+			details.append(" quick_disconnect=").append(host.getQuickDisconnect());
+		}
+		details.append(" disconnected=").append(disconnected);
+		details.append(" awaiting_close=").append(awaitingClose);
+		details.append(" session_open=").append(isSessionOpen());
+		if (transport != null) {
+			details.append(" transport_connected=").append(transport.isConnected());
+		}
+		if (extraDetails != null && extraDetails.length() > 0) {
+			details.append(" ").append(extraDetails);
+		}
+		SecurityKeyDebugLog.logFlow(manager.getApplicationContext(), TAG, FLOW_MARKER, details.toString());
 	}
 
 	public synchronized void tryKeyVibrate() {

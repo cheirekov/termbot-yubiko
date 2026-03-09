@@ -142,9 +142,13 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 	private static final String MARKER_SESSION_OPEN_DEFERRED = "SSH_SESSION_OPEN_DEFERRED";
 	private static final String MARKER_SESSION_OPEN_SUCCESS = "SSH_SESSION_OPEN_SUCCESS";
 	private static final String MARKER_SESSION_OPEN_FAILED = "SSH_SESSION_OPEN_FAILED";
+	private static final String MARKER_SESSION_CLOSE = "SSH_SESSION_CLOSE";
+	private static final String MARKER_DISCONNECT_DISPATCH = "SSH_DISCONNECT_DISPATCH";
 	private static final String MARKER_PASSWORD_SOURCE = "PASSWORD_SOURCE";
 	private static final String MARKER_JUMP_HOST_USED = "JUMP_HOST_USED";
 	private static final String MARKER_JUMP_STAGE = "JUMP_STAGE";
+	private static final String MARKER_SSM_ROUTE_USED = "SSM_ROUTE_USED";
+	private static final String MARKER_SSM_ROUTE_STAGE = "SSM_ROUTE_STAGE";
 	private static final String MARKER_AUTH_CONTEXT = "SSH_AUTH_CONTEXT";
 	private static final int SSH_MSG_USERAUTH_PK_OK = 60;
 	private static final int DEFAULT_PORT = 22;
@@ -170,6 +174,8 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 	private Connection jumpConnection;
 	private Session session;
 	private LocalPortForwarder jumpLocalPortForwarder;
+	private SSM ssmRouteTransport;
+	private SSM.RouteTunnel ssmRouteTunnel;
 	private String hostVerifierOverride;
 	private int portVerifierOverride = -1;
 
@@ -1096,6 +1102,11 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 		return portVerifierOverride > 0 ? portVerifierOverride : fallbackPort;
 	}
 
+	private void setHostVerifierOverride(String verificationHost, int verificationPort) {
+		hostVerifierOverride = verificationHost;
+		portVerifierOverride = verificationPort;
+	}
+
 	private void clearHostVerifierOverride() {
 		hostVerifierOverride = null;
 		portVerifierOverride = -1;
@@ -1332,6 +1343,7 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 	@Override
 	public void connect() {
 		clearHostVerifierOverride();
+		closeSsmRouteResources();
 		pubkeysExhausted = false;
 		interactiveCanContinue = true;
 		if (!setupConnectionWithOptionalJumpHost()) {
@@ -1373,20 +1385,39 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 	private boolean setupConnectionWithOptionalJumpHost() {
 		HostBean targetHost = host;
 		HostBean configuredJumpHost = resolveJumpHost(targetHost);
+		HostBean configuredSsmRouteHost = resolveSsmRouteHost(targetHost);
+		boolean hasConfiguredSsmRoute = targetHost != null && targetHost.getSsmRouteHostId() > 0;
+		if (hasConfiguredSsmRoute && configuredSsmRouteHost == null) {
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_host_missing_or_invalid");
+			bridge.outputLine(manager.res.getString(R.string.ssh_ssm_route_missing));
+			return false;
+		}
+
+		HostBean routedEndpoint = configuredJumpHost != null ? configuredJumpHost : targetHost;
+		if (configuredSsmRouteHost != null && !openSsmRouteTunnel(configuredSsmRouteHost, routedEndpoint)) {
+			return false;
+		}
 
 		if (configuredJumpHost != null) {
-			if (!connectJumpHost(configuredJumpHost, targetHost)) {
+			if (!connectJumpHost(configuredJumpHost, configuredSsmRouteHost != null)) {
 				return false;
 			}
 			try {
 				connection = new Connection("127.0.0.1", reserveAndCreateJumpForward(targetHost));
-				hostVerifierOverride = targetHost.getHostname();
-				portVerifierOverride = targetHost.getPort();
+				setHostVerifierOverride(targetHost.getHostname(), targetHost.getPort());
 			} catch (Exception e) {
 				Log.e(TAG, "Unable to create target connection via jump host", e);
 				traceFlow(MARKER_JUMP_STAGE, "target_connection_failed=" + describeThrowable(e));
 				return false;
 			}
+		} else if (configuredSsmRouteHost != null) {
+			if (ssmRouteTunnel == null) {
+				traceFlow(MARKER_SSM_ROUTE_STAGE, "route_tunnel_unavailable");
+				bridge.outputLine(manager.res.getString(R.string.ssh_ssm_route_missing));
+				return false;
+			}
+			connection = new Connection("127.0.0.1", ssmRouteTunnel.getLocalPort());
+			setHostVerifierOverride(targetHost.getHostname(), targetHost.getPort());
 		} else {
 			connection = new Connection(targetHost.getHostname(), targetHost.getPort());
 			clearHostVerifierOverride();
@@ -1461,16 +1492,87 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 		return jumpHost;
 	}
 
-	private boolean connectJumpHost(HostBean jumpHost, HostBean targetHost) {
+	@Nullable
+	private HostBean resolveSsmRouteHost(HostBean targetHost) {
+		if (targetHost == null || targetHost.getSsmRouteHostId() <= 0 || manager == null) {
+			return null;
+		}
+
+		HostBean routeHost = manager.hostdb.findHostById(targetHost.getSsmRouteHostId());
+		if (routeHost == null) {
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_host_missing");
+			return null;
+		}
+		if (!SSM.getProtocolName().equals(routeHost.getProtocol())) {
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_host_invalid_protocol=" + routeHost.getProtocol());
+			return null;
+		}
+		if (targetHost.getId() > 0 && routeHost.getId() == targetHost.getId()) {
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_host_self_reference");
+			return null;
+		}
+		return routeHost;
+	}
+
+	private boolean openSsmRouteTunnel(HostBean routeHost, HostBean routedEndpoint) {
+		if (routeHost == null || routedEndpoint == null || manager == null || bridge == null) {
+			return false;
+		}
+		if (routedEndpoint.getHostname() == null || routedEndpoint.getPort() <= 0) {
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_target_invalid");
+			bridge.outputLine(manager.res.getString(R.string.ssh_ssm_route_missing));
+			return false;
+		}
+
+		closeSsmRouteResources();
+		try {
+			traceFlow(MARKER_SSM_ROUTE_USED, routeHost.getNickname());
+			traceFlow(MARKER_SSM_ROUTE_STAGE,
+					routedEndpoint == host ? "route_to_target_start" : "route_to_jump_host_start");
+			bridge.outputLine(manager.res.getString(
+					R.string.ssh_ssm_route_connecting,
+					describeHostForRouting(routeHost)));
+
+			SSM routeTransport = new SSM();
+			routeTransport.setHost(routeHost);
+			routeTransport.setBridge(bridge);
+			routeTransport.setManager(manager);
+			ssmRouteTransport = routeTransport;
+			ssmRouteTunnel = routeTransport.openRouteTunnel(
+					routedEndpoint.getHostname(),
+					routedEndpoint.getPort());
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_tunnel_ready");
+			return true;
+		} catch (IOException e) {
+			Log.e(TAG, "Unable to open SSM route tunnel", e);
+			traceFlow(MARKER_SSM_ROUTE_STAGE, "route_tunnel_failed=" + describeThrowable(e));
+			bridge.outputLine(manager.res.getString(
+					R.string.ssh_ssm_route_failed,
+					describeThrowable(e)));
+			closeSsmRouteResources();
+			return false;
+		}
+	}
+
+	private boolean connectJumpHost(HostBean jumpHost, boolean viaSsmRoute) {
 		try {
 			traceFlow(MARKER_JUMP_HOST_USED, jumpHost.getNickname());
 			traceFlow(MARKER_JUMP_STAGE, "jump_connect_start");
-			jumpConnection = new Connection(jumpHost.getHostname(), jumpHost.getPort());
+			if (viaSsmRoute) {
+				if (ssmRouteTunnel == null) {
+					traceFlow(MARKER_SSM_ROUTE_STAGE, "route_tunnel_missing_for_jump_host");
+					return false;
+				}
+				setHostVerifierOverride(jumpHost.getHostname(), jumpHost.getPort());
+				jumpConnection = new Connection("127.0.0.1", ssmRouteTunnel.getLocalPort());
+			} else {
+				clearHostVerifierOverride();
+				jumpConnection = new Connection(jumpHost.getHostname(), jumpHost.getPort());
+			}
 			try {
 				jumpConnection.setCompression(jumpHost.getCompression());
 			} catch (IOException ignored) {
 			}
-			clearHostVerifierOverride();
 			jumpConnection.connect(new HostKeyVerifier());
 			traceFlow(MARKER_JUMP_STAGE, "jump_connect_success");
 
@@ -1487,6 +1589,8 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 			traceDisconnectDetails("jump_connect", e);
 			traceAuthEnd("JUMP_CONNECT_FAILED", describeThrowable(e));
 			return false;
+		} finally {
+			clearHostVerifierOverride();
 		}
 	}
 
@@ -1547,8 +1651,38 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 		return localPort;
 	}
 
+	private void closeSsmRouteResources() {
+		if (ssmRouteTunnel != null) {
+			ssmRouteTunnel.close();
+			ssmRouteTunnel = null;
+		}
+		if (ssmRouteTransport != null) {
+			ssmRouteTransport.close();
+			ssmRouteTransport = null;
+		}
+	}
+
+	private String describeHostForRouting(HostBean routeHost) {
+		if (routeHost == null) {
+			return "SSM host";
+		}
+		if (routeHost.getNickname() != null && routeHost.getNickname().length() > 0) {
+			return routeHost.getNickname();
+		}
+		if (routeHost.getHostname() != null && routeHost.getHostname().length() > 0) {
+			return routeHost.getHostname();
+		}
+		return "SSM host";
+	}
+
 	@Override
 	public void close() {
+		traceFlow(MARKER_SESSION_CLOSE,
+				"session_open=" + isSessionOpen()
+						+ " connected=" + connected
+						+ " authenticated=" + authenticated
+						+ " has_jump=" + (jumpConnection != null)
+						+ " has_ssm_route=" + (ssmRouteTransport != null));
 		connected = false;
 		clearHostVerifierOverride();
 
@@ -1571,9 +1705,12 @@ public class SSH extends AbsTransport implements ConnectionMonitor, InteractiveC
 			jumpConnection.close();
 			jumpConnection = null;
 		}
+
+		closeSsmRouteResources();
 	}
 
 	private void onDisconnect() {
+		traceFlow(MARKER_DISCONNECT_DISPATCH, "session_open=" + isSessionOpen());
 		bridge.dispatchDisconnect(false);
 	}
 

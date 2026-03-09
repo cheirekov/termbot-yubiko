@@ -1,0 +1,2 @@
+origin	https://github.com/cheirekov/termbot-yubiko.git (fetch)
+origin	https://github.com/cheirekov/termbot-yubiko.git (push)

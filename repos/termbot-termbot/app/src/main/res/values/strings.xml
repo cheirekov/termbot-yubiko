@@ -159,6 +159,8 @@
 	<string name="prompt_password">"Password:"</string>
 	<string name="prompt_aws_secret_access_key">"AWS secret access key:"</string>
 	<string name="prompt_aws_session_token">"AWS session token (temporary credentials):"</string>
+	<string name="prompt_aws_mfa_code">AWS MFA code for %1$s:</string>
+	<string name="prompt_aws_mfa_code_generic">AWS MFA code:</string>
 	<!-- Added after a "Password:" prompt to indicate user needs to confirm entry. -->
 	<string name="prompt_again">"(again)"</string>
 	<!-- Label for the user to select port forward type. -->
@@ -360,6 +362,8 @@
 	<!-- Jump host settings for SSH ProxyJump-style connection -->
 	<string name="hostpref_jump_host_title">"Jump via host"</string>
 	<string name="hostpref_jump_host_none">"None (direct connection)"</string>
+	<string name="hostpref_ssm_route_host_title">"Route via SSM host"</string>
+	<string name="hostpref_ssm_route_host_none">"None (direct TCP connection)"</string>
 	<string name="hostpref_group_title">"Group"</string>
 	<string name="hostpref_group_none">"Ungrouped"</string>
 
@@ -788,13 +792,23 @@
 	<string name="ssm_credential_resolution_failed">SSM credential setup failed: %1$s</string>
 	<string name="ssm_secret_key_required">AWS secret access key is required.</string>
 	<string name="ssm_session_token_required">AWS session token is required for temporary credentials.</string>
+	<string name="ssm_mfa_code_required">AWS MFA code is required for this SSM credential flow.</string>
 	<string name="ssm_connecting">Starting SSM session for %1$s in %2$s...</string>
 	<string name="ssm_start_session_ok_stub">SSM StartSession succeeded (%1$s). Opening interactive stream...</string>
 	<string name="ssm_start_session_failed">SSM StartSession failed: %1$s</string>
 	<string name="ssm_stream_not_implemented">Interactive SSM stream transport is not implemented yet in this build.</string>
+	<string name="ssm_port_forward_local_only">SSM supports local port forwards only in this build.</string>
+	<string name="ssm_port_forward_failed">SSM tunnel failed: %1$s</string>
+	<string name="ssh_ssm_route_connecting">Opening SSM tunnel via %1$s</string>
+	<string name="ssh_ssm_route_missing">Configured SSM route host is missing or invalid.</string>
+	<string name="ssh_ssm_route_failed">Unable to open SSM route tunnel: %1$s</string>
+	<string name="ssm_port_forward_destination_hint">localhost:5432</string>
 	<string name="ssm_role_arn_title">Assume role ARN</string>
 	<string name="ssm_role_arn_summary">Optional STS role ARN to assume before starting the SSM session.</string>
 	<string name="ssm_role_arn_hint">arn:aws:iam::123456789012:role/ExampleRole</string>
+	<string name="ssm_mfa_serial_title">MFA device serial or ARN</string>
+	<string name="ssm_mfa_serial_summary">Optional AWS MFA device serial/ARN. When set, direct SSM uses STS GetSessionToken and role-based SSM uses AssumeRole with MFA.</string>
+	<string name="ssm_mfa_serial_hint">arn:aws:iam::123456789012:mfa/example.user</string>
 	<!-- Text for button which, when clicked, brings up dialog to setup a security key. -->
 	<string name="pubkey_setup_security_key">Setup key with</string>
 	<!-- Text for dialog which explains that the host URI is invalid and asks to discard. -->

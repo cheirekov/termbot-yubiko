@@ -28,6 +28,7 @@ import org.connectbot.service.TerminalBridge;
 import org.connectbot.service.TerminalKeyListener;
 import org.connectbot.service.TerminalManager;
 import org.connectbot.util.PreferenceConstants;
+import org.connectbot.util.SecurityKeyDebugLog;
 import org.connectbot.util.TerminalViewPager;
 
 import android.annotation.SuppressLint;
@@ -93,6 +94,7 @@ import de.mud.terminal.vt320;
 
 public class ConsoleActivity extends AppCompatActivity implements BridgeDisconnectedListener {
 	public final static String TAG = "CB.ConsoleActivity";
+	private static final String FLOW_MARKER = "CONSOLE_FLOW";
 
 	protected static final int REQUEST_EDIT = 1;
 
@@ -154,6 +156,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 		@Override
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			bound = ((TerminalManager.TerminalBinder) service).getService();
+			traceConsole("service_connected", null);
 
 			// let manager know about our event handling services
 			bound.disconnectListener = ConsoleActivity.this;
@@ -192,6 +195,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 
 		@Override
 		public void onServiceDisconnected(ComponentName className) {
+			traceConsole("service_disconnected", null);
 			bound = null;
 			adapter.notifyDataSetChanged();
 			updateEmptyVisible();
@@ -208,6 +212,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 
 	@Override
 	public void onDisconnected(TerminalBridge bridge) {
+		traceConsole("bridge_disconnected", bridge);
 		synchronized (adapter) {
 			adapter.notifyDataSetChanged();
 			Log.d(TAG, "Someone sending HANDLE_DISCONNECT to parentHandler");
@@ -1026,6 +1031,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 	@Override
 	public void onStart() {
 		super.onStart();
+		traceConsole("activity_start", null);
 
 		// connect with manager service to find all bridges
 		// when connected it will insert all views
@@ -1036,6 +1042,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 	public void onPause() {
 		super.onPause();
 		Log.d(TAG, "onPause called");
+		traceConsole("activity_pause", null);
 
 		if (forcedOrientation && bound != null) {
 			bound.setResizeAllowed(false);
@@ -1046,6 +1053,7 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 	public void onResume() {
 		super.onResume();
 		Log.d(TAG, "onResume called");
+		traceConsole("activity_resume", null);
 
 		// Make sure we don't let the screen fall asleep.
 		// This also keeps the Wi-Fi chipset from disconnecting us.
@@ -1116,8 +1124,34 @@ public class ConsoleActivity extends AppCompatActivity implements BridgeDisconne
 	@Override
 	public void onStop() {
 		super.onStop();
+		traceConsole("activity_stop", null);
 
 		unbindService(connection);
+	}
+
+	private void traceConsole(String stage, @Nullable TerminalBridge bridge) {
+		StringBuilder details = new StringBuilder();
+		details.append("stage=").append(stage);
+		details.append(" bound=").append(bound != null);
+		details.append(" pager_children=").append(pager != null ? pager.getChildCount() : -1);
+		TerminalBridge activeBridge = bridge != null ? bridge : getCurrentBridgeForTrace();
+		if (activeBridge != null && activeBridge.host != null) {
+			details.append(" host_id=").append(activeBridge.host.getId());
+			details.append(" protocol=").append(activeBridge.host.getProtocol());
+			details.append(" disconnected=").append(activeBridge.isDisconnected());
+			details.append(" session_open=").append(activeBridge.isSessionOpen());
+			details.append(" awaiting_close=").append(activeBridge.isAwaitingClose());
+		}
+		SecurityKeyDebugLog.logFlow(getApplicationContext(), TAG, FLOW_MARKER, details.toString());
+	}
+
+	@Nullable
+	private TerminalBridge getCurrentBridgeForTrace() {
+		if (adapter == null) {
+			return null;
+		}
+		TerminalView view = adapter.getCurrentTerminalView();
+		return view == null ? null : view.bridge;
 	}
 
 	@Override

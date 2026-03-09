@@ -84,8 +84,11 @@ Type: EPIC
 |---|---|---|---|
 | 1 | TKT-0261 | SSM transport feasibility spike (protocol, deps, credential flow) | Done (2026-03-06) |
 | 2 | TKT-0262 | SSM WebSocket transport implementation | Done (2026-03-06) |
-| 3 | TKT-0263 | AWS credential management + optional YubiKey MFA | In Progress (Slice A operator-smoked; Slice B build-verified; broader MFA/jump follow-up scope remains) |
-| 3b | TKT-0266 | SSM assume-role baseline | Review (build-verified 2026-03-07; operator smoke pending) |
+| 3 | TKT-0263 | AWS credential management + optional YubiKey MFA | Done (2026-03-09; operator confirmed direct SSM MFA, assume-role MFA, and invalid-MFA-code surfacing; shipped scope uses STS `GetSessionToken` / MFA-capable `AssumeRole`) |
+| 3b | TKT-0266 | SSM assume-role baseline | Done (2026-03-07) |
+| 3c | TKT-0267 | SSM port-forwarding + remote-host tunnel baseline | Done (2026-03-08; operator confirmed managed-node SSH tunnel and remote-host/private-DB forwarding on the 15:47 build) |
+| 4b | TKT-0268 | SSH over SSM bastion/tunnel integration | Done (2026-03-08; operator confirmed direct SSH via selected SSM route host plus direct SSH, direct SSM shell, and SSH jump-host regression coverage) |
+| 4c | TKT-0269 | Background/power-management session resilience | Done (2026-03-09; operator confirmed background/foreground survival on the 12:30 build, and the final report shows notifier promotion on background `unbind`/rebind with no cold restart) |
 | 4 | TKT-0264 | SSM host editor UX + session UI integration | Done (2026-03-07) |
 | 5 | TKT-0265 | SSM backup/export compatibility + schema migration | Done (2026-03-07) |
 

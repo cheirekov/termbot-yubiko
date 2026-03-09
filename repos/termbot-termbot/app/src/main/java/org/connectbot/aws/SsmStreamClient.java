@@ -63,6 +63,7 @@ public final class SsmStreamClient {
 	private static final int PAYLOAD_HANDSHAKE_REQUEST = 5;
 	private static final int PAYLOAD_HANDSHAKE_RESPONSE = 6;
 	private static final int PAYLOAD_HANDSHAKE_COMPLETE = 7;
+	private static final int PAYLOAD_FLAG = 10;
 	private static final int PAYLOAD_STDERR = 11;
 	private static final int PAYLOAD_EXIT_CODE = 12;
 
@@ -76,6 +77,10 @@ public final class SsmStreamClient {
 
 	public interface Callback {
 		void onStdout(@NonNull byte[] payload);
+
+		void onStderr(@NonNull byte[] payload);
+
+		void onFlag(@NonNull byte[] payload);
 
 		void onInfo(@NonNull String message);
 
@@ -93,10 +98,14 @@ public final class SsmStreamClient {
 	private final AtomicLong streamDataSequenceNumber = new AtomicLong(0);
 	private final AtomicBoolean open = new AtomicBoolean(false);
 	private final AtomicReference<IOException> startupFailure = new AtomicReference<>();
+	private final CountDownLatch handshakeCompleteLatch = new CountDownLatch(1);
 	private final Object sendLock = new Object();
 
 	private volatile WebSocket webSocket;
 	private volatile boolean closedByClient;
+	private volatile String agentVersion;
+	private volatile String sessionType;
+	private volatile String sessionPropertiesType;
 
 	public SsmStreamClient(
 			@NonNull String streamUrl,
@@ -166,6 +175,15 @@ public final class SsmStreamClient {
 	}
 
 	public void sendInput(@NonNull byte[] payload) throws IOException {
+		sendInputInternal(payload, true);
+	}
+
+	public void sendPortInput(@NonNull byte[] payload) throws IOException {
+		sendInputInternal(payload, false);
+	}
+
+	private void sendInputInternal(@NonNull byte[] payload, boolean normalizeTerminalNewlines)
+			throws IOException {
 		if (payload.length == 0) {
 			return;
 		}
@@ -173,7 +191,7 @@ public final class SsmStreamClient {
 		for (int offset = 0; offset < payload.length; offset += INPUT_CHUNK_SIZE) {
 			int chunkSize = Math.min(INPUT_CHUNK_SIZE, payload.length - offset);
 			byte[] chunk = Arrays.copyOfRange(payload, offset, offset + chunkSize);
-			if (chunk.length == 1 && chunk[0] == 10) {
+			if (normalizeTerminalNewlines && chunk.length == 1 && chunk[0] == 10) {
 				chunk = new byte[] { 13 };
 			}
 			sendInputPayload(PAYLOAD_OUTPUT, chunk);
@@ -193,6 +211,26 @@ public final class SsmStreamClient {
 
 	public boolean isOpen() {
 		return open.get();
+	}
+
+	public boolean awaitHandshakeComplete(long timeout, @NonNull TimeUnit unit)
+			throws InterruptedException {
+		return handshakeCompleteLatch.await(timeout, unit);
+	}
+
+	@Nullable
+	public String getAgentVersion() {
+		return agentVersion;
+	}
+
+	@Nullable
+	public String getSessionType() {
+		return sessionType;
+	}
+
+	@Nullable
+	public String getSessionPropertiesType() {
+		return sessionPropertiesType;
 	}
 
 	public void close() {
@@ -236,9 +274,18 @@ public final class SsmStreamClient {
 				handleHandshakeComplete(incoming.payload);
 				return;
 			case PAYLOAD_OUTPUT:
-			case PAYLOAD_STDERR:
 				if (incoming.payload.length > 0) {
 					callback.onStdout(incoming.payload);
+				}
+				return;
+			case PAYLOAD_STDERR:
+				if (incoming.payload.length > 0) {
+					callback.onStderr(incoming.payload);
+				}
+				return;
+			case PAYLOAD_FLAG:
+				if (incoming.payload.length > 0) {
+					callback.onFlag(incoming.payload);
 				}
 				return;
 			case PAYLOAD_EXIT_CODE:
@@ -272,19 +319,21 @@ public final class SsmStreamClient {
 		} catch (Exception e) {
 			throw new IOException("Unable to parse SSM handshake request", e);
 		}
+		agentVersion = safeTrim(handshakeRequest.optString("AgentVersion", null));
 
 		JSONArray processedActions = new JSONArray();
 		JSONArray errors = new JSONArray();
-		JSONArray requestedActions = handshakeRequest.optJSONArray("RequestedClientActions");
-		if (requestedActions != null) {
-			for (int i = 0; i < requestedActions.length(); i++) {
-				JSONObject action = requestedActions.optJSONObject(i);
-				if (action == null) {
-					continue;
+			JSONArray requestedActions = handshakeRequest.optJSONArray("RequestedClientActions");
+			if (requestedActions != null) {
+				for (int i = 0; i < requestedActions.length(); i++) {
+					JSONObject action = requestedActions.optJSONObject(i);
+					if (action == null) {
+						continue;
+					}
+					captureSessionTypeMetadata(action);
+					processedActions.put(processAction(action, errors));
 				}
-				processedActions.put(processAction(action, errors));
 			}
-		}
 
 		JSONObject response = new JSONObject();
 		try {
@@ -344,17 +393,44 @@ public final class SsmStreamClient {
 	}
 
 	private void handleHandshakeComplete(@NonNull byte[] payload) {
-		if (payload.length == 0) {
-			return;
-		}
 		try {
-			JSONObject json = new JSONObject(new String(payload, StandardCharsets.UTF_8));
-			String customerMessage = json.optString("CustomerMessage", "").trim();
-			if (!customerMessage.isEmpty()) {
-				callback.onInfo(customerMessage);
+			if (payload.length > 0) {
+				JSONObject json = new JSONObject(new String(payload, StandardCharsets.UTF_8));
+				String customerMessage = json.optString("CustomerMessage", "").trim();
+				if (!customerMessage.isEmpty()) {
+					callback.onInfo(customerMessage);
+				}
 			}
 		} catch (Exception ignored) {
 			// Optional payload.
+		} finally {
+			handshakeCompleteLatch.countDown();
+		}
+	}
+
+	@Nullable
+	private static String safeTrim(@Nullable String value) {
+		if (value == null) {
+			return null;
+		}
+		String trimmed = value.trim();
+		return trimmed.isEmpty() ? null : trimmed;
+	}
+
+	private void captureSessionTypeMetadata(@NonNull JSONObject action) {
+		if (!"SessionType".equals(action.optString("ActionType", ""))) {
+			return;
+		}
+
+		JSONObject parameters = action.optJSONObject("ActionParameters");
+		if (parameters == null) {
+			return;
+		}
+
+		sessionType = safeTrim(parameters.optString("SessionType", null));
+		JSONObject properties = parameters.optJSONObject("Properties");
+		if (properties != null) {
+			sessionPropertiesType = safeTrim(properties.optString("Type", null));
 		}
 	}
 

@@ -220,13 +220,56 @@
 
 					</com.google.android.material.textfield.TextInputLayout>
 
-				</LinearLayout>
+					</LinearLayout>
 
-				<LinearLayout
-					android:id="@+id/ssm_role_arn_section_container"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:orientation="vertical"
+					<LinearLayout
+						android:id="@+id/ssm_mfa_serial_section_container"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
+						android:visibility="gone"
+						>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingTop="8dp"
+							android:text="@string/ssm_mfa_serial_title"
+							android:labelFor="@+id/ssm_mfa_serial_field"
+							/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/ssm_mfa_serial_summary"
+							android:paddingBottom="2dp"
+							/>
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:accessibilityLiveRegion="polite"
+							android:labelFor="@+id/ssm_mfa_serial_field"
+							>
+
+							<com.google.android.material.textfield.TextInputEditText
+								android:id="@+id/ssm_mfa_serial_field"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:hint="@string/ssm_mfa_serial_hint"
+								android:inputType="textNoSuggestions"
+								android:maxLines="1"
+								/>
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:id="@+id/ssm_role_arn_section_container"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical"
 					android:visibility="gone"
 					>
 
@@ -495,6 +538,41 @@
 				android:layout_height="wrap_content"
 				android:layout_below="@id/jump_host_title"
 				tools:text="@string/hostpref_jump_host_none"
+				style="@style/ListItemSecondLineText.WithIcon"
+				/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/ssm_route_host_item"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:focusable="true"
+			android:visibility="gone"
+			>
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="24dp"
+				app:srcCompat="@drawable/ic_sync"
+				android:contentDescription="@null"
+				style="@style/ListItemIcon"
+				/>
+
+			<TextView
+				android:id="@+id/ssm_route_host_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/hostpref_ssm_route_host_title"
+				style="@style/ListItemFirstLineText.WithIcon"
+				/>
+
+			<TextView
+				android:id="@+id/ssm_route_host_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/ssm_route_host_title"
+				tools:text="@string/hostpref_ssm_route_host_none"
 				style="@style/ListItemSecondLineText.WithIcon"
 				/>
 

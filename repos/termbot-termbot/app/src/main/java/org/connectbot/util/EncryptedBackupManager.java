@@ -352,6 +352,8 @@ public final class EncryptedBackupManager {
 		obj.put("jump_host_id", host.getJumpHostId());
 		obj.put("group_id", host.getGroupId());
 		obj.put("ssm_role_arn", nullToEmpty(host.getSsmRoleArn()));
+		obj.put("ssm_mfa_serial", nullToEmpty(host.getSsmMfaSerial()));
+		obj.put("ssm_route_host_id", host.getSsmRouteHostId());
 		return obj;
 	}
 
@@ -385,6 +387,8 @@ public final class EncryptedBackupManager {
 		host.setJumpHostId(obj.optLong("jump_host_id", -1));
 		host.setGroupId(obj.optLong("group_id", HostDatabase.HOST_GROUP_NONE));
 		host.setSsmRoleArn(emptyToNull(obj.optString("ssm_role_arn")));
+		host.setSsmMfaSerial(emptyToNull(obj.optString("ssm_mfa_serial")));
+		host.setSsmRouteHostId(obj.optLong("ssm_route_host_id", -1));
 		return host;
 	}
 
@@ -532,7 +536,7 @@ public final class EncryptedBackupManager {
 			return state;
 		}
 
-		ArrayList<HostJumpBinding> jumpBindings = new ArrayList<HostJumpBinding>();
+		ArrayList<HostRoutingBinding> routingBindings = new ArrayList<HostRoutingBinding>();
 		for (int i = 0; i < hostsArray.length(); i++) {
 			JSONObject hostJson = hostsArray.optJSONObject(i);
 			if (hostJson == null) {
@@ -541,6 +545,7 @@ public final class EncryptedBackupManager {
 
 			long oldId = hostJson.optLong("id", -1);
 			long oldJumpHostId = hostJson.optLong("jump_host_id", -1);
+			long oldSsmRouteHostId = hostJson.optLong("ssm_route_host_id", -1);
 			HostBean importedHost = hostFromJson(hostJson);
 			if (importedHost.getProtocol() == null || importedHost.getHostname() == null || importedHost.getPort() <= 0) {
 				continue;
@@ -562,6 +567,7 @@ public final class EncryptedBackupManager {
 			HostBean existingHost = findExistingHost(hostDatabase, importedHost);
 			importedHost.setId(existingHost != null ? existingHost.getId() : -1);
 			importedHost.setJumpHostId(-1);
+			importedHost.setSsmRouteHostId(-1);
 			HostBean savedHost = hostDatabase.saveHost(importedHost);
 			state.importedHostCount++;
 			if (SSM.getProtocolName().equals(savedHost.getProtocol())) {
@@ -571,19 +577,24 @@ public final class EncryptedBackupManager {
 			if (oldId > 0 && savedHost.getId() > 0) {
 				state.oldToNewHostIdMap.put(oldId, savedHost.getId());
 			}
-			jumpBindings.add(new HostJumpBinding(savedHost, oldJumpHostId));
+			routingBindings.add(new HostRoutingBinding(savedHost, oldJumpHostId, oldSsmRouteHostId));
 		}
 
-		for (HostJumpBinding binding : jumpBindings) {
-			if (binding.oldJumpHostId <= 0) {
-				continue;
+		for (HostRoutingBinding binding : routingBindings) {
+			if (binding.oldJumpHostId > 0) {
+				Long mappedJumpHostId = state.oldToNewHostIdMap.get(binding.oldJumpHostId);
+				if (mappedJumpHostId != null && mappedJumpHostId > 0
+						&& mappedJumpHostId != binding.host.getId()) {
+					binding.host.setJumpHostId(mappedJumpHostId);
+				}
 			}
-			Long mappedJumpHostId = state.oldToNewHostIdMap.get(binding.oldJumpHostId);
-			if (mappedJumpHostId == null || mappedJumpHostId <= 0 || mappedJumpHostId == binding.host.getId()) {
-				continue;
+			if (binding.oldSsmRouteHostId > 0) {
+				Long mappedRouteHostId = state.oldToNewHostIdMap.get(binding.oldSsmRouteHostId);
+				if (mappedRouteHostId != null && mappedRouteHostId > 0
+						&& mappedRouteHostId != binding.host.getId()) {
+					binding.host.setSsmRouteHostId(mappedRouteHostId);
+				}
 			}
-
-			binding.host.setJumpHostId(mappedJumpHostId);
 			hostDatabase.saveHost(binding.host);
 		}
 		return state;
@@ -599,6 +610,7 @@ public final class EncryptedBackupManager {
 		if (SSM.getProtocolName().equals(host.getProtocol())) {
 			selection.put(HostDatabase.FIELD_HOST_POSTLOGIN, host.getPostLogin());
 			selection.put(HostDatabase.FIELD_HOST_SSM_ROLE_ARN, host.getSsmRoleArn());
+			selection.put(HostDatabase.FIELD_HOST_SSM_MFA_SERIAL, host.getSsmMfaSerial());
 		}
 		return hostDatabase.findHost(selection);
 	}
@@ -859,13 +871,15 @@ public final class EncryptedBackupManager {
 		return count;
 	}
 
-	private static final class HostJumpBinding {
+	private static final class HostRoutingBinding {
 		private final HostBean host;
 		private final long oldJumpHostId;
+		private final long oldSsmRouteHostId;
 
-		HostJumpBinding(HostBean host, long oldJumpHostId) {
+		HostRoutingBinding(HostBean host, long oldJumpHostId, long oldSsmRouteHostId) {
 			this.host = host;
 			this.oldJumpHostId = oldJumpHostId;
+			this.oldSsmRouteHostId = oldSsmRouteHostId;
 		}
 	}
 

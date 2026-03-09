@@ -16,6 +16,8 @@
  */
 package org.connectbot.service;
 
+import org.connectbot.util.SecurityKeyDebugLog;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +35,7 @@ import android.util.Log;
  */
 public class ConnectivityReceiver extends BroadcastReceiver {
 	private static final String TAG = "CB.ConnectivityManager";
+	private static final String FLOW_MARKER = "CONNECTIVITY_FLOW";
 
 	private boolean mIsConnected = false;
 
@@ -65,6 +68,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 		final IntentFilter filter = new IntentFilter();
 		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 		manager.registerReceiver(this, filter);
+		trace("receiver_init");
 	}
 
 	/* (non-Javadoc)
@@ -86,6 +90,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 
 		if (noConnectivity && !isFailover && mIsConnected) {
 			mIsConnected = false;
+			trace("broadcast_lost no_connectivity=true failover=false");
 			mTerminalManager.onConnectivityLost();
 		} else if (!mIsConnected) {
 			NetworkInfo info = (NetworkInfo) intent.getExtras()
@@ -93,6 +98,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 
 			mIsConnected = (info.getState() == State.CONNECTED);
 			if (mIsConnected) {
+				trace("broadcast_restored failover=" + isFailover);
 				mTerminalManager.onConnectivityRestored();
 			}
 		}
@@ -104,6 +110,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	public void cleanup() {
 		if (mWifiLock.isHeld())
 			mWifiLock.release();
+		trace("receiver_cleanup");
 
 		mTerminalManager.unregisterReceiver(this);
 	}
@@ -115,6 +122,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	public void incRef() {
 		synchronized (mLock) {
 			mNetworkRef  += 1;
+			trace("network_ref_inc");
 
 			acquireWifiLockIfNecessaryLocked();
 		}
@@ -127,6 +135,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	public void decRef() {
 		synchronized (mLock) {
 			mNetworkRef -= 1;
+			trace("network_ref_dec");
 
 			releaseWifiLockIfNecessaryLocked();
 		}
@@ -138,6 +147,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	public void setWantWifiLock(boolean lockingWifi) {
 		synchronized (mLock) {
 			mLockingWifi = lockingWifi;
+			trace("wifi_lock_pref_change");
 
 			if (mLockingWifi) {
 				acquireWifiLockIfNecessaryLocked();
@@ -150,12 +160,14 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	private void acquireWifiLockIfNecessaryLocked() {
 		if (mLockingWifi && mNetworkRef > 0 && !mWifiLock.isHeld()) {
 			mWifiLock.acquire();
+			trace("wifi_lock_acquired");
 		}
 	}
 
 	private void releaseWifiLockIfNecessaryLocked() {
 		if (mNetworkRef == 0 && mWifiLock.isHeld()) {
 			mWifiLock.release();
+			trace("wifi_lock_released");
 		}
 	}
 
@@ -164,5 +176,14 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 	 */
 	public boolean isConnected() {
 		return mIsConnected;
+	}
+
+	private void trace(String details) {
+		SecurityKeyDebugLog.logFlow(mTerminalManager.getApplicationContext(), TAG, FLOW_MARKER,
+				details
+						+ " connected=" + mIsConnected
+						+ " network_ref=" + mNetworkRef
+						+ " wifi_lock=" + mWifiLock.isHeld()
+						+ " lock_pref=" + mLockingWifi);
 	}
 }

@@ -44,8 +44,9 @@
 - [x] Behavior:
   - When an SSM host has a role ARN configured, the app uses base AWS credentials to call STS `AssumeRole` and starts the SSM session with the returned temporary credentials.
   - When no role ARN is configured, direct SSM behavior remains unchanged.
-- [ ] Tests (or explicit manual verification):
+- [x] Tests (or explicit manual verification):
   - Manual smoke with valid base credentials + role ARN.
+- [ ] Tests (or explicit manual verification):
   - Manual smoke with invalid role ARN or denied assume-role permission.
 - [x] Docs:
   - Role baseline scope and unsupported fields are documented.
@@ -83,6 +84,7 @@
   - Updated `transport/SSM.java` to activate role assumption only when a role ARN is configured, and to emit non-secret `assume_role_configured` / `credential_enhanced` markers.
   - Docker verification:
     - `references/logs/android_build_2026-03-07T16-40-42+02-00.log` (`assembleDebug`, success).
-  - Pending operator smoke:
-    - valid base AWS credentials + valid role ARN
-    - invalid/denied role ARN failure surfacing without secret leakage
+- 2026-03-07 — Operator smoke / closeout:
+  - Operator confirmed on-device assume-role smoke and explicitly approved marking the ticket done.
+  - Residual note:
+    - invalid or denied role ARN surfacing remains a later validation case, but no happy-path blocker remains for this baseline ticket.

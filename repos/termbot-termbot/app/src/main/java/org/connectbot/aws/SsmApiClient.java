@@ -12,6 +12,7 @@
 package org.connectbot.aws;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +21,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class SsmApiClient {
@@ -36,11 +39,34 @@ public final class SsmApiClient {
 			@NonNull String target,
 			@NonNull AwsCredentials credentials
 	) throws IOException {
+		return startSession(region, target, null, null, credentials);
+	}
+
+	@NonNull
+	public static SsmSessionStartResult startSession(
+			@NonNull String region,
+			@NonNull String target,
+			@Nullable String documentName,
+			@Nullable Map<String, String> parameters,
+			@NonNull AwsCredentials credentials
+	) throws IOException {
 		String host = "ssm." + region + ".amazonaws.com";
 		URL url = new URL("https://" + host + "/");
 		JSONObject payloadJson = new JSONObject();
 		try {
 			payloadJson.put("Target", target);
+			if (documentName != null && !documentName.trim().isEmpty()) {
+				payloadJson.put("DocumentName", documentName.trim());
+			}
+			if (parameters != null && !parameters.isEmpty()) {
+				JSONObject parametersJson = new JSONObject();
+				for (Map.Entry<String, String> entry : parameters.entrySet()) {
+					JSONArray values = new JSONArray();
+					values.put(entry.getValue());
+					parametersJson.put(entry.getKey(), values);
+				}
+				payloadJson.put("Parameters", parametersJson);
+			}
 		} catch (Exception e) {
 			throw new IOException("Unable to build SSM StartSession payload", e);
 		}

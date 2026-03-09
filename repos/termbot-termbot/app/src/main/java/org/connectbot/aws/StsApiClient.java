@@ -12,6 +12,7 @@
 package org.connectbot.aws;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,12 +44,52 @@ public final class StsApiClient {
 			@NonNull String roleSessionName,
 			@NonNull AwsCredentials sourceCredentials
 	) throws IOException {
-		String host = "sts." + region + ".amazonaws.com";
-		URL url = new URL("https://" + host + "/");
+		return assumeRole(region, roleArn, roleSessionName, sourceCredentials, null, null);
+	}
+
+	@NonNull
+	public static AwsCredentials assumeRole(
+			@NonNull String region,
+			@NonNull String roleArn,
+			@NonNull String roleSessionName,
+			@NonNull AwsCredentials sourceCredentials,
+			@Nullable String mfaSerialNumber,
+			@Nullable String mfaTokenCode
+	) throws IOException {
 		String payload = "Action=AssumeRole"
 				+ "&Version=" + encode(VERSION)
 				+ "&RoleArn=" + encode(roleArn)
 				+ "&RoleSessionName=" + encode(roleSessionName);
+		if (!isEmpty(mfaSerialNumber) && !isEmpty(mfaTokenCode)) {
+			payload += "&SerialNumber=" + encode(mfaSerialNumber)
+					+ "&TokenCode=" + encode(mfaTokenCode);
+		}
+		return executeCredentialRequest(region, payload, sourceCredentials, "AssumeRole");
+	}
+
+	@NonNull
+	public static AwsCredentials getSessionToken(
+			@NonNull String region,
+			@NonNull AwsCredentials sourceCredentials,
+			@NonNull String mfaSerialNumber,
+			@NonNull String mfaTokenCode
+	) throws IOException {
+		String payload = "Action=GetSessionToken"
+				+ "&Version=" + encode(VERSION)
+				+ "&SerialNumber=" + encode(mfaSerialNumber)
+				+ "&TokenCode=" + encode(mfaTokenCode);
+		return executeCredentialRequest(region, payload, sourceCredentials, "GetSessionToken");
+	}
+
+	@NonNull
+	private static AwsCredentials executeCredentialRequest(
+			@NonNull String region,
+			@NonNull String payload,
+			@NonNull AwsCredentials sourceCredentials,
+			@NonNull String actionName
+	) throws IOException {
+		String host = "sts." + region + ".amazonaws.com";
+		URL url = new URL("https://" + host + "/");
 
 		AwsV4Signer.SigningResult signingResult;
 		try {
@@ -60,7 +101,7 @@ public final class StsApiClient {
 					sourceCredentials,
 					null);
 		} catch (Exception e) {
-			throw new IOException("Unable to sign STS AssumeRole request", e);
+			throw new IOException("Unable to sign STS " + actionName + " request", e);
 		}
 
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -87,7 +128,7 @@ public final class StsApiClient {
 						: connection.getErrorStream());
 
 		if (statusCode < 200 || statusCode >= 300) {
-			throw new IOException("STS AssumeRole failed (HTTP " + statusCode + "): "
+			throw new IOException("STS " + actionName + " failed (HTTP " + statusCode + "): "
 					+ simplifyError(responseBody));
 		}
 
@@ -106,13 +147,13 @@ public final class StsApiClient {
 			String secretAccessKey = getFirstTag(document, "SecretAccessKey");
 			String sessionToken = getFirstTag(document, "SessionToken");
 			if (isEmpty(accessKeyId) || isEmpty(secretAccessKey) || isEmpty(sessionToken)) {
-				throw new IOException("STS AssumeRole response missing required credential fields");
+				throw new IOException("STS response missing required credential fields");
 			}
 			return new AwsCredentials(accessKeyId, secretAccessKey, sessionToken);
 		} catch (IOException e) {
 			throw e;
 		} catch (Exception e) {
-			throw new IOException("Unable to parse STS AssumeRole response", e);
+			throw new IOException("Unable to parse STS credential response", e);
 		}
 	}
 

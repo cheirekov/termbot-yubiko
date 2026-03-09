@@ -17,16 +17,22 @@
 - [ ] TKT-0259: Repo map and state truth reconciliation
 - [ ] TKT-0260: AWS SSM Session Manager support (EPIC)
 
+## In Progress
+- [ ] (none)
+
 ## Ready
 - [ ] (none)
 
-## In Progress
-- [ ] TKT-0263: AWS credential management + MFA + role/jump readiness (Slice A operator-smoked; Slice B build-verified with session-token prompt path confirmed in debug report; assume-role baseline extracted to TKT-0266)
-
 ## Review
-- [ ] TKT-0266: SSM assume-role baseline — build-verified 2026-03-07; per-host role ARN storage/editor + STS AssumeRole runtime chaining implemented, operator smoke pending
+- [ ] (none)
 
 ## Done
+- [x] TKT-0270: Release-candidate docs and operator manual baseline — DONE 2026-03-09; added a root operator-facing `README.md` capability summary, published `MANUAL.md` for shipped SSH/SSM/YubiKey flows, and refreshed `ai_docs/docs/RELEASE.md` with the current YubiKey + SSM RC smoke scope
+- [x] TKT-0263: AWS credential management + MFA + role/jump readiness — DONE 2026-03-09; operator confirmed direct SSM MFA, assume-role MFA, and invalid-MFA-code surfacing on the `2026-03-09 13:44` build; shipped scope remains STS `GetSessionToken` / MFA-capable `AssumeRole`, with FIDO2/passkey MFA explicitly deferred because AWS STS does not accept FIDO MFA assertions
+- [x] TKT-0269: Background/power-management session resilience — DONE 2026-03-09; operator confirmed background/foreground survival on the `2026-03-09 12:30` build, and the final exported report shows `show_running_prepare` + `show_running type=special_use` on background `unbind`/rebind with no cold `APP_CREATED` restart afterward
+- [x] TKT-0268: SSH over SSM bastion/tunnel integration — DONE 2026-03-08; operator confirmed direct SSH via selected SSM route host, direct SSH, direct SSM shell, SSH jump-host regression, and later also the combined `SSM route host + SSH jump host` topology
+- [x] TKT-0267: SSM port-forwarding + remote-host tunnel baseline — DONE 2026-03-08; operator confirmed both managed-node SSH tunnel smoke (`15432 -> localhost:22`) and remote-host/private-DB forwarding via localhost client access; residual background-session issue moved to TKT-0269
+- [x] TKT-0266: SSM assume-role baseline — DONE 2026-03-07; operator smoke confirmed app-driven assume-role flow works with base AWS credentials + role ARN
 - [x] TKT-0265: SSM backup/export compatibility + schema migration — DONE 2026-03-07; operator confirmed encrypted backup export/import restores SSM host target and saved secret, with same-key/region multi-target smoke deferred to later validation matrix
 - [x] PACK-INIT: Installed AI operating pack
 - [x] TKT-0264: SSM host editor UX + session UI integration — DONE 2026-03-07; operator confirmed host-add UX fixes (access-key parse, immediate first-connect prompt, stable full quick-connect typing, target placement near key/region, strict SSM-only target visibility)
