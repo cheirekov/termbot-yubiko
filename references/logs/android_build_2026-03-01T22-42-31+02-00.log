@@ -1,0 +1,163 @@
+
+
+[1A[1m> Connecting to Daemon[m[22D[1B[2AStarting a Gradle Daemon, 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+[1B[0K
+[2A[0K[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [17ms][m[38D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [117ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [217ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [317ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [417ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [517ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [617ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [717ms][m[0K[38D[1B[1m> Loading projects[m[0K[18D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [817ms][m[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [917ms][m[38D[1B[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app > Compiling /work/app/build.gradle into local compilation cache > Compil[m[79D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[0K[47D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[1A[1m> :app > Compiling /work/app/build.gradle into local compilation cache > Compil[m[79D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[1A[1m> :app[m[0K[6D[1B[2A[0K
+[1m> Configure project :app[m[0K
+No git repository reachable from /work/app
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [5s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [5s][m[37D[1B> IDLE[0K[6D[1B
+[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > piv-2.4.0.pom[m[71D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > core-2.4.0.pom[m[72D[1B[3A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[3B[3A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [7s][m[37D[3B[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > piv-2.4.0.module[m[74D[1B[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > core-2.4.0.module[m[75D[1B[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath[m[0K[55D[1B> IDLE[0K[6D[1B[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > slf4j-api-2.0.9.pom[m[77D[2B[3A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [8s][m[37D[3B[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > slf4j-parent-2.0.9.po[m[79D[2B[2A[1m> Resolve dependencies of :app:ossDebugRuntimeClasspath > slf4j-bom-2.0.9.pom[m[0K[77D[2B[2A[1m> Resolve dependencies of :app:ossDebugCompileClasspath[m[0K[55D[2B[2A> IDLE[0K[6D[2B[3AMapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [9s][m[37D[1B> IDLE[6D[1B> IDLE[6D[1B[3AMapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01[0K
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[0K
+[3A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [9s][m[37D[1B> IDLE[6D[1B> IDLE[6D[1B
+
+[5A[1m<[0;1m-------------> 0% EXECUTING [9s][m[0K[33D[1B[1m> Transforming artifact appcompat-1.2.0.aar (androidx.appcompat:appcompat:1.2.0[m[79D[1B[1m> Transforming artifact core-2.4.0.jar (com.yubico.yubikit:core:2.4.0) with Jet[m[79D[1B[1m> Transforming artifact multidex-2.0.0.aar (androidx.multidex:multidex:2.0.0) w[m[79D[1B[1m> Transforming artifact piv-2.4.0.jar (com.yubico.yubikit:piv:2.4.0) with Jetif[m[79D[1B[5A[1m<[0;32;1m===[0;39;1m----------> 23% EXECUTING [9s][m[34D[1B[1m> Transforming artifact recyclerview-1.1.0.aar (androidx.recyclerview:recyclerv[m[79D[2B[1m> Transforming artifact jbcrypt-1.0.2.jar (org.connectbot:jbcrypt:1.0.2) with J[m[79D[2B[5A[1m<[0;32;1m====[0;39;1m---------> 31% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 51% EXECUTING [9s][m[34D[2B[1m> Transforming artifact lifecycle-viewmodel-2.1.0.aar (androidx.lifecycle:lifec[m[79D[2B[1m> Transforming artifact slf4j-api-2.0.9.jar (org.slf4j:slf4j-api:2.0.9) with Je[m[79D[1B[5A[1m<[0;32;1m======[0;39;1m-------> 51% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 53% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 59% EXECUTING [10s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildGoogleDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/armeabi-v7a'[0K
+ninja: no work to do.[0K
+Build com_google_ase_Exec_arm64-v8a
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/arm64-v8a'
+ninja: no work to do.
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86'
+ninja: no work to do.
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86_64'
+ninja: no work to do.
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 60% EXECUTING [10s][m[35D[1B[1m> Transforming artifact recyclerview-1.1.0.aar (androidx.recyclerview:recyclerv[m[79D[1B[1m> Transforming artifact lifecycle-viewmodel-2.1.0.aar (androidx.lifecycle:lifec[m[79D[1B[1m> Transforming artifact jbcrypt-1.0.2.jar (org.connectbot:jbcrypt:1.0.2) with J[m[79D[1B[1m> Transforming artifact legacy-support-v4-1.0.0.aar (androidx.legacy:legacy-sup[m[79D[1B[5A[1m<[0;32;1m=======[0;39;1m------> 60% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 61% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 61% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 61% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 61% EXECUTING [14s][m[35D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/com/google/ase/Exec.java:26: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.[0K
+   * @param cmd[0K
+     ^[0K
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the file descriptor of the started process.'?
+/work/app/src/main/java/com/google/ase/Exec.java:40: warning: [MissingSummary] A summary fragment is required; consider using the value of the @return block as a summary fragment instead.
+   * @param cmd
+     ^
+    (see http://google.github.io/styleguide/javaguide.html#s7.2-summary-fragment)
+  Did you mean '*Returns the file descriptor of the started process.'?
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m=======[0;39;1m------> 61% EXECUTING [14s][m[35D[1B[1m> Transforming artifact recyclerview-1.1.0.aar (androidx.recyclerview:recyclerv[m[79D[1B[1m> Transforming artifact lifecycle-viewmodel-2.1.0.aar (androidx.lifecycle:lifec[m[79D[1B[1m> Transforming artifact jbcrypt-1.0.2.jar (org.connectbot:jbcrypt:1.0.2) with J[m[79D[1B[1m> Transforming artifact legacy-support-v4-1.0.0.aar (androidx.legacy:legacy-sup[m[79D[1B[5A/work/app/src/main/java/org/connectbot/PubkeyListActivity.java:517: error: local variables referenced from a lambda expression must be final or effectively final[0K
+                                        getString(R.string.pubkey_add_piv_success, slotReference),[0K
+                                                                                   ^[0K
+Note: Some input files use or override a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+1 error
+2 warnings
+
+[31;1m> Task :app:compileGoogleDebugJavaWithJavac[0;39m[31m FAILED[39m
+
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m
+
+* What went wrong:
+Execution failed for task ':app:compileGoogleDebugJavaWithJavac'.
+[33m> [39mCompilation failed; see the compiler error output for details.
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.1.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+[31;1mBUILD FAILED[0;39m in 16s
+11 actionable tasks: 5 executed, 6 up-to-date
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> Transforming artifact recyclerview-1.1.0.aar (androidx.recyclerview:recyclerv[m[79D[1B[1m> Transforming artifact lifecycle-viewmodel-2.1.0.aar (androidx.lifecycle:lifec[m[79D[1B[1m> Transforming artifact jbcrypt-1.0.2.jar (org.connectbot:jbcrypt:1.0.2) with J[m[79D[1B[1m> Transforming artifact legacy-support-v4-1.0.0.aar (androidx.legacy:legacy-sup[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h

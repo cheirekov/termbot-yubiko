@@ -53,7 +53,7 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 	public final static String TAG = "CB.HostDatabase";
 
 	public final static String DB_NAME = "hosts";
-	public final static int DB_VERSION = 29;
+	public final static int DB_VERSION = 32;
 
 	public final static String TABLE_HOSTS = "hosts";
 	public final static String FIELD_HOST_NICKNAME = "nickname";
@@ -77,6 +77,9 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 	public final static String FIELD_HOST_REMEMBERPASSWORD = "rememberpassword";
 	public final static String FIELD_HOST_JUMPHOSTID = "jumphostid";
 	public final static String FIELD_HOST_GROUP_ID = "groupid";
+	public final static String FIELD_HOST_SSM_ROLE_ARN = "ssmrolearn";
+	public final static String FIELD_HOST_SSM_MFA_SERIAL = "ssmmfaserial";
+	public final static String FIELD_HOST_SSM_ROUTE_HOST_ID = "ssmroutehostid";
 
 	public final static String TABLE_HOST_GROUPS = "hostgroups";
 	public final static String FIELD_HOST_GROUP_NAME = "name";
@@ -152,9 +155,12 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 			+ FIELD_HOST_ENCODING + " TEXT DEFAULT '" + ENCODING_DEFAULT + "', "
 			+ FIELD_HOST_STAYCONNECTED + " TEXT DEFAULT '" + Boolean.toString(false) + "', "
 			+ FIELD_HOST_QUICKDISCONNECT + " TEXT DEFAULT '" + Boolean.toString(false) + "', "
-			+ FIELD_HOST_REMEMBERPASSWORD + " TEXT DEFAULT '" + Boolean.toString(false) + "', "
-			+ FIELD_HOST_JUMPHOSTID + " INTEGER DEFAULT -1, "
-			+ FIELD_HOST_GROUP_ID + " INTEGER DEFAULT " + HOST_GROUP_NONE;
+				+ FIELD_HOST_REMEMBERPASSWORD + " TEXT DEFAULT '" + Boolean.toString(false) + "', "
+				+ FIELD_HOST_JUMPHOSTID + " INTEGER DEFAULT -1, "
+				+ FIELD_HOST_GROUP_ID + " INTEGER DEFAULT " + HOST_GROUP_NONE + ", "
+				+ FIELD_HOST_SSM_ROLE_ARN + " TEXT, "
+				+ FIELD_HOST_SSM_MFA_SERIAL + " TEXT, "
+				+ FIELD_HOST_SSM_ROUTE_HOST_ID + " INTEGER DEFAULT -1";
 
 	public static final String CREATE_TABLE_HOSTS = "CREATE TABLE " + TABLE_HOSTS
 			+ " (" + TABLE_HOSTS_COLUMNS + ")";
@@ -421,7 +427,9 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 					+ FIELD_HOST_QUICKDISCONNECT + ", "
 					+ "'" + Boolean.toString(false) + "', "
 					+ "-1, "
-					+ HOST_GROUP_NONE
+					+ HOST_GROUP_NONE + ", "
+					+ "'', "
+					+ "-1"
 					+ " FROM " + TABLE_HOSTS);
 			db.execSQL("DROP TABLE " + TABLE_HOSTS);
 			db.execSQL("ALTER TABLE " + TABLE_HOSTS + "_upgrade RENAME TO " + TABLE_HOSTS);
@@ -442,8 +450,20 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 			db.execSQL(CREATE_TABLE_HOST_GROUPS_INDEX);
 			db.execSQL("ALTER TABLE " + TABLE_HOSTS
 					+ " ADD COLUMN " + FIELD_HOST_GROUP_ID + " INTEGER DEFAULT " + HOST_GROUP_NONE);
+			// fall through
+			case 29:
+				db.execSQL("ALTER TABLE " + TABLE_HOSTS
+						+ " ADD COLUMN " + FIELD_HOST_SSM_ROLE_ARN + " TEXT");
+				// fall through
+			case 30:
+				db.execSQL("ALTER TABLE " + TABLE_HOSTS
+						+ " ADD COLUMN " + FIELD_HOST_SSM_ROUTE_HOST_ID + " INTEGER DEFAULT -1");
+				// fall through
+			case 31:
+				db.execSQL("ALTER TABLE " + TABLE_HOSTS
+						+ " ADD COLUMN " + FIELD_HOST_SSM_MFA_SERIAL + " TEXT");
+			}
 		}
-	}
 
 	/**
 	 * Touch a specific host to update its "last connected" field.
@@ -661,9 +681,12 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 			COL_ENCODING = c.getColumnIndexOrThrow(FIELD_HOST_ENCODING),
 			COL_STAYCONNECTED = c.getColumnIndexOrThrow(FIELD_HOST_STAYCONNECTED),
 			COL_QUICKDISCONNECT = c.getColumnIndexOrThrow(FIELD_HOST_QUICKDISCONNECT),
-			COL_REMEMBERPASSWORD = c.getColumnIndexOrThrow(FIELD_HOST_REMEMBERPASSWORD),
-			COL_JUMPHOSTID = c.getColumnIndexOrThrow(FIELD_HOST_JUMPHOSTID),
-			COL_GROUPID = c.getColumnIndexOrThrow(FIELD_HOST_GROUP_ID);
+				COL_REMEMBERPASSWORD = c.getColumnIndexOrThrow(FIELD_HOST_REMEMBERPASSWORD),
+				COL_JUMPHOSTID = c.getColumnIndexOrThrow(FIELD_HOST_JUMPHOSTID),
+				COL_GROUPID = c.getColumnIndexOrThrow(FIELD_HOST_GROUP_ID),
+				COL_SSMROLEARN = c.getColumnIndexOrThrow(FIELD_HOST_SSM_ROLE_ARN),
+				COL_SSMMFASERIAL = c.getColumnIndexOrThrow(FIELD_HOST_SSM_MFA_SERIAL),
+				COL_SSMROUTEHOSTID = c.getColumnIndexOrThrow(FIELD_HOST_SSM_ROUTE_HOST_ID);
 
 		while (c.moveToNext()) {
 			HostBean host = new HostBean();
@@ -688,8 +711,11 @@ public class HostDatabase extends RobustSQLiteOpenHelper implements HostStorage,
 			host.setStayConnected(Boolean.valueOf(c.getString(COL_STAYCONNECTED)));
 			host.setQuickDisconnect(Boolean.valueOf(c.getString(COL_QUICKDISCONNECT)));
 			host.setRememberPassword(Boolean.valueOf(c.getString(COL_REMEMBERPASSWORD)));
-			host.setJumpHostId(c.getLong(COL_JUMPHOSTID));
-			host.setGroupId(c.getLong(COL_GROUPID));
+				host.setJumpHostId(c.getLong(COL_JUMPHOSTID));
+				host.setGroupId(c.getLong(COL_GROUPID));
+				host.setSsmRoleArn(c.getString(COL_SSMROLEARN));
+				host.setSsmMfaSerial(c.getString(COL_SSMMFASERIAL));
+				host.setSsmRouteHostId(c.getLong(COL_SSMROUTEHOSTID));
 
 			hosts.add(host);
 		}

@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -41,6 +42,10 @@ public final class SavedPasswordStore {
 
 	private static final String PREFS_NAME = "saved_host_passwords";
 	private static final String PREFS_KEY_PREFIX = "host_";
+	private static final String PREFS_SCOPED_KEY_PREFIX = "scoped_";
+
+	public static final String SCOPE_SSM_SECRET_ACCESS_KEY = "ssm_secret_access_key";
+	public static final String SCOPE_SSM_SESSION_TOKEN = "ssm_session_token";
 
 	private static final String FORMAT_KEYSTORE = "ks1";
 	private static final String FORMAT_FALLBACK = "fb1";
@@ -122,6 +127,54 @@ public final class SavedPasswordStore {
 		mPreferences.edit().remove(getHostKey(hostId)).apply();
 	}
 
+	public synchronized void saveScopedSecret(@NonNull String scope, long hostId,
+			@Nullable String secret) {
+		if (hostId <= 0 || scope.trim().isEmpty() || secret == null) {
+			clearScopedSecret(scope, hostId);
+			return;
+		}
+
+		String encrypted = encrypt(secret);
+		if (encrypted == null) {
+			Log.w(TAG, "Failed to encrypt scoped secret for " + scope + " host " + hostId);
+			return;
+		}
+
+		mPreferences.edit().putString(getScopedKey(scope, hostId), encrypted).apply();
+	}
+
+	@Nullable
+	public synchronized String loadScopedSecret(@NonNull String scope, long hostId) {
+		if (hostId <= 0 || scope.trim().isEmpty()) {
+			return null;
+		}
+
+		String encrypted = mPreferences.getString(getScopedKey(scope, hostId), null);
+		if (encrypted == null || encrypted.isEmpty()) {
+			return null;
+		}
+
+		String decrypted = decrypt(encrypted);
+		if (decrypted == null) {
+			clearScopedSecret(scope, hostId);
+		}
+		return decrypted;
+	}
+
+	public synchronized boolean hasScopedSecret(@NonNull String scope, long hostId) {
+		if (hostId <= 0 || scope.trim().isEmpty()) {
+			return false;
+		}
+		return mPreferences.contains(getScopedKey(scope, hostId));
+	}
+
+	public synchronized void clearScopedSecret(@NonNull String scope, long hostId) {
+		if (hostId <= 0 || scope.trim().isEmpty()) {
+			return;
+		}
+		mPreferences.edit().remove(getScopedKey(scope, hostId)).apply();
+	}
+
 	@NonNull
 	public synchronized Map<Long, String> exportPlaintextPasswords(@NonNull List<Long> hostIds) {
 		HashMap<Long, String> exported = new HashMap<Long, String>();
@@ -143,6 +196,15 @@ public final class SavedPasswordStore {
 
 	private String getHostKey(long hostId) {
 		return PREFS_KEY_PREFIX + hostId;
+	}
+
+	private String getScopedKey(@NonNull String scope, long hostId) {
+		return PREFS_SCOPED_KEY_PREFIX + sanitizeScope(scope) + "_" + hostId;
+	}
+
+	@NonNull
+	private static String sanitizeScope(@NonNull String scope) {
+		return scope.trim().toLowerCase(Locale.US).replaceAll("[^a-z0-9_\\-]", "_");
 	}
 
 	@Nullable

@@ -23,6 +23,7 @@
 
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -176,7 +177,12 @@ android:exported="true">
 		<service
 			android:name="org.connectbot.service.TerminalManager"
 			android:configChanges="keyboardHidden|orientation"
-			android:description="@string/service_desc"/>
+			android:description="@string/service_desc"
+			android:foregroundServiceType="specialUse">
+			<property
+				android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+				android:value="interactive remote SSH and AWS SSM sessions, including port forwarding and tunnels"/>
+		</service>
 
 		<service
 			android:name="org.connectbot.service.SecurityKeyService"/>

@@ -49,6 +49,7 @@ import org.connectbot.R;
 import org.connectbot.bean.HostBean;
 import org.connectbot.bean.HostGroupBean;
 import org.connectbot.bean.PubkeyBean;
+import org.connectbot.transport.SSM;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +76,8 @@ public final class EncryptedBackupManager {
 
 	private static final String MARKER_BACKUP_EXPORT = "BACKUP_EXPORT";
 	private static final String MARKER_BACKUP_IMPORT = "BACKUP_IMPORT";
+	private static final String JSON_SAVED_PASSWORDS = "saved_passwords";
+	private static final String JSON_SAVED_SCOPED_SECRETS = "saved_scoped_secrets";
 
 	private EncryptedBackupManager() {
 	}
@@ -101,16 +104,20 @@ public final class EncryptedBackupManager {
 			JSONObject plainBackup = buildPlainBackupJson(appContext);
 			int groupsCount = getJsonArrayLength(plainBackup.optJSONArray("groups"));
 			int hostsCount = getJsonArrayLength(plainBackup.optJSONArray("hosts"));
+			int ssmHostsCount = countHostsForProtocol(plainBackup.optJSONArray("hosts"), SSM.getProtocolName());
 			int pubkeysCount = getJsonArrayLength(plainBackup.optJSONArray("pubkeys"));
-			int passwordsCount = getJsonArrayLength(plainBackup.optJSONArray("saved_passwords"));
+			int passwordsCount = getJsonArrayLength(plainBackup.optJSONArray(JSON_SAVED_PASSWORDS));
+			int scopedSecretsCount = getJsonArrayLength(plainBackup.optJSONArray(JSON_SAVED_SCOPED_SECRETS));
 			SecurityKeyDebugLog.logFlow(
 					appContext,
 					TAG,
 					MARKER_BACKUP_EXPORT,
 					"counts groups=" + groupsCount
 							+ " hosts=" + hostsCount
+							+ " ssm_hosts=" + ssmHostsCount
 							+ " pubkeys=" + pubkeysCount
-							+ " passwords=" + passwordsCount);
+							+ " passwords=" + passwordsCount
+							+ " scoped_secrets=" + scopedSecretsCount);
 			byte[] plaintext = plainBackup.toString().getBytes(UTF_8);
 			String encryptedPayload = encryptPayload(plaintext, password);
 
@@ -182,8 +189,13 @@ public final class EncryptedBackupManager {
 					pubkeyIdMap,
 					groupImportState.oldToNewGroupIdMap);
 			int importedPasswords = importSavedPasswords(
-					backupJson.optJSONArray("saved_passwords"),
+					backupJson.optJSONArray(JSON_SAVED_PASSWORDS),
 					hostImportState.oldToNewHostIdMap,
+					savedPasswordStore);
+			int importedScopedSecrets = importScopedSecrets(
+					backupJson.optJSONArray(JSON_SAVED_SCOPED_SECRETS),
+					hostImportState.oldToNewHostIdMap,
+					hostDatabase,
 					savedPasswordStore);
 
 			SecurityKeyDebugLog.logFlow(
@@ -193,8 +205,10 @@ public final class EncryptedBackupManager {
 					"success groups=" + groupImportState.importedGroupCount
 							+ " mappedGroups=" + groupImportState.oldToNewGroupIdMap.size()
 							+ " hosts=" + hostImportState.importedHostCount
+							+ " ssm_hosts=" + hostImportState.importedSsmHostCount
 							+ " pubkeys=" + pubkeyIdMap.size()
-							+ " passwords=" + importedPasswords);
+							+ " passwords=" + importedPasswords
+							+ " scoped_secrets=" + importedScopedSecrets);
 
 			return new ImportResult(hostImportState.importedHostCount, pubkeyIdMap.size(), importedPasswords);
 		} catch (IOException e) {
@@ -227,6 +241,7 @@ public final class EncryptedBackupManager {
 			hostIds.add(host.getId());
 		}
 		Map<Long, String> savedPasswords = savedPasswordStore.exportPlaintextPasswords(hostIds);
+		JSONArray scopedSecretsArray = buildScopedSecretsJson(savedPasswordStore, hosts);
 
 		JSONObject backup = new JSONObject();
 		backup.put("format", BACKUP_FORMAT);
@@ -259,9 +274,56 @@ public final class EncryptedBackupManager {
 			passwordEntry.put("password", entry.getValue());
 			passwordsArray.put(passwordEntry);
 		}
-		backup.put("saved_passwords", passwordsArray);
+		backup.put(JSON_SAVED_PASSWORDS, passwordsArray);
+		backup.put(JSON_SAVED_SCOPED_SECRETS, scopedSecretsArray);
 
 		return backup;
+	}
+
+	@NonNull
+	private static JSONArray buildScopedSecretsJson(
+			@NonNull SavedPasswordStore savedPasswordStore,
+			@NonNull List<HostBean> hosts) throws JSONException {
+		JSONArray scopedSecretsArray = new JSONArray();
+		for (HostBean host : hosts) {
+			if (host.getId() <= 0
+					|| !host.getRememberPassword()
+					|| !SSM.getProtocolName().equals(host.getProtocol())) {
+				continue;
+			}
+
+			appendScopedSecretJson(
+					scopedSecretsArray,
+					host.getId(),
+					SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY,
+					savedPasswordStore.loadScopedSecret(
+							SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY,
+							host.getId()));
+			appendScopedSecretJson(
+					scopedSecretsArray,
+					host.getId(),
+					SavedPasswordStore.SCOPE_SSM_SESSION_TOKEN,
+					savedPasswordStore.loadScopedSecret(
+							SavedPasswordStore.SCOPE_SSM_SESSION_TOKEN,
+							host.getId()));
+		}
+		return scopedSecretsArray;
+	}
+
+	private static void appendScopedSecretJson(
+			@NonNull JSONArray scopedSecretsArray,
+			long hostId,
+			@NonNull String scope,
+			@Nullable String secret) throws JSONException {
+		if (hostId <= 0 || secret == null || secret.isEmpty()) {
+			return;
+		}
+
+		JSONObject scopedSecretEntry = new JSONObject();
+		scopedSecretEntry.put("host_id", hostId);
+		scopedSecretEntry.put("scope", scope);
+		scopedSecretEntry.put("secret", secret);
+		scopedSecretsArray.put(scopedSecretEntry);
 	}
 
 	@NonNull
@@ -289,6 +351,9 @@ public final class EncryptedBackupManager {
 		obj.put("remember_password", host.getRememberPassword());
 		obj.put("jump_host_id", host.getJumpHostId());
 		obj.put("group_id", host.getGroupId());
+		obj.put("ssm_role_arn", nullToEmpty(host.getSsmRoleArn()));
+		obj.put("ssm_mfa_serial", nullToEmpty(host.getSsmMfaSerial()));
+		obj.put("ssm_route_host_id", host.getSsmRouteHostId());
 		return obj;
 	}
 
@@ -321,6 +386,9 @@ public final class EncryptedBackupManager {
 		host.setRememberPassword(obj.optBoolean("remember_password", false));
 		host.setJumpHostId(obj.optLong("jump_host_id", -1));
 		host.setGroupId(obj.optLong("group_id", HostDatabase.HOST_GROUP_NONE));
+		host.setSsmRoleArn(emptyToNull(obj.optString("ssm_role_arn")));
+		host.setSsmMfaSerial(emptyToNull(obj.optString("ssm_mfa_serial")));
+		host.setSsmRouteHostId(obj.optLong("ssm_route_host_id", -1));
 		return host;
 	}
 
@@ -468,7 +536,7 @@ public final class EncryptedBackupManager {
 			return state;
 		}
 
-		ArrayList<HostJumpBinding> jumpBindings = new ArrayList<HostJumpBinding>();
+		ArrayList<HostRoutingBinding> routingBindings = new ArrayList<HostRoutingBinding>();
 		for (int i = 0; i < hostsArray.length(); i++) {
 			JSONObject hostJson = hostsArray.optJSONObject(i);
 			if (hostJson == null) {
@@ -477,6 +545,7 @@ public final class EncryptedBackupManager {
 
 			long oldId = hostJson.optLong("id", -1);
 			long oldJumpHostId = hostJson.optLong("jump_host_id", -1);
+			long oldSsmRouteHostId = hostJson.optLong("ssm_route_host_id", -1);
 			HostBean importedHost = hostFromJson(hostJson);
 			if (importedHost.getProtocol() == null || importedHost.getHostname() == null || importedHost.getPort() <= 0) {
 				continue;
@@ -498,25 +567,34 @@ public final class EncryptedBackupManager {
 			HostBean existingHost = findExistingHost(hostDatabase, importedHost);
 			importedHost.setId(existingHost != null ? existingHost.getId() : -1);
 			importedHost.setJumpHostId(-1);
+			importedHost.setSsmRouteHostId(-1);
 			HostBean savedHost = hostDatabase.saveHost(importedHost);
 			state.importedHostCount++;
+			if (SSM.getProtocolName().equals(savedHost.getProtocol())) {
+				state.importedSsmHostCount++;
+			}
 
 			if (oldId > 0 && savedHost.getId() > 0) {
 				state.oldToNewHostIdMap.put(oldId, savedHost.getId());
 			}
-			jumpBindings.add(new HostJumpBinding(savedHost, oldJumpHostId));
+			routingBindings.add(new HostRoutingBinding(savedHost, oldJumpHostId, oldSsmRouteHostId));
 		}
 
-		for (HostJumpBinding binding : jumpBindings) {
-			if (binding.oldJumpHostId <= 0) {
-				continue;
+		for (HostRoutingBinding binding : routingBindings) {
+			if (binding.oldJumpHostId > 0) {
+				Long mappedJumpHostId = state.oldToNewHostIdMap.get(binding.oldJumpHostId);
+				if (mappedJumpHostId != null && mappedJumpHostId > 0
+						&& mappedJumpHostId != binding.host.getId()) {
+					binding.host.setJumpHostId(mappedJumpHostId);
+				}
 			}
-			Long mappedJumpHostId = state.oldToNewHostIdMap.get(binding.oldJumpHostId);
-			if (mappedJumpHostId == null || mappedJumpHostId <= 0 || mappedJumpHostId == binding.host.getId()) {
-				continue;
+			if (binding.oldSsmRouteHostId > 0) {
+				Long mappedRouteHostId = state.oldToNewHostIdMap.get(binding.oldSsmRouteHostId);
+				if (mappedRouteHostId != null && mappedRouteHostId > 0
+						&& mappedRouteHostId != binding.host.getId()) {
+					binding.host.setSsmRouteHostId(mappedRouteHostId);
+				}
 			}
-
-			binding.host.setJumpHostId(mappedJumpHostId);
 			hostDatabase.saveHost(binding.host);
 		}
 		return state;
@@ -529,6 +607,11 @@ public final class EncryptedBackupManager {
 		selection.put(HostDatabase.FIELD_HOST_HOSTNAME, host.getHostname());
 		selection.put(HostDatabase.FIELD_HOST_PORT, String.valueOf(host.getPort()));
 		selection.put(HostDatabase.FIELD_HOST_USERNAME, host.getUsername());
+		if (SSM.getProtocolName().equals(host.getProtocol())) {
+			selection.put(HostDatabase.FIELD_HOST_POSTLOGIN, host.getPostLogin());
+			selection.put(HostDatabase.FIELD_HOST_SSM_ROLE_ARN, host.getSsmRoleArn());
+			selection.put(HostDatabase.FIELD_HOST_SSM_MFA_SERIAL, host.getSsmMfaSerial());
+		}
 		return hostDatabase.findHost(selection);
 	}
 
@@ -563,6 +646,60 @@ public final class EncryptedBackupManager {
 		}
 
 		return importedPasswords;
+	}
+
+	private static int importScopedSecrets(
+			@Nullable JSONArray scopedSecretsArray,
+			@NonNull Map<Long, Long> oldToNewHostIdMap,
+			@NonNull HostDatabase hostDatabase,
+			@NonNull SavedPasswordStore savedPasswordStore) {
+		if (scopedSecretsArray == null) {
+			return 0;
+		}
+
+		int importedScopedSecrets = 0;
+		for (int i = 0; i < scopedSecretsArray.length(); i++) {
+			JSONObject scopedSecretJson = scopedSecretsArray.optJSONObject(i);
+			if (scopedSecretJson == null) {
+				continue;
+			}
+
+			long oldHostId = scopedSecretJson.optLong("host_id", -1);
+			String scope = scopedSecretJson.optString("scope", null);
+			String secret = scopedSecretJson.optString("secret", null);
+			if (oldHostId <= 0 || scope == null || scope.isEmpty() || secret == null || secret.isEmpty()) {
+				continue;
+			}
+			if (!isSupportedScopedBackupScope(scope)) {
+				continue;
+			}
+
+			Long newHostId = oldToNewHostIdMap.get(oldHostId);
+			if (newHostId == null || newHostId <= 0) {
+				continue;
+			}
+
+			HostBean restoredHost = hostDatabase.findHostById(newHostId);
+			if (restoredHost == null
+					|| !restoredHost.getRememberPassword()
+					|| !SSM.getProtocolName().equals(restoredHost.getProtocol())) {
+				continue;
+			}
+
+			savedPasswordStore.saveScopedSecret(scope, newHostId, secret);
+			if (SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY.equals(scope)) {
+				// Migrate imported SSM secrets away from the shared legacy password slot.
+				savedPasswordStore.clearPassword(newHostId);
+			}
+			importedScopedSecrets++;
+		}
+
+		return importedScopedSecrets;
+	}
+
+	private static boolean isSupportedScopedBackupScope(@NonNull String scope) {
+		return SavedPasswordStore.SCOPE_SSM_SECRET_ACCESS_KEY.equals(scope)
+				|| SavedPasswordStore.SCOPE_SSM_SESSION_TOKEN.equals(scope);
 	}
 
 	@NonNull
@@ -719,19 +856,37 @@ public final class EncryptedBackupManager {
 		return array == null ? 0 : array.length();
 	}
 
-	private static final class HostJumpBinding {
+	private static int countHostsForProtocol(@Nullable JSONArray hostsArray, @NonNull String protocol) {
+		if (hostsArray == null) {
+			return 0;
+		}
+
+		int count = 0;
+		for (int i = 0; i < hostsArray.length(); i++) {
+			JSONObject hostJson = hostsArray.optJSONObject(i);
+			if (hostJson != null && protocol.equals(hostJson.optString("protocol"))) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	private static final class HostRoutingBinding {
 		private final HostBean host;
 		private final long oldJumpHostId;
+		private final long oldSsmRouteHostId;
 
-		HostJumpBinding(HostBean host, long oldJumpHostId) {
+		HostRoutingBinding(HostBean host, long oldJumpHostId, long oldSsmRouteHostId) {
 			this.host = host;
 			this.oldJumpHostId = oldJumpHostId;
+			this.oldSsmRouteHostId = oldSsmRouteHostId;
 		}
 	}
 
 	private static final class HostImportState {
 		private final HashMap<Long, Long> oldToNewHostIdMap = new HashMap<Long, Long>();
 		private int importedHostCount = 0;
+		private int importedSsmHostCount = 0;
 	}
 
 	private static final class GroupImportState {

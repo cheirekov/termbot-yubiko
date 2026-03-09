@@ -42,6 +42,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.connectbot.bean.HostBean;
+import org.connectbot.transport.SSM;
 import org.connectbot.transport.SSH;
 import org.connectbot.transport.Telnet;
 import org.connectbot.transport.TransportFactory;
@@ -57,6 +58,8 @@ public class HostEditorFragment extends Fragment {
 	private static final String ARG_PUBKEY_VALUES = "pubkeyValues";
 	private static final String ARG_JUMP_HOST_NAMES = "jumpHostNames";
 	private static final String ARG_JUMP_HOST_VALUES = "jumpHostValues";
+	private static final String ARG_SSM_ROUTE_HOST_NAMES = "ssmRouteHostNames";
+	private static final String ARG_SSM_ROUTE_HOST_VALUES = "ssmRouteHostValues";
 	private static final String ARG_GROUP_NAMES = "groupNames";
 	private static final String ARG_GROUP_VALUES = "groupValues";
 	private static final String ARG_QUICKCONNECT_STRING = "quickConnectString";
@@ -75,6 +78,8 @@ public class HostEditorFragment extends Fragment {
 	private ArrayList<String> mPubkeyValues;
 	private ArrayList<String> mJumpHostNames;
 	private ArrayList<String> mJumpHostValues;
+	private ArrayList<String> mSsmRouteHostNames;
+	private ArrayList<String> mSsmRouteHostValues;
 	private ArrayList<String> mGroupNames;
 	private ArrayList<String> mGroupValues;
 
@@ -127,6 +132,8 @@ public class HostEditorFragment extends Fragment {
 	private TextView mGroupText;
 	private View mJumpHostItem;
 	private TextView mJumpHostText;
+	private View mSsmRouteHostItem;
+	private TextView mSsmRouteHostText;
 	private View mDelKeyItem;
 	private TextView mDelKeyText;
 	private View mEncodingItem;
@@ -138,12 +145,20 @@ public class HostEditorFragment extends Fragment {
 	private CheckableMenuItem mStayConnectedSwitch;
 	private CheckableMenuItem mCloseOnDisconnectSwitch;
 	private CheckableMenuItem mRememberPasswordSwitch;
+	private View mPostLoginContainer;
+	private TextView mPostLoginTitle;
+	private TextView mPostLoginSummary;
 	private EditText mPostLoginAutomationField;
+	private View mSsmMfaSerialContainer;
+	private EditText mSsmMfaSerialField;
+	private View mSsmRoleArnContainer;
+	private EditText mSsmRoleArnField;
 	private HostTextFieldWatcher mFontSizeTextChangeListener;
 
 	public static HostEditorFragment newInstance(
 			HostBean existingHost, ArrayList<String> pubkeyNames, ArrayList<String> pubkeyValues,
 			ArrayList<String> jumpHostNames, ArrayList<String> jumpHostValues,
+			ArrayList<String> ssmRouteHostNames, ArrayList<String> ssmRouteHostValues,
 			ArrayList<String> groupNames, ArrayList<String> groupValues) {
 		HostEditorFragment fragment = new HostEditorFragment();
 		Bundle args = new Bundle();
@@ -155,6 +170,8 @@ public class HostEditorFragment extends Fragment {
 		args.putStringArrayList(ARG_PUBKEY_VALUES, pubkeyValues);
 		args.putStringArrayList(ARG_JUMP_HOST_NAMES, jumpHostNames);
 		args.putStringArrayList(ARG_JUMP_HOST_VALUES, jumpHostValues);
+		args.putStringArrayList(ARG_SSM_ROUTE_HOST_NAMES, ssmRouteHostNames);
+		args.putStringArrayList(ARG_SSM_ROUTE_HOST_VALUES, ssmRouteHostValues);
 		args.putStringArrayList(ARG_GROUP_NAMES, groupNames);
 		args.putStringArrayList(ARG_GROUP_VALUES, groupValues);
 		fragment.setArguments(args);
@@ -182,6 +199,8 @@ public class HostEditorFragment extends Fragment {
 		mPubkeyValues = bundle.getStringArrayList(ARG_PUBKEY_VALUES);
 		mJumpHostNames = bundle.getStringArrayList(ARG_JUMP_HOST_NAMES);
 		mJumpHostValues = bundle.getStringArrayList(ARG_JUMP_HOST_VALUES);
+		mSsmRouteHostNames = bundle.getStringArrayList(ARG_SSM_ROUTE_HOST_NAMES);
+		mSsmRouteHostValues = bundle.getStringArrayList(ARG_SSM_ROUTE_HOST_VALUES);
 		mGroupNames = bundle.getStringArrayList(ARG_GROUP_NAMES);
 		mGroupValues = bundle.getStringArrayList(ARG_GROUP_VALUES);
 		if (mPubkeyNames == null) {
@@ -195,6 +214,12 @@ public class HostEditorFragment extends Fragment {
 		}
 		if (mJumpHostValues == null) {
 			mJumpHostValues = new ArrayList<String>();
+		}
+		if (mSsmRouteHostNames == null) {
+			mSsmRouteHostNames = new ArrayList<String>();
+		}
+		if (mSsmRouteHostValues == null) {
+			mSsmRouteHostValues = new ArrayList<String>();
 		}
 		if (mGroupNames == null) {
 			mGroupNames = new ArrayList<String>();
@@ -252,13 +277,15 @@ public class HostEditorFragment extends Fragment {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (!mUriFieldEditInProgress) {
-					applyQuickConnectString(s.toString(), mHost.getProtocol());
-
 					mUriFieldEditInProgress = true;
-					mUsernameField.setText(mHost.getUsername());
-					mHostnameField.setText(mHost.getHostname());
-					mPortField.setText(Integer.toString(mHost.getPort()));
-					mUriFieldEditInProgress = false;
+					try {
+						applyQuickConnectString(s.toString(), mHost.getProtocol());
+						mUsernameField.setText(mHost.getUsername());
+						mHostnameField.setText(mHost.getHostname());
+						mPortField.setText(Integer.toString(mHost.getPort()));
+					} finally {
+						mUriFieldEditInProgress = false;
+					}
 				}
 			}
 		});
@@ -472,6 +499,46 @@ public class HostEditorFragment extends Fragment {
 			mHost.setJumpHostId(Long.parseLong(mJumpHostValues.get(0)));
 		}
 
+		mSsmRouteHostItem = view.findViewById(R.id.ssm_route_host_item);
+		mSsmRouteHostItem.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				PopupMenu menu = new PopupMenu(getActivity(), v);
+				for (String name : mSsmRouteHostNames) {
+					menu.getMenu().add(name);
+				}
+				menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
+						for (int i = 0; i < mSsmRouteHostNames.size(); i++) {
+							if (mSsmRouteHostNames.get(i).equals(item.getTitle().toString())) {
+								mHost.setSsmRouteHostId(Long.parseLong(mSsmRouteHostValues.get(i)));
+								mSsmRouteHostText.setText(mSsmRouteHostNames.get(i));
+								handleHostChange();
+								return true;
+							}
+						}
+						return false;
+					}
+				});
+				menu.show();
+			}
+		});
+
+		mSsmRouteHostText = view.findViewById(R.id.ssm_route_host_text);
+		boolean ssmRouteHostValueSet = false;
+		for (int i = 0; i < mSsmRouteHostValues.size(); i++) {
+			if (mHost.getSsmRouteHostId() == Long.parseLong(mSsmRouteHostValues.get(i))) {
+				mSsmRouteHostText.setText(mSsmRouteHostNames.get(i));
+				ssmRouteHostValueSet = true;
+				break;
+			}
+		}
+		if (!ssmRouteHostValueSet && !mSsmRouteHostNames.isEmpty()) {
+			mSsmRouteHostText.setText(mSsmRouteHostNames.get(0));
+			mHost.setSsmRouteHostId(Long.parseLong(mSsmRouteHostValues.get(0)));
+		}
+
 		mDelKeyItem = view.findViewById(R.id.delkey_item);
 		mDelKeyItem.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -605,10 +672,24 @@ public class HostEditorFragment extends Fragment {
 		});
 		setTransportType(mHost.getProtocol(), /* setDefaultPortInModel */ false);
 
+		mPostLoginContainer = view.findViewById(R.id.postlogin_section_container);
+		mPostLoginTitle = view.findViewById(R.id.postlogin_title);
+		mPostLoginSummary = view.findViewById(R.id.postlogin_summary);
 		mPostLoginAutomationField = view.findViewById(R.id.post_login_automation_field);
 		mPostLoginAutomationField.setText(mHost.getPostLogin());
 		mPostLoginAutomationField.addTextChangedListener(
 				new HostTextFieldWatcher(HostDatabase.FIELD_HOST_POSTLOGIN));
+		mSsmMfaSerialContainer = view.findViewById(R.id.ssm_mfa_serial_section_container);
+		mSsmMfaSerialField = view.findViewById(R.id.ssm_mfa_serial_field);
+		mSsmMfaSerialField.setText(mHost.getSsmMfaSerial());
+		mSsmMfaSerialField.addTextChangedListener(
+				new HostTextFieldWatcher(HostDatabase.FIELD_HOST_SSM_MFA_SERIAL));
+		mSsmRoleArnContainer = view.findViewById(R.id.ssm_role_arn_section_container);
+		mSsmRoleArnField = view.findViewById(R.id.ssm_role_arn_field);
+		mSsmRoleArnField.setText(mHost.getSsmRoleArn());
+		mSsmRoleArnField.addTextChangedListener(
+				new HostTextFieldWatcher(HostDatabase.FIELD_HOST_SSM_ROLE_ARN));
+		updatePostLoginLabels(mHost.getProtocol());
 
 		setUriPartsContainerExpanded(mIsUriEditorExpanded);
 
@@ -630,6 +711,11 @@ public class HostEditorFragment extends Fragment {
 
 		mQuickConnectContainer.setHint(
 				TransportFactory.getFormatHint(protocol, getActivity()));
+		updatePostLoginLabels(protocol);
+
+		((TextInputLayout) mUsernameContainer).setHint(getString(R.string.hostpref_username_title));
+		((TextInputLayout) mHostnameContainer).setHint(getString(R.string.hostpref_hostname_title));
+		((TextInputLayout) mPortContainer).setHint(getString(R.string.hostpref_port_title));
 
 		// Different protocols have different field types, so show only the fields needed.
 		if (SSH.getProtocolName().equals(protocol)) {
@@ -640,6 +726,9 @@ public class HostEditorFragment extends Fragment {
 			mNicknameItem.setVisibility(View.VISIBLE);
 			if (mJumpHostItem != null) {
 				mJumpHostItem.setVisibility(View.VISIBLE);
+			}
+			if (mSsmRouteHostItem != null) {
+				mSsmRouteHostItem.setVisibility(View.VISIBLE);
 			}
 			if (mRememberPasswordSwitch != null) {
 				mRememberPasswordSwitch.setVisibility(View.VISIBLE);
@@ -653,20 +742,87 @@ public class HostEditorFragment extends Fragment {
 			if (mJumpHostItem != null) {
 				mJumpHostItem.setVisibility(View.GONE);
 			}
+			if (mSsmRouteHostItem != null) {
+				mSsmRouteHostItem.setVisibility(View.GONE);
+			}
 			if (mRememberPasswordSwitch != null) {
 				mRememberPasswordSwitch.setVisibility(View.GONE);
 			}
+		} else if (SSM.getProtocolName().equals(protocol)) {
+			mUsernameContainer.setVisibility(View.VISIBLE);
+			mHostnameContainer.setVisibility(View.VISIBLE);
+			mPortContainer.setVisibility(View.VISIBLE);
+			mExpandCollapseButton.setVisibility(View.VISIBLE);
+			mNicknameItem.setVisibility(View.VISIBLE);
+			if (mSsmMfaSerialContainer != null) {
+				mSsmMfaSerialContainer.setVisibility(View.VISIBLE);
+			}
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.VISIBLE);
+			}
+			if (mJumpHostItem != null) {
+				mJumpHostItem.setVisibility(View.GONE);
+			}
+			if (mSsmRouteHostItem != null) {
+				mSsmRouteHostItem.setVisibility(View.GONE);
+			}
+			((TextInputLayout) mUsernameContainer).setHint(getString(R.string.aws_access_key_id_title));
+			((TextInputLayout) mHostnameContainer).setHint(getString(R.string.aws_region_title));
+			((TextInputLayout) mPortContainer).setHint(getString(R.string.aws_https_port_title));
 		} else {
 			// Local protocol has only one field, so no need to show the URI parts
 			// container.
 			setUriPartsContainerExpanded(false);
 			mExpandCollapseButton.setVisibility(View.GONE);
 			mNicknameItem.setVisibility(View.GONE);
+			if (mSsmMfaSerialContainer != null) {
+				mSsmMfaSerialContainer.setVisibility(View.GONE);
+			}
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.GONE);
+			}
 			if (mJumpHostItem != null) {
 				mJumpHostItem.setVisibility(View.GONE);
 			}
+			if (mSsmRouteHostItem != null) {
+				mSsmRouteHostItem.setVisibility(View.GONE);
+			}
 			if (mRememberPasswordSwitch != null) {
 				mRememberPasswordSwitch.setVisibility(View.GONE);
+			}
+		}
+	}
+
+	private void updatePostLoginLabels(String protocol) {
+		if (mPostLoginContainer == null || mPostLoginTitle == null
+				|| mPostLoginSummary == null || mPostLoginAutomationField == null) {
+			return;
+		}
+		if (SSM.getProtocolName().equals(protocol)) {
+			mPostLoginContainer.setVisibility(View.VISIBLE);
+			mPostLoginTitle.setText(R.string.ssm_target_title);
+			mPostLoginSummary.setText(R.string.ssm_target_summary);
+			mPostLoginAutomationField.setHint(R.string.ssm_target_hint);
+			mPostLoginAutomationField.setMinLines(1);
+			mPostLoginAutomationField.setMaxLines(1);
+			if (mSsmMfaSerialContainer != null) {
+				mSsmMfaSerialContainer.setVisibility(View.VISIBLE);
+			}
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.VISIBLE);
+			}
+		} else {
+			mPostLoginContainer.setVisibility(View.GONE);
+			mPostLoginTitle.setText(R.string.hostpref_postlogin_title);
+			mPostLoginSummary.setText(R.string.hostpref_postlogin_summary);
+			mPostLoginAutomationField.setHint(null);
+			mPostLoginAutomationField.setMinLines(2);
+			mPostLoginAutomationField.setMaxLines(Integer.MAX_VALUE);
+			if (mSsmMfaSerialContainer != null) {
+				mSsmMfaSerialContainer.setVisibility(View.GONE);
+			}
+			if (mSsmRoleArnContainer != null) {
+				mSsmRoleArnContainer.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -756,6 +912,8 @@ public class HostEditorFragment extends Fragment {
 		savedInstanceState.putStringArrayList(ARG_PUBKEY_VALUES, mPubkeyValues);
 		savedInstanceState.putStringArrayList(ARG_JUMP_HOST_NAMES, mJumpHostNames);
 		savedInstanceState.putStringArrayList(ARG_JUMP_HOST_VALUES, mJumpHostValues);
+		savedInstanceState.putStringArrayList(ARG_SSM_ROUTE_HOST_NAMES, mSsmRouteHostNames);
+		savedInstanceState.putStringArrayList(ARG_SSM_ROUTE_HOST_VALUES, mSsmRouteHostValues);
 		savedInstanceState.putStringArrayList(ARG_GROUP_NAMES, mGroupNames);
 		savedInstanceState.putStringArrayList(ARG_GROUP_VALUES, mGroupValues);
 	}
@@ -806,8 +964,12 @@ public class HostEditorFragment extends Fragment {
 			mHost.setProtocol(protocol);
 			mHost.setUsername(null);
 			mHost.setHostname(null);
+			mHost.setPostLogin(null);
 			mHost.setNickname(null);
 			mHost.setPort(TransportFactory.getTransport(protocol).getDefaultPort());
+			if (SSM.getProtocolName().equals(protocol) && mPostLoginAutomationField != null) {
+				mPostLoginAutomationField.setText(null);
+			}
 			return;
 		}
 
@@ -817,6 +979,12 @@ public class HostEditorFragment extends Fragment {
 		mHost.setHostname(host.getHostname());
 		mHost.setNickname(host.getNickname());
 		mHost.setPort(host.getPort());
+		if (SSM.getProtocolName().equals(protocol)) {
+			mHost.setPostLogin(host.getPostLogin());
+			if (mPostLoginAutomationField != null) {
+				mPostLoginAutomationField.setText(host.getPostLogin());
+			}
+		}
 		handleHostChange();
 	}
 
@@ -829,6 +997,10 @@ public class HostEditorFragment extends Fragment {
 	private void handleHostChange() {
 		String quickConnectString = mQuickConnectField.getText().toString();
 		if (quickConnectString.isEmpty()) {
+			if (SSM.getProtocolName().equals(mHost.getProtocol()) && isSsmHostComplete(mHost)) {
+				mListener.onValidHostConfigured(mHost);
+				return;
+			}
 			// Invalid protocol and/or string, so don't do anything.
 			mListener.onHostInvalidated();
 			return;
@@ -836,13 +1008,33 @@ public class HostEditorFragment extends Fragment {
 
 		Uri uri = TransportFactory.getUri(mHost.getProtocol(), quickConnectString);
 		if (uri == null) {
+			if (SSM.getProtocolName().equals(mHost.getProtocol()) && isSsmHostComplete(mHost)) {
+				mListener.onValidHostConfigured(mHost);
+				return;
+			}
 			// Valid string, but does not accurately describe a URI.
+			mListener.onHostInvalidated();
+			return;
+		}
+
+		if (SSM.getProtocolName().equals(mHost.getProtocol()) && !isSsmHostComplete(mHost)) {
+			// SSM requires access key ID, region, and target before save/connect is valid.
 			mListener.onHostInvalidated();
 			return;
 		}
 
 		// Now, the host is confirmed to have a valid URI.
 		mListener.onValidHostConfigured(mHost);
+	}
+
+	private boolean isSsmHostComplete(HostBean host) {
+		return hasText(host.getUsername())
+				&& hasText(host.getHostname())
+				&& hasText(host.getPostLogin());
+	}
+
+	private boolean hasText(String value) {
+		return value != null && !value.trim().isEmpty();
 	}
 
 	public interface Listener {
@@ -880,9 +1072,13 @@ public class HostEditorFragment extends Fragment {
 				}
 			} else if (HostDatabase.FIELD_HOST_NICKNAME.equals(mFieldType)) {
 				mHost.setNickname(text);
-			} else if (HostDatabase.FIELD_HOST_POSTLOGIN.equals(mFieldType)) {
-				mHost.setPostLogin(text);
-			} else if (HostDatabase.FIELD_HOST_FONTSIZE.equals(mFieldType)) {
+				} else if (HostDatabase.FIELD_HOST_POSTLOGIN.equals(mFieldType)) {
+					mHost.setPostLogin(text);
+				} else if (HostDatabase.FIELD_HOST_SSM_MFA_SERIAL.equals(mFieldType)) {
+					mHost.setSsmMfaSerial(text);
+				} else if (HostDatabase.FIELD_HOST_SSM_ROLE_ARN.equals(mFieldType)) {
+					mHost.setSsmRoleArn(text);
+				} else if (HostDatabase.FIELD_HOST_FONTSIZE.equals(mFieldType)) {
 				int fontSize = HostBean.DEFAULT_FONT_SIZE;
 				try {
 					fontSize = Integer.parseInt(text);
@@ -910,7 +1106,9 @@ public class HostEditorFragment extends Fragment {
 		private boolean isUriRelatedField(String fieldType) {
 			return HostDatabase.FIELD_HOST_USERNAME.equals(fieldType) ||
 					HostDatabase.FIELD_HOST_HOSTNAME.equals(fieldType) ||
-					HostDatabase.FIELD_HOST_PORT.equals(fieldType);
+					HostDatabase.FIELD_HOST_PORT.equals(fieldType) ||
+					(SSM.getProtocolName().equals(mHost.getProtocol())
+							&& HostDatabase.FIELD_HOST_POSTLOGIN.equals(fieldType));
 		}
 	}
 }

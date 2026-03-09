@@ -50,6 +50,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -156,16 +157,7 @@ public class PortForwardListActivity extends AppCompatListActivity {
 				final EditText destEdit = portForwardView.findViewById(R.id.portforward_destination);
 				final Spinner typeSpinner = portForwardView.findViewById(R.id.portforward_type);
 
-				typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-					@Override
-					public void onItemSelected(AdapterView<?> value, View view,
-							int position, long id) {
-						destEdit.setEnabled(position != 2);
-					}
-					@Override
-					public void onNothingSelected(AdapterView<?> arg0) {
-					}
-				});
+				configureTypeSpinner(typeSpinner, destEdit);
 
 				new androidx.appcompat.app.AlertDialog.Builder(
 								PortForwardListActivity.this, R.style.AlertDialogTheme)
@@ -177,18 +169,7 @@ public class PortForwardListActivity extends AppCompatListActivity {
 									final EditText nicknameEdit = portForwardView.findViewById(R.id.nickname);
 									final EditText sourcePortEdit = portForwardView.findViewById(R.id.portforward_source);
 
-									String type = HostDatabase.PORTFORWARD_LOCAL;
-									switch (typeSpinner.getSelectedItemPosition()) {
-									case 0:
-										type = HostDatabase.PORTFORWARD_LOCAL;
-										break;
-									case 1:
-										type = HostDatabase.PORTFORWARD_REMOTE;
-										break;
-									case 2:
-										type = HostDatabase.PORTFORWARD_DYNAMIC5;
-										break;
-									}
+									String type = getSelectedPortForwardType(typeSpinner);
 
 									// Why length(), not isEmpty(), is used: http://stackoverflow.com/q/10606725
 									String sourcePort = sourcePortEdit.getText().toString();
@@ -245,6 +226,50 @@ public class PortForwardListActivity extends AppCompatListActivity {
 		adjustViewVisibility();
 	}
 
+	private boolean isSsmHost() {
+		return host != null && "ssm".equals(host.getProtocol());
+	}
+
+	private void configureTypeSpinner(final Spinner typeSpinner, final EditText destEdit) {
+		if (isSsmHost()) {
+			ArrayAdapter<String> adapter = new ArrayAdapter<>(
+					this,
+					android.R.layout.simple_spinner_item,
+					new String[] { getString(R.string.portforward_local) });
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			typeSpinner.setAdapter(adapter);
+			destEdit.setHint(R.string.ssm_port_forward_destination_hint);
+		}
+
+		typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> value, View view, int position, long id) {
+				destEdit.setEnabled(isSsmHost() || position != 2);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+	}
+
+	private String getSelectedPortForwardType(Spinner typeSpinner) {
+		if (isSsmHost()) {
+			return HostDatabase.PORTFORWARD_LOCAL;
+		}
+
+		switch (typeSpinner.getSelectedItemPosition()) {
+		case 0:
+			return HostDatabase.PORTFORWARD_LOCAL;
+		case 1:
+			return HostDatabase.PORTFORWARD_REMOTE;
+		case 2:
+			return HostDatabase.PORTFORWARD_DYNAMIC5;
+		default:
+			return HostDatabase.PORTFORWARD_LOCAL;
+		}
+	}
+
 	private class PortForwardViewHolder extends ItemViewHolder {
 		public final TextView nickname;
 		public final TextView caption;
@@ -285,13 +310,6 @@ public class PortForwardListActivity extends AppCompatListActivity {
 					final View editTunnelView = View.inflate(PortForwardListActivity.this, R.layout.dia_portforward, null);
 
 					final Spinner typeSpinner = editTunnelView.findViewById(R.id.portforward_type);
-					if (HostDatabase.PORTFORWARD_LOCAL.equals(portForward.getType()))
-						typeSpinner.setSelection(0);
-					else if (HostDatabase.PORTFORWARD_REMOTE.equals(portForward.getType()))
-						typeSpinner.setSelection(1);
-					else
-						typeSpinner.setSelection(2);
-
 					final EditText nicknameEdit = editTunnelView.findViewById(R.id.nickname);
 					nicknameEdit.setText(portForward.getNickname());
 
@@ -299,23 +317,20 @@ public class PortForwardListActivity extends AppCompatListActivity {
 					sourcePortEdit.setText(String.valueOf(portForward.getSourcePort()));
 
 					final EditText destEdit = editTunnelView.findViewById(R.id.portforward_destination);
-					if (HostDatabase.PORTFORWARD_DYNAMIC5.equals(portForward.getType())) {
+					configureTypeSpinner(typeSpinner, destEdit);
+					if (isSsmHost() || HostDatabase.PORTFORWARD_LOCAL.equals(portForward.getType())) {
+						typeSpinner.setSelection(0);
+					} else if (HostDatabase.PORTFORWARD_REMOTE.equals(portForward.getType())) {
+						typeSpinner.setSelection(1);
+					} else {
+						typeSpinner.setSelection(2);
+					}
+
+					if (HostDatabase.PORTFORWARD_DYNAMIC5.equals(portForward.getType()) && !isSsmHost()) {
 						destEdit.setEnabled(false);
 					} else {
 						destEdit.setText(String.format("%s:%d", portForward.getDestAddr(), portForward.getDestPort()));
 					}
-
-					typeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-						@Override
-						public void onItemSelected(AdapterView<?> value, View view,
-								int position, long id) {
-							destEdit.setEnabled(position != 2);
-						}
-
-						@Override
-						public void onNothingSelected(AdapterView<?> arg0) {
-						}
-					});
 
 					new androidx.appcompat.app.AlertDialog.Builder(
 									PortForwardListActivity.this, R.style.AlertDialogTheme)
@@ -328,18 +343,7 @@ public class PortForwardListActivity extends AppCompatListActivity {
 											hostBridge.disablePortForward(portForward);
 
 										portForward.setNickname(nicknameEdit.getText().toString());
-
-										switch (typeSpinner.getSelectedItemPosition()) {
-										case 0:
-											portForward.setType(HostDatabase.PORTFORWARD_LOCAL);
-											break;
-										case 1:
-											portForward.setType(HostDatabase.PORTFORWARD_REMOTE);
-											break;
-										case 2:
-											portForward.setType(HostDatabase.PORTFORWARD_DYNAMIC5);
-											break;
-										}
+										portForward.setType(getSelectedPortForwardType(typeSpinner));
 
 										portForward.setSourcePort(Integer.parseInt(sourcePortEdit.getText().toString()));
 										portForward.setDest(destEdit.getText().toString());

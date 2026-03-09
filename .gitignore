@@ -1,6 +1,7 @@
 
 # --- AI local operating pack (recommended ignored) ---
-references/
+references/.*
+references/builds
 context_pack/
 SNAPSHOT.txt
 *.contextpack.zip

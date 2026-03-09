@@ -7,19 +7,37 @@
 
 ## Backlog
 - [ ] TKT-0226: UI/UX improvements epic (post-modernization focus)
-- [ ] TKT-000: Create repo inventory (example)
-
-## Ready
-- [ ] (none)
+- [ ] TKT-0252: Security-key lifecycle state machine hardening
+- [ ] TKT-0253: Jump-host auth regression guardrails
+- [ ] TKT-0254: Auth failure taxonomy and user surfacing
+- [ ] TKT-0255: CI canonical gate declaration and cleanup
+- [ ] TKT-0256: Release-candidate smoke gate automation script
+- [ ] TKT-0257: UI/UX epic tail closure (batch A)
+- [ ] TKT-0258: Accessibility and input-modality regression sweep
+- [ ] TKT-0259: Repo map and state truth reconciliation
+- [ ] TKT-0260: AWS SSM Session Manager support (EPIC)
 
 ## In Progress
+- [ ] (none)
+
+## Ready
 - [ ] (none)
 
 ## Review
 - [ ] (none)
 
 ## Done
+- [x] TKT-0270: Release-candidate docs and operator manual baseline — DONE 2026-03-09; added a root operator-facing `README.md` capability summary, published `MANUAL.md` for shipped SSH/SSM/YubiKey flows, and refreshed `ai_docs/docs/RELEASE.md` with the current YubiKey + SSM RC smoke scope
+- [x] TKT-0263: AWS credential management + MFA + role/jump readiness — DONE 2026-03-09; operator confirmed direct SSM MFA, assume-role MFA, and invalid-MFA-code surfacing on the `2026-03-09 13:44` build; shipped scope remains STS `GetSessionToken` / MFA-capable `AssumeRole`, with FIDO2/passkey MFA explicitly deferred because AWS STS does not accept FIDO MFA assertions
+- [x] TKT-0269: Background/power-management session resilience — DONE 2026-03-09; operator confirmed background/foreground survival on the `2026-03-09 12:30` build, and the final exported report shows `show_running_prepare` + `show_running type=special_use` on background `unbind`/rebind with no cold `APP_CREATED` restart afterward
+- [x] TKT-0268: SSH over SSM bastion/tunnel integration — DONE 2026-03-08; operator confirmed direct SSH via selected SSM route host, direct SSH, direct SSM shell, SSH jump-host regression, and later also the combined `SSM route host + SSH jump host` topology
+- [x] TKT-0267: SSM port-forwarding + remote-host tunnel baseline — DONE 2026-03-08; operator confirmed both managed-node SSH tunnel smoke (`15432 -> localhost:22`) and remote-host/private-DB forwarding via localhost client access; residual background-session issue moved to TKT-0269
+- [x] TKT-0266: SSM assume-role baseline — DONE 2026-03-07; operator smoke confirmed app-driven assume-role flow works with base AWS credentials + role ARN
+- [x] TKT-0265: SSM backup/export compatibility + schema migration — DONE 2026-03-07; operator confirmed encrypted backup export/import restores SSM host target and saved secret, with same-key/region multi-target smoke deferred to later validation matrix
 - [x] PACK-INIT: Installed AI operating pack
+- [x] TKT-0264: SSM host editor UX + session UI integration — DONE 2026-03-07; operator confirmed host-add UX fixes (access-key parse, immediate first-connect prompt, stable full quick-connect typing, target placement near key/region, strict SSM-only target visibility)
+- [x] TKT-0262: SSM WebSocket transport implementation — DONE 2026-03-06; operator smoke passed (`connect`, `uname -a`, `whoami=ssm-user`, `exit`), interactive SSM stream bridge is functional in debug build
+- [x] TKT-0261: SSM transport feasibility spike (protocol, deps, credential flow) — DONE 2026-03-06; created TKT-0262..0265, captured phased feasibility + ADR, recorded scope decisions, and verified compile-safe SSM kickoff path
 - [x] TKT-0246: Root README/LICENSE and GitHub Actions bootstrap — DONE 2026-03-05; user confirmed public repo publication state and green GitHub Actions on current code
 - [x] TKT-0247: GitHub Actions Java11 compatibility fix — DONE 2026-03-05; user confirmed GitHub Actions green on current code after JDK17 SDK setup + JDK11 Gradle + dx/aapt2 workflow hardening
 - [x] TKT-0245: First public GitHub commit preparation — DONE 2026-03-05; user confirmed public repo state with current README/LICENSE and publication wording

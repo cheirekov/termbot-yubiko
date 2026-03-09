@@ -22,6 +22,7 @@ import org.connectbot.HostListActivity;
 import org.connectbot.R;
 import org.connectbot.bean.HostBean;
 import org.connectbot.util.HostDatabase;
+import org.connectbot.util.SecurityKeyDebugLog;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -29,6 +30,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.pm.ServiceInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -42,6 +44,8 @@ import androidx.core.app.NotificationCompat;
  * Based on the concept from jasta's blog post.
  */
 public class ConnectionNotifier {
+	private static final String TAG = "CB.ConnectionNotifier";
+	private static final String FLOW_MARKER = "NOTIFIER_FLOW";
 	private static final int ONLINE_NOTIFICATION = 1;
 	private static final int ACTIVITY_NOTIFICATION = 2;
 	private static final int ONLINE_DISCONNECT_NOTIFICATION = 3;
@@ -61,6 +65,13 @@ public class ConnectionNotifier {
 
 	private NotificationManager getNotificationManager(Context context) {
 		return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+	}
+
+	private int immutablePendingIntentFlags(int baseFlags) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			return baseFlags | PendingIntent.FLAG_IMMUTABLE;
+		}
+		return baseFlags;
 	}
 
 	private NotificationCompat.Builder newNotificationBuilder(Context context, String id) {
@@ -96,7 +107,7 @@ public class ConnectionNotifier {
 		notificationIntent.setData(host.getUri());
 
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-				notificationIntent, 0);
+				notificationIntent, immutablePendingIntentFlags(PendingIntent.FLAG_UPDATE_CURRENT));
 
 		builder.setContentTitle(res.getString(R.string.app_name))
 				.setContentText(contentText)
@@ -127,7 +138,8 @@ public class ConnectionNotifier {
 
 		builder.setContentIntent(PendingIntent.getActivity(context,
 				ONLINE_NOTIFICATION,
-				new Intent(context, ConsoleActivity.class), 0));
+				new Intent(context, ConsoleActivity.class),
+				immutablePendingIntentFlags(PendingIntent.FLAG_UPDATE_CURRENT)));
 
 		Resources res = context.getResources();
 		builder.setContentTitle(res.getString(R.string.app_name));
@@ -138,11 +150,11 @@ public class ConnectionNotifier {
 		builder.addAction(
 				android.R.drawable.ic_menu_close_clear_cancel,
 				res.getString(R.string.list_host_disconnect),
-				PendingIntent.getActivity(
-						context,
-						ONLINE_DISCONNECT_NOTIFICATION,
-						disconnectIntent,
-						0));
+					PendingIntent.getActivity(
+							context,
+							ONLINE_DISCONNECT_NOTIFICATION,
+							disconnectIntent,
+							immutablePendingIntentFlags(PendingIntent.FLAG_UPDATE_CURRENT)));
 
 		return builder.build();
 	}
@@ -152,10 +164,40 @@ public class ConnectionNotifier {
 	}
 
 	void showRunningNotification(Service context) {
-		context.startForeground(ONLINE_NOTIFICATION, newRunningNotification(context));
+		Notification notification = null;
+		try {
+			SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+					"show_running_prepare");
+			notification = newRunningNotification(context);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+				SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+						"show_running type=special_use");
+				context.startForeground(ONLINE_NOTIFICATION, notification,
+						ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
+			} else {
+				SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+						"show_running type=legacy");
+				context.startForeground(ONLINE_NOTIFICATION, notification);
+			}
+		} catch (RuntimeException e) {
+			SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+					"show_running_failed=" + e.getClass().getSimpleName());
+			if (notification != null) {
+				getNotificationManager(context).notify(ONLINE_NOTIFICATION, notification);
+			}
+		}
 	}
 
 	void hideRunningNotification(Service context) {
-		context.stopForeground(true);
+		try {
+			SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+					"hide_running");
+			context.stopForeground(true);
+		} catch (RuntimeException e) {
+			SecurityKeyDebugLog.logFlow(context.getApplicationContext(), TAG, FLOW_MARKER,
+					"hide_running_failed=" + e.getClass().getSimpleName());
+		} finally {
+			getNotificationManager(context).cancel(ONLINE_NOTIFICATION);
+		}
 	}
 }

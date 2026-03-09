@@ -58,6 +58,10 @@ public class PromptHelper {
 	 */
 	public void setHandler(Handler handler) {
 		this.handler = handler;
+		if (handler != null && promptRequested != null) {
+			// If a prompt is already pending when UI attaches, immediately surface it.
+			Message.obtain(handler, -1, tag).sendToTarget();
+		}
 	}
 
 	/**

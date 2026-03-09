@@ -54,6 +54,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +73,8 @@ import org.connectbot.util.YubiKeyCapabilityProbe;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -108,6 +111,8 @@ public class HostListActivity extends AppCompatListActivity implements OnHostSta
 	private SharedPreferences prefs = null;
 
 	protected boolean makingShortcut = false;
+	private boolean terminalServiceBound = false;
+	private boolean startupFailureShown = false;
 
 	private boolean waitingForDisconnectAll = false;
 	private boolean mBackupOperationInProgress = false;
@@ -119,44 +124,70 @@ public class HostListActivity extends AppCompatListActivity implements OnHostSta
 	 */
 	private boolean closeOnDisconnectAll = true;
 
+	private interface StartupAction {
+		void run();
+	}
+
 	private ServiceConnection connection = new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName className, IBinder service) {
-			bound = ((TerminalManager.TerminalBinder) service).getService();
+			runStartupStage("serviceConnected", new StartupAction() {
+				@Override
+				public void run() {
+					bound = ((TerminalManager.TerminalBinder) service).getService();
 
-			// update our listview binder to find the service
-			HostListActivity.this.updateList();
+					// update our listview binder to find the service
+					HostListActivity.this.updateList();
 
-			bound.registerOnHostStatusChangedListener(HostListActivity.this);
+					bound.registerOnHostStatusChangedListener(HostListActivity.this);
 
-			if (waitingForDisconnectAll) {
-				disconnectAll();
-			}
+					if (waitingForDisconnectAll) {
+						disconnectAll();
+					}
+				}
+			});
 		}
 
 		@Override
 		public void onServiceDisconnected(ComponentName className) {
-			bound.unregisterOnHostStatusChangedListener(HostListActivity.this);
+			runStartupStage("serviceDisconnected", new StartupAction() {
+				@Override
+				public void run() {
+					if (bound != null) {
+						bound.unregisterOnHostStatusChangedListener(HostListActivity.this);
+					}
 
-			bound = null;
-			HostListActivity.this.updateList();
+					bound = null;
+					HostListActivity.this.updateList();
+				}
+			});
 		}
 	};
 
 	@Override
 	public void onStart() {
 		super.onStart();
+		runStartupStage("onStart", new StartupAction() {
+			@Override
+			public void run() {
+				// start the terminal manager service
+				terminalServiceBound = bindService(
+						new Intent(HostListActivity.this, TerminalManager.class),
+						connection,
+						Context.BIND_AUTO_CREATE);
 
-		// start the terminal manager service
-		this.bindService(new Intent(this, TerminalManager.class), connection, Context.BIND_AUTO_CREATE);
-
-		hostdb = HostDatabase.get(this);
+				hostdb = HostDatabase.get(HostListActivity.this);
+			}
+		});
 	}
 
 	@Override
 	public void onStop() {
 		super.onStop();
-		this.unbindService(connection);
+		if (terminalServiceBound) {
+			unbindService(connection);
+			terminalServiceBound = false;
+		}
 
 		dismissBackupProgressDialog();
 
@@ -168,17 +199,21 @@ public class HostListActivity extends AppCompatListActivity implements OnHostSta
 	@Override
 	public void onResume() {
 		super.onResume();
+		runStartupStage("onResume", new StartupAction() {
+			@Override
+			public void run() {
+				// Must disconnectAll before setting closeOnDisconnectAll to know whether to keep the
+				// activity open after disconnecting.
+				if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0 &&
+						DISCONNECT_ACTION.equals(getIntent().getAction())) {
+					Log.d(TAG, "Got disconnect all request");
+					disconnectAll();
+				}
 
-		// Must disconnectAll before setting closeOnDisconnectAll to know whether to keep the
-		// activity open after disconnecting.
-		if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0 &&
-				DISCONNECT_ACTION.equals(getIntent().getAction())) {
-			Log.d(TAG, "Got disconnect all request");
-			disconnectAll();
-		}
-
-		// Still close on disconnect if waiting for a disconnect.
-		closeOnDisconnectAll = waitingForDisconnectAll && closeOnDisconnectAll;
+				// Still close on disconnect if waiting for a disconnect.
+				closeOnDisconnectAll = waitingForDisconnectAll && closeOnDisconnectAll;
+			}
+		});
 	}
 
 	@Override
@@ -264,67 +299,72 @@ public class HostListActivity extends AppCompatListActivity implements OnHostSta
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		SecurityKeyDebugLog.logFlow(getApplicationContext(), TAG, MARKER_BACKUP_PICKER, "host_list_created");
-		setContentView(R.layout.act_hostlist);
-		setTitle(R.string.title_hosts_list);
+		runStartupStage("onCreate", new StartupAction() {
+			@Override
+			public void run() {
+				SecurityKeyDebugLog.logFlow(getApplicationContext(), TAG, MARKER_BACKUP_PICKER, "host_list_created");
+				setContentView(R.layout.act_hostlist);
+				setTitle(R.string.title_hosts_list);
 
-		mListView = findViewById(R.id.list);
-		mListView.setHasFixedSize(true);
-		mListView.setLayoutManager(new LinearLayoutManager(this));
-		mListView.addItemDecoration(new ListItemDecoration(this));
+				mListView = findViewById(R.id.list);
+				mListView.setHasFixedSize(true);
+				mListView.setLayoutManager(new LinearLayoutManager(HostListActivity.this));
+				mListView.addItemDecoration(new ListItemDecoration(HostListActivity.this));
 
-		mEmptyView = findViewById(R.id.empty);
+				mEmptyView = findViewById(R.id.empty);
 
-		this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
+				prefs = PreferenceManager.getDefaultSharedPreferences(HostListActivity.this);
 
-		// detect HTC Dream and apply special preferences
-		if (Build.MANUFACTURER.equals("HTC") && Build.DEVICE.equals("dream")) {
-			SharedPreferences.Editor editor = prefs.edit();
-			boolean doCommit = false;
-			if (!prefs.contains(PreferenceConstants.SHIFT_FKEYS) &&
-					!prefs.contains(PreferenceConstants.CTRL_FKEYS)) {
-				editor.putBoolean(PreferenceConstants.SHIFT_FKEYS, true);
-				editor.putBoolean(PreferenceConstants.CTRL_FKEYS, true);
-				doCommit = true;
-			}
-			if (!prefs.contains(PreferenceConstants.STICKY_MODIFIERS)) {
-				editor.putString(PreferenceConstants.STICKY_MODIFIERS, PreferenceConstants.YES);
-				doCommit = true;
-			}
-			if (!prefs.contains(PreferenceConstants.KEYMODE)) {
-				editor.putString(PreferenceConstants.KEYMODE, PreferenceConstants.KEYMODE_RIGHT);
-				doCommit = true;
-			}
-			if (doCommit) {
-				editor.apply();
-			}
-		}
+				// detect HTC Dream and apply special preferences
+				if (Build.MANUFACTURER.equals("HTC") && Build.DEVICE.equals("dream")) {
+					SharedPreferences.Editor editor = prefs.edit();
+					boolean doCommit = false;
+					if (!prefs.contains(PreferenceConstants.SHIFT_FKEYS) &&
+							!prefs.contains(PreferenceConstants.CTRL_FKEYS)) {
+						editor.putBoolean(PreferenceConstants.SHIFT_FKEYS, true);
+						editor.putBoolean(PreferenceConstants.CTRL_FKEYS, true);
+						doCommit = true;
+					}
+					if (!prefs.contains(PreferenceConstants.STICKY_MODIFIERS)) {
+						editor.putString(PreferenceConstants.STICKY_MODIFIERS, PreferenceConstants.YES);
+						doCommit = true;
+					}
+					if (!prefs.contains(PreferenceConstants.KEYMODE)) {
+						editor.putString(PreferenceConstants.KEYMODE, PreferenceConstants.KEYMODE_RIGHT);
+						doCommit = true;
+					}
+					if (doCommit) {
+						editor.apply();
+					}
+				}
 
-		this.makingShortcut = Intent.ACTION_CREATE_SHORTCUT.equals(getIntent().getAction())
+				makingShortcut = Intent.ACTION_CREATE_SHORTCUT.equals(getIntent().getAction())
 								|| Intent.ACTION_PICK.equals(getIntent().getAction());
 
-		// connect with hosts database and populate list
-		this.hostdb = HostDatabase.get(this);
+				// connect with hosts database and populate list
+				hostdb = HostDatabase.get(HostListActivity.this);
 
-		this.sortedByColor = prefs.getBoolean(PreferenceConstants.SORT_BY_COLOR, false);
+				sortedByColor = prefs.getBoolean(PreferenceConstants.SORT_BY_COLOR, false);
 
-		this.registerForContextMenu(mListView);
+				registerForContextMenu(mListView);
 
-		View addHostButtonContainer = findViewById(R.id.add_host_button_container);
-		addHostButtonContainer.setVisibility(makingShortcut ? View.GONE : View.VISIBLE);
+				View addHostButtonContainer = findViewById(R.id.add_host_button_container);
+				addHostButtonContainer.setVisibility(makingShortcut ? View.GONE : View.VISIBLE);
 
-		FloatingActionButton addHostButton = findViewById(R.id.add_host_button);
-		addHostButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = EditHostActivity.createIntentForNewHost(HostListActivity.this);
-				startActivityForResult(intent, REQUEST_EDIT);
+				FloatingActionButton addHostButton = findViewById(R.id.add_host_button);
+				addHostButton.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = EditHostActivity.createIntentForNewHost(HostListActivity.this);
+						startActivityForResult(intent, REQUEST_EDIT);
+					}
+
+					public void onNothingSelected(AdapterView<?> arg0) {}
+				});
+
+				inflater = LayoutInflater.from(HostListActivity.this);
 			}
-
-			public void onNothingSelected(AdapterView<?> arg0) {}
 		});
-
-		this.inflater = LayoutInflater.from(this);
 	}
 
 	@Override
@@ -1047,28 +1087,85 @@ public class HostListActivity extends AppCompatListActivity implements OnHostSta
 	}
 
 	protected void updateList() {
-		if (prefs.getBoolean(PreferenceConstants.SORT_BY_COLOR, false) != sortedByColor) {
-			Editor edit = prefs.edit();
-			edit.putBoolean(PreferenceConstants.SORT_BY_COLOR, sortedByColor);
-			edit.apply();
-		}
+		runStartupStage("updateList", new StartupAction() {
+			@Override
+			public void run() {
+				if (prefs.getBoolean(PreferenceConstants.SORT_BY_COLOR, false) != sortedByColor) {
+					Editor edit = prefs.edit();
+					edit.putBoolean(PreferenceConstants.SORT_BY_COLOR, sortedByColor);
+					edit.apply();
+				}
 
-		if (hostdb == null)
-			hostdb = HostDatabase.get(this);
+				if (hostdb == null) {
+					hostdb = HostDatabase.get(HostListActivity.this);
+				}
 
-		hosts = hostdb.getHosts(sortedByColor);
+				hosts = hostdb.getHosts(sortedByColor);
 
-		// Don't lose hosts that are connected via shortcuts but not in the database.
-		if (bound != null) {
-			for (TerminalBridge bridge : bound.getBridges()) {
-				if (!hosts.contains(bridge.host))
-					hosts.add(0, bridge.host);
+				// Don't lose hosts that are connected via shortcuts but not in the database.
+				if (bound != null) {
+					for (TerminalBridge bridge : bound.getBridges()) {
+						if (!hosts.contains(bridge.host)) {
+							hosts.add(0, bridge.host);
+						}
+					}
+				}
+
+				mAdapter = new HostAdapter(HostListActivity.this, buildGroupedRows(hosts), bound);
+				mListView.setAdapter(mAdapter);
+				adjustViewVisibility();
 			}
+		});
+	}
+
+	private void runStartupStage(String stage, StartupAction action) {
+		if (startupFailureShown) {
+			return;
+		}
+		try {
+			action.run();
+		} catch (Throwable t) {
+			handleStartupFailure(stage, t);
+		}
+	}
+
+	private void handleStartupFailure(String stage, Throwable t) {
+		Log.e(TAG, "Startup failure during " + stage, t);
+		if (!BuildConfig.DEBUG) {
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException) t;
+			}
+			throw new RuntimeException(t);
 		}
 
-		mAdapter = new HostAdapter(this, buildGroupedRows(hosts), bound);
-		mListView.setAdapter(mAdapter);
-		adjustViewVisibility();
+		startupFailureShown = true;
+		SecurityKeyDebugLog.logFlow(
+				getApplicationContext(),
+				TAG,
+				"HOST_LIST_STARTUP_FAILURE",
+				stage + ": " + t.getClass().getSimpleName() + " " + String.valueOf(t.getMessage()));
+		renderStartupFailureScreen(stage, t);
+	}
+
+	private void renderStartupFailureScreen(String stage, Throwable t) {
+		ScrollView scrollView = new ScrollView(this);
+		TextView textView = new TextView(this);
+		int padding = (int) (16 * getResources().getDisplayMetrics().density);
+		textView.setPadding(padding, padding, padding, padding);
+		textView.setText(formatStartupFailure(stage, t));
+		scrollView.addView(textView);
+		setContentView(scrollView);
+		setTitle("Startup failure");
+	}
+
+	private String formatStartupFailure(String stage, Throwable t) {
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(stringWriter);
+		printWriter.println("Startup failure during " + stage);
+		printWriter.println();
+		t.printStackTrace(printWriter);
+		printWriter.flush();
+		return stringWriter.toString();
 	}
 
 	private List<HostListRow> buildGroupedRows(List<HostBean> allHosts) {

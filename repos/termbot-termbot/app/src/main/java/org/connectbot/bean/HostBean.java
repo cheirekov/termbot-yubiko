@@ -18,6 +18,7 @@
 package org.connectbot.bean;
 
 import org.connectbot.transport.Local;
+import org.connectbot.transport.SSM;
 import org.connectbot.transport.SSH;
 import org.connectbot.transport.Telnet;
 import org.connectbot.transport.TransportFactory;
@@ -59,6 +60,9 @@ public class HostBean extends AbstractBean {
 	private boolean rememberPassword = false;
 	private long jumpHostId = -1;
 	private long groupId = HostDatabase.HOST_GROUP_NONE;
+	private String ssmRoleArn = null;
+	private String ssmMfaSerial = null;
+	private long ssmRouteHostId = -1;
 
 	public HostBean() {
 
@@ -225,6 +229,30 @@ public class HostBean extends AbstractBean {
 		return groupId;
 	}
 
+	public void setSsmRoleArn(String ssmRoleArn) {
+		this.ssmRoleArn = ssmRoleArn;
+	}
+
+	public String getSsmRoleArn() {
+		return ssmRoleArn;
+	}
+
+	public void setSsmMfaSerial(String ssmMfaSerial) {
+		this.ssmMfaSerial = ssmMfaSerial;
+	}
+
+	public String getSsmMfaSerial() {
+		return ssmMfaSerial;
+	}
+
+	public void setSsmRouteHostId(long ssmRouteHostId) {
+		this.ssmRouteHostId = ssmRouteHostId;
+	}
+
+	public long getSsmRouteHostId() {
+		return ssmRouteHostId;
+	}
+
 	@SuppressLint("DefaultLocale")
 	public String getDescription() {
 		String description = String.format("%s@%s", username, hostname);
@@ -259,7 +287,10 @@ public class HostBean extends AbstractBean {
 		values.put(HostDatabase.FIELD_HOST_QUICKDISCONNECT, Boolean.toString(quickDisconnect));
 		values.put(HostDatabase.FIELD_HOST_REMEMBERPASSWORD, Boolean.toString(rememberPassword));
 		values.put(HostDatabase.FIELD_HOST_JUMPHOSTID, jumpHostId);
-		values.put(HostDatabase.FIELD_HOST_GROUP_ID, groupId);
+			values.put(HostDatabase.FIELD_HOST_GROUP_ID, groupId);
+			values.put(HostDatabase.FIELD_HOST_SSM_ROLE_ARN, ssmRoleArn);
+			values.put(HostDatabase.FIELD_HOST_SSM_MFA_SERIAL, ssmMfaSerial);
+			values.put(HostDatabase.FIELD_HOST_SSM_ROUTE_HOST_ID, ssmRouteHostId);
 
 		return values;
 	}
@@ -288,7 +319,11 @@ public class HostBean extends AbstractBean {
 		Long jumpHostId = values.getAsLong(HostDatabase.FIELD_HOST_JUMPHOSTID);
 		host.setJumpHostId(jumpHostId == null ? -1 : jumpHostId);
 		Long groupId = values.getAsLong(HostDatabase.FIELD_HOST_GROUP_ID);
-		host.setGroupId(groupId == null ? HostDatabase.HOST_GROUP_NONE : groupId);
+			host.setGroupId(groupId == null ? HostDatabase.HOST_GROUP_NONE : groupId);
+			host.setSsmRoleArn(values.getAsString(HostDatabase.FIELD_HOST_SSM_ROLE_ARN));
+			host.setSsmMfaSerial(values.getAsString(HostDatabase.FIELD_HOST_SSM_MFA_SERIAL));
+			Long ssmRouteHostId = values.getAsLong(HostDatabase.FIELD_HOST_SSM_ROUTE_HOST_ID);
+		host.setSsmRouteHostId(ssmRouteHostId == null ? -1 : ssmRouteHostId);
 		return host;
 	}
 
@@ -393,6 +428,24 @@ public class HostBean extends AbstractBean {
 				return hostname + ":" + port;
 		} else if (Local.getProtocolName().equals(protocol)) {
 			return nickname;
+		} else if (SSM.getProtocolName().equals(protocol)) {
+			if (username == null || hostname == null ||
+					username.equals("") || hostname.equals("")) {
+				return "";
+			}
+
+			StringBuilder builder = new StringBuilder();
+			builder.append(username).append("@").append(hostname);
+
+			if (port != defaultPort) {
+				builder.append(":").append(port);
+			}
+
+			if (postLogin != null && !postLogin.equals("")) {
+				builder.append("/").append(postLogin);
+			}
+
+			return builder.toString();
 		}
 
 		// Fail gracefully.

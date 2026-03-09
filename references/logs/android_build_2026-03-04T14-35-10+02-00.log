@@ -1,0 +1,179 @@
+Starting a Gradle Daemon, 2 incompatible and 3 stopped Daemons could not be reused, use --status for details
+
+
+[2A[1B[1m> Starting Daemon[m[17D[1B[1A> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [37ms][m[38D[1B[1m> Evaluating settings[m[21D[1B[2A[1m<[0;1m-------------> 0% INITIALIZING [137ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [237ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [337ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [437ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [537ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [637ms][m[39D[2B[2A[1m<[0;1m-------------> 0% INITIALIZING [737ms][m[39D[2B[2A[1m<[0;1m-------------> 0% CONFIGURING [837ms][m[0K[38D[1B[1m> Loading projects[m[0K[18D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [937ms][m[38D[1B[1m> root project[m[0K[14D[1B[2A[1m<[0;1m-------------> 0% CONFIGURING [1s][m[0K[35D[2B[1A[1m> root project > Resolve dependencies of detachedConfiguration1[m[63D[1B[1A[1m> root project > Resolve dependencies of :classpath[m[0K[51D[1B[1A[1m> root project[m[0K[14D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [1s][m[36D[1B[1m> :app[m[0K[6D[1B[1A[1m> :app > Resolve dependencies of :app:classpath[m[47D[1B[1A[1m> :app > Resolve files of :app:classpath[m[0K[40D[1B[1A[1m> :app[m[0K[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [2s][m[36D[2B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[2B[2A[0K
+[1m> Configure project :app[m[0K
+WARNING:: The option setting 'android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2' is experimental.
+No git repository reachable from /work/app
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [3s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[2B[2AWARNING:: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+WARNING:: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+WARNING:: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[1B[1m> :app[m[6D[1B[2AWARNING:: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+WARNING:: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [4s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[2B[2AWarning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01[0K
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01[0K
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
+Warning: Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/03 to old ns http://schemas.android.com/sdk/android/repo/addon2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/03 to old ns http://schemas.android.com/sdk/android/repo/repository2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/03 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[1B[1m> :app[m[6D[1B[2AWarning: unexpected element (uri:"", local:"extension-level"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+Warning: unexpected element (uri:"", local:"base-extension"). Expected elements are <{}codename>,<{}layoutlib>,<{}api-level>[0K
+[0K
+[0K
+[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [5s][m[36D[1B[1m> :app[m[6D[1B[2A[1m<[0;32;1m====[0;39;1m---------> 33% CONFIGURING [6s][m[36D[2B[2A[1m<[0;32;1m========[0;39;1m-----> 66% CONFIGURING [6s][m[36D[1B[1m> :translations[m[15D[1B[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [6s][m[37D[1B> IDLE[0K[6D[1B[2A[1m<[0;1m-------------> 4% EXECUTING [6s][m[0K[33D[1B[1m> :app:generateGoogleDebugBuildConfig[m[37D[1B[2A[1m<[0;1m-------------> 5% EXECUTING [7s][m[33D[1B[1m> :app:javaPreCompileGoogleDebug > Resolve files of :app:googleDebugAnnotationP[m[79D[1B[2A[1m<[0;1m-------------> 7% EXECUTING [7s][m[33D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve dependencies of :app:googleDebugRu[m[79D[1B
+
+
+[4A[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [7s][m[34D[1B> IDLE[0K[6D[1B[1m> :app:mergeGoogleDebugResources[m[0K[32D[2B> IDLE[0K[6D[1B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [8s][m[34D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 10% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m=[0;39;1m------------> 13% EXECUTING [9s][m[34D[1B[1m> :app:processGoogleDebugMainManifest > Resolve files of :app:googleDebugRuntim[m[79D[4B[5A[1m<[0;32;1m==[0;39;1m-----------> 17% EXECUTING [9s][m[34D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[3B[1m> :app:externalNativeBuildGoogleDebug[m[37D[1B[5A[0K
+[1m> Task :app:externalNativeBuildGoogleDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/googleDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m===[0;39;1m----------> 23% EXECUTING [9s][m[34D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:mergeGoogleDebugResources[m[32D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m===[0;39;1m----------> 26% EXECUTING [9s][m[34D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 30% EXECUTING [10s][m[35D[2B[1m> :app:mergeGoogleDebugResources > Packing build cache entry[m[60D[3B[5A[1m<[0;32;1m====[0;39;1m---------> 33% EXECUTING [10s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 34% EXECUTING [10s][m[35D[2B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[3B[5A[1m<[0;32;1m====[0;39;1m---------> 34% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m====[0;39;1m---------> 35% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 47% EXECUTING [11s][m[35D[5B[5A[1m<[0;32;1m======[0;39;1m-------> 47% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=======[0;39;1m------> 54% EXECUTING [12s][m[35D[5B[5A[0K
+[1m> Task :app:externalNativeBuildOssDebug[m[0K
+Build com_google_ase_Exec_armeabi-v7a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/armeabi-v7a'[0K
+Build com_google_ase_Exec_arm64-v8a[0K
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/arm64-v8a'
+Build com_google_ase_Exec_x86
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86'
+Build com_google_ase_Exec_x86_64
+ninja: Entering directory `/work/app/.cxx/cmake/ossDebug/x86_64'
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m========[0;39;1m-----> 64% EXECUTING [12s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[1m<[0;32;1m=========[0;39;1m----> 73% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [12s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 75% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m=========[0;39;1m----> 76% EXECUTING [13s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [14s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [15s][m[35D[5B[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [16s][m[35D[5B[5A[0K
+[1m> Task :app:compileGoogleDebugJavaWithJavac[m[0K
+/work/app/src/main/java/org/connectbot/HostListActivity.java:339: error: cannot find symbol[0K
+                boolean hasGroups = hostdb != null && !hostdb.getHostGroups().isEmpty();[0K
+                                                             ^[0K
+  symbol:   method getHostGroups()
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:486: error: cannot find symbol
+                                if (hostdb.findHostGroupByName(groupName) != null) {
+                                          ^
+  symbol:   method findHostGroupByName(String)
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:494: error: cannot find symbol
+                                        hostdb.saveHostGroup(group);
+                                              ^
+  symbol:   method saveHostGroup(HostGroupBean)
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:506: error: cannot find symbol
+                final List<HostGroupBean> groups = hostdb.getHostGroups();
+                                                         ^
+  symbol:   method getHostGroups()
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:529: error: cannot find symbol
+                                                                                HostGroupBean existing = hostdb.findHostGroupByName(groupName);
+                                                                                                               ^
+  symbol:   method findHostGroupByName(String)
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:540: error: cannot find symbol
+                                                                                        hostdb.saveHostGroup(selectedGroup);
+                                                                                              ^
+  symbol:   method saveHostGroup(HostGroupBean)
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:562: error: cannot find symbol
+                final List<HostGroupBean> groups = hostdb.getHostGroups();
+                                                         ^
+  symbol:   method getHostGroups()
+  location: variable hostdb of type HostStorage
+/work/app/src/main/java/org/connectbot/HostListActivity.java:585: error: cannot find symbol
+                                                                                        hostdb.deleteHostGroup(selectedGroup.getId());
+                                                                                              ^
+  symbol:   method deleteHostGroup(long)
+  location: variable hostdb of type HostStorage
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [16s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A/work/app/src/main/java/org/connectbot/HostListActivity.java:1080: error: cannot find symbol[0K
+                List<HostGroupBean> groups = hostdb.getHostGroups();[0K
+                                                   ^[0K
+  symbol:   method getHostGroups()[0K
+  location: variable hostdb of type HostStorage[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;32;1m==========[0;39;1m---> 77% EXECUTING [16s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5ANote: Some input files use or override a deprecated API.[0K
+Note: Recompile with -Xlint:deprecation for details.[0K
+9 errors[0K
+[0K
+[31;1m> Task :app:compileGoogleDebugJavaWithJavac[0;39m[31m FAILED[39m[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;31;1m==========[0;39;1m---> 78% EXECUTING [16s][m[35D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[0K
+[31mFAILURE: [39m[31mBuild failed with an exception.[39m[0K
+[0K
+* What went wrong:[0K
+Execution failed for task ':app:compileGoogleDebugJavaWithJavac'.[0K
+[33m> [39mCompilation failed; see the compiler error output for details.
+
+* Try:
+Run with [1m--stacktrace[m option to get the stack trace. Run with [1m--info[m or [1m--debug[m option to get more log output. Run with [1m--scan[m to get full insights.
+
+* Get more help at [1mhttps://help.gradle.org[m
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.7.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+[31;1mBUILD FAILED[0;39m in 18s
+49 actionable tasks: 10 executed, 39 up-to-date
+[0K
+[0K
+[0K
+[0K
+[0K
+[5A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugDuplicateClasses > Resolve files of :app:googleDebugRunt[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[1m> :app:checkGoogleDebugAarMetadata > Resolve files of :app:googleDebugRuntimeCl[m[79D[1B[5A[2K[1B[2K[1B[2K[1B[2K[1B[2K[4A[0m[?12l[?25h
